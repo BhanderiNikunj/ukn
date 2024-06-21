@@ -5,25 +5,23 @@ class Strings {
   static String sorry_no_data_found = "Sorry, No Data Found";
   static String yes = "Yes";
   static String no = "No";
+  static String login = "Login";
+  static String signup = "Signup";
+  static String enter_email_id = "Enter Email id";
+  static String ex_email_id = "user@gmail.com";
+  static String enter_password = "Enter Password";
+  static String hint_password = "* * * * * * * *";
+  static String enter_re_password = "Enter Re-Password";
+  static String dont_have_an_account = "Don’t have an account? ";
+  static String register_now = "Register Now";
+  static String already_have_an_account = "Already have an account? ";
+  static String login_now = "Login Now";
+  static String please_enter_email = "Please Enter Email";
+  static String please_enter_password = "Please Enter Password";
 }
 
-void loadGujaratiLanguage() {
-  Strings.enter_data = "માહિતી દાખલ કરો";
-  Strings.sorry_no_data_found = "માફ કરશો, કોઈ ડેટા મળ્યો નથી";
-  Strings.yes = "હા";
-  Strings.no = "ના";
-}
+void loadGujaratiLanguage() {}
 
-void loadHindiLanguage() {
-  Strings.enter_data = "डेटा दर्ज करें";
-  Strings.sorry_no_data_found = "क्षमा करें, कोई डेटा नहीं मिला";
-  Strings.yes = "हाँ";
-  Strings.no = "नहीं";
-}
+void loadHindiLanguage() {}
 
-void loadEnglishLanguage() {
-  Strings.enter_data = "Enter Data";
-  Strings.sorry_no_data_found = "Sorry, No Data Found";
-  Strings.yes = "Yes";
-  Strings.no = "No";
-}
+void loadEnglishLanguage() {}

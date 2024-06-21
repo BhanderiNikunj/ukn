@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:unk/utils/api_constant.dart';
 import 'package:http/http.dart';
 
@@ -50,6 +51,8 @@ class ApiHelper {
       apiPath: 'general_setting.php',
       apiType: ApiType.GET,
     );
-    print("=============$json");
+    if (kDebugMode) {
+      print("=============$json");
+    }
   }
 }

@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_router.dart';
 import 'package:unk/widgets/images.dart';
@@ -22,8 +26,11 @@ class CommonWidget {
     TextInputType? keyboardType,
     void Function(String)? onChanged,
     EdgeInsetsGeometry? contentPadding,
+    TextInputAction? textInputAction,
   }) {
     return TextFormField(
+      autofocus: false,
+      textInputAction: textInputAction,
       keyboardType: keyboardType ?? TextInputType.name,
       controller: controller,
       validator: validator,
@@ -33,7 +40,7 @@ class CommonWidget {
       onChanged: onChanged,
       style: TextStyle(
         color: textColor ?? AppColor.primary1Color,
-        fontSize: fontSize ?? 16.sp,
+        fontSize: fontSize?.sp ?? 16.sp,
       ),
       decoration: InputDecoration(
         contentPadding: contentPadding,
@@ -41,33 +48,35 @@ class CommonWidget {
         hintText: hintText ?? Strings.enter_data,
         hintStyle: TextStyle(
           color: hintColor ?? AppColor.default6Color,
-          fontSize: fontSize ?? 16.sp,
+          fontSize: fontSize?.sp ?? 14.sp,
         ),
-        // filled: true,
-        // fillColor: fillColor,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius ?? 10.r),
-          borderSide: BorderSide(color: borderColor ?? AppColor.default1Color),
+          borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
+          borderSide: BorderSide(
+              color: borderColor ?? AppColor.default1Color, width: 2.w),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius ?? 10.r),
-          borderSide: BorderSide(color: AppColor.red1Color),
+          borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
+          borderSide: BorderSide(color: AppColor.red1Color, width: 2.w),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius ?? 10.r),
-          borderSide: BorderSide(color: borderColor ?? AppColor.default1Color),
+          borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
+          borderSide: BorderSide(
+              color: borderColor ?? AppColor.default1Color, width: 2.w),
         ),
         disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius ?? 10.r),
-          borderSide: BorderSide(color: borderColor ?? AppColor.default1Color),
+          borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
+          borderSide: BorderSide(
+              color: borderColor ?? AppColor.default1Color, width: 2.w),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius ?? 10.r),
-          borderSide: BorderSide(color: borderColor ?? AppColor.default1Color),
+          borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
+          borderSide: BorderSide(
+              color: borderColor ?? AppColor.default1Color, width: 2.w),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius ?? 10.r),
-          borderSide: BorderSide(color: AppColor.red1Color),
+          borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
+          borderSide: BorderSide(color: AppColor.red1Color, width: 2.w),
         ),
       ),
     );
@@ -82,22 +91,24 @@ class CommonWidget {
     double? radius,
     Color? color,
     double? fontSize,
+    TextStyle? textStyle,
   }) {
     return InkWell(
       splashFactory: NoSplash.splashFactory,
       onTap: onTap,
       child: Container(
-        height: height ?? 50.h,
-        width: width ?? 200.h,
+        height: height?.h ?? 50.h,
+        width: width?.w ?? ScreenUtil().screenWidth,
         decoration: BoxDecoration(
-          color: buttonColor ?? AppColor.secondery1Color,
-          borderRadius: BorderRadius.circular(radius ?? 10.r),
+          color: buttonColor ?? AppColor.primary2Color,
+          borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
         ),
         alignment: Alignment.center,
         child: commonText(
+          style: textStyle,
           text: text,
           color: color ?? AppColor.white1Color,
-          fontSize: fontSize ?? 16.sp,
+          fontSize: fontSize?.sp ?? 16.sp,
         ),
       ),
     );
@@ -122,31 +133,8 @@ class CommonWidget {
           TextStyle(
             color: color ?? AppColor.default1Color,
             fontWeight: fontWeight ?? FontWeight.w500,
-            fontSize: fontSize ?? 16.sp,
+            fontSize: fontSize?.sp ?? 16.sp,
           ),
-    );
-  }
-
-  static PreferredSizeWidget commonAppBar({
-    required String title,
-    Color? titleColor,
-    Color? bgColor,
-    Widget? leading,
-    List<Widget>? actions,
-    IconData? icon,
-    void Function()? onPressed,
-  }) {
-    return AppBar(
-      centerTitle: false,
-      leading: leading ??
-          commonIconButton(
-            icon: icon ?? Icons.arrow_back_ios_new_rounded,
-            onPressed: onPressed ?? () => CommonRoute.pop(),
-            color: AppColor.white1Color,
-          ),
-      actions: actions,
-      title: commonText(text: title, color: AppColor.white1Color),
-      backgroundColor: bgColor ?? AppColor.secondery1Color,
     );
   }
 
@@ -164,19 +152,19 @@ class CommonWidget {
     EdgeInsetsGeometry? padding,
   }) {
     return Container(
-      height: height ?? 50.h,
-      width: width ?? 50.w,
-      padding: padding ?? EdgeInsets.all(6.h),
+      height: height?.h ?? 50.h,
+      width: width?.w ?? 50.w,
+      padding: padding ?? EdgeInsets.all(6.r),
       decoration: BoxDecoration(
         color: color ?? AppColor.white1Color,
         borderRadius: isBorderRadiusOnly
             ? BorderRadius.only(
-                bottomLeft: Radius.circular(bottomLeft ?? 10.r),
-                bottomRight: Radius.circular(bottomRight ?? 10.r),
-                topLeft: Radius.circular(topLeft ?? 10.r),
-                topRight: Radius.circular(topRight ?? 10.r),
+                bottomLeft: Radius.circular(bottomLeft?.r ?? 10.r),
+                bottomRight: Radius.circular(bottomRight?.r ?? 10.r),
+                topLeft: Radius.circular(topLeft?.r ?? 10.r),
+                topRight: Radius.circular(topRight?.r ?? 10.r),
               )
-            : BorderRadius.circular(radius ?? 10.r),
+            : BorderRadius.circular(radius?.r ?? 10.r),
       ),
       child: child,
     );
@@ -206,10 +194,15 @@ class CommonWidget {
     );
   }
 
-  static Widget commonIcon({required IconData icon, Color? color}) {
+  static Widget commonIcon({
+    required IconData icon,
+    Color? color,
+    double? size,
+  }) {
     return Icon(
       icon,
       color: color ?? AppColor.default1Color,
+      size: size?.h,
     );
   }
 
@@ -245,56 +238,171 @@ class CommonWidget {
     return SizedBox(height: height?.h, width: width?.w, child: child);
   }
 
-  static Widget commonAddButton({required void Function() onPressed}) {
-    return FloatingActionButton(
-      backgroundColor: AppColor.secondery1Color,
-      onPressed: onPressed,
-      shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.circular(20.sp),
-      ),
-      child: CommonWidget.commonIcon(
-        icon: Icons.add,
-        color: AppColor.white1Color,
-      ),
-    );
-  }
-
   static String stringToRupee({required text}) {
     return "₹$text";
   }
 
   static Widget imageBuilder({
     required String imagePath,
-    BoxFit? fit,
     double? height,
     double? width,
+    double? borderRadius,
+    int? cacheWidth,
+    BoxFit? fit,
     Color? color,
+    bool? isBorderOnlySide,
+    Radius? bottomLeft,
+    Radius? bottomRight,
+    Radius? topLeft,
+    Radius? topRight,
+    EdgeInsets? padding,
+    double? horizontalPadding,
+    double? verticalPadding,
   }) {
-    if (imagePath.startsWith('assets')) {
-      return Image.asset(
-        imagePath,
-        fit: fit,
-        height: height,
-        width: width,
-        color: color,
-        errorBuilder: (context, error, stackTrace) {
-          return Image.asset(
-            Images.wraning_image,
-            color: AppColor.primary1Color,
-          );
-        },
-      );
+    if (imagePath.isEmpty) {
+      return Center(child: warningIcon(color: color));
     } else if (imagePath.startsWith('https')) {
-      return Image.network(
+      if (imagePath.endsWith('svg')) {
+        return SvgPicture.network(
+          imagePath,
+          fit: fit ?? BoxFit.fitWidth,
+          width: width?.w,
+          height: height?.h,
+          colorFilter:
+              color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+          placeholderBuilder: (context) => sizedBox(
+            width: width,
+            height: height,
+            child: sizedBox(
+              width: width,
+              height: height,
+              child: loadingIos(),
+            ),
+          ),
+        );
+      } else {
+        return ClipRRect(
+          borderRadius: isBorderOnlySide == true
+              ? BorderRadius.only(
+                  bottomLeft: bottomLeft?.r ?? Radius.zero,
+                  bottomRight: bottomRight?.r ?? Radius.zero,
+                  topLeft: topLeft?.r ?? Radius.zero,
+                  topRight: topRight?.r ?? Radius.zero,
+                )
+              : BorderRadius.circular(borderRadius?.r ?? 0),
+          child: CachedNetworkImage(
+            imageUrl: imagePath,
+            fit: fit ?? BoxFit.cover,
+            memCacheWidth: cacheWidth,
+            color: color,
+            height: height?.h,
+            width: width?.w,
+            placeholder: (context, url) => sizedBox(
+              height: height,
+              width: width,
+              child: loadingIos(),
+            ),
+            errorListener: (value) => sizedBox(
+              height: height,
+              width: width,
+              child: loadingIos(),
+            ),
+            errorWidget: (context, error, stackTrace) => warningIcon(
+              color: color,
+              bgColor: Colors.grey.withOpacity(0.15),
+            ),
+          ),
+        );
+      }
+    } else if (imagePath.startsWith('assets') && imagePath.endsWith('.svg')) {
+      return SvgPicture.asset(
         imagePath,
-        fit: fit ?? BoxFit.cover,
-        height: height,
-        width: width,
-        color: color,
+        fit: fit ?? BoxFit.fitWidth,
+        width: width?.w,
+        height: height?.h,
+        colorFilter:
+            color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+      );
+    } else if (imagePath.startsWith('assets')) {
+      return Padding(
+        padding: padding ?? EdgeInsets.zero,
+        child: Image.asset(
+          imagePath,
+          fit: fit ?? BoxFit.fitWidth,
+          width: width?.w,
+          height: height?.h,
+          color: color,
+          cacheWidth: cacheWidth,
+          errorBuilder: (context, error, stackTrace) =>
+              warningIcon(color: color),
+        ),
+      );
+    } else if (imagePath.endsWith('.svg')) {
+      return SvgPicture.file(
+        File(imagePath),
+        fit: fit ?? BoxFit.fitWidth,
+        width: width?.w,
+        height: height?.h,
+        colorFilter:
+            color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
       );
     } else {
-      return sizedBox(isShrink: true);
+      return Image.file(
+        File(imagePath),
+        fit: fit ?? BoxFit.fitWidth,
+        width: width?.w,
+        height: height?.h,
+        color: color,
+        cacheWidth: cacheWidth,
+        errorBuilder: (context, error, stackTrace) => warningIcon(color: color),
+      );
     }
+  }
+
+  static Widget loadingIos({bool isShowListLoader = false}) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(16.r),
+        child: sizedBox(
+          height: isShowListLoader ? 100 : 300,
+          width: isShowListLoader ? 100 : 300,
+          child: Center(
+            child: Center(
+              child: CircularProgressIndicator(
+                color: AppColor.primary1Color,
+                strokeWidth: 2,
+                backgroundColor: AppColor.default6Color,
+                strokeCap: StrokeCap.round,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget warningIcon({
+    double? width,
+    double? height,
+    Color? color,
+    Alignment? alignment,
+    Color? bgColor,
+  }) {
+    return Container(
+      color: bgColor,
+      child: Center(
+        child: SvgPicture.asset(
+          Images.wraning_image,
+          width: width?.w ?? 32.w,
+          height: height?.h ?? 32.h,
+          colorFilter: ColorFilter.mode(
+            color ?? AppColor.default1Color,
+            BlendMode.srcIn,
+          ),
+          alignment: alignment ?? Alignment.center,
+        ),
+      ),
+    );
   }
 
   static Future<dynamic> commonDialog({
@@ -318,45 +426,43 @@ class CommonWidget {
             alignment: Alignment.center,
             height: 50.h,
             width: ScreenUtil().screenWidth,
-            child: CommonWidget.commonText(
+            child: commonText(
               text: titleText,
               textAlign: TextAlign.center,
             ),
           ),
-          content: CommonWidget.sizedBox(
+          content: sizedBox(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CommonWidget.commonText(
+                commonText(
                   text: subTitleText,
                   maxLines: 2,
                   textAlign: TextAlign.center,
                 ),
-                CommonWidget.sizedBox(height: 20),
+                sizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    CommonWidget.sizedBox(width: 10),
+                    sizedBox(width: 10),
                     Expanded(
-                      child: CommonWidget.commonButton(
+                      child: commonButton(
                         height: 50.h,
                         text: Strings.no,
                         onTap: () => CommonRoute.pop(),
                       ),
                     ),
-                    CommonWidget.sizedBox(width: 10),
+                    sizedBox(width: 10),
                     Expanded(
-                      child: CommonWidget.commonButton(
+                      child: commonButton(
                         height: 50.h,
                         text: Strings.yes,
                         onTap: onTap,
                       ),
                     ),
-                    CommonWidget.sizedBox(width: 10),
                   ],
                 ),
-                CommonWidget.sizedBox(height: 20),
               ],
             ),
           ),

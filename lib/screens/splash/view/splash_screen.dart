@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(
       Duration(seconds: splashDuration),
-          () {
+      () {
         CommonRoute.popAndPushNamed(page: RouteList.login_screen);
       },
     );
@@ -31,13 +31,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-            child: CommonWidget.imageBuilder(
-              height: ScreenUtil().screenHeight,
-              width: ScreenUtil().screenWidth,
-              imagePath: splashImage,
-            ),
-            ),
-        );
-    }
+      body: Center(
+        child: CommonWidget.imageBuilder(
+          height: ScreenUtil().screenHeight,
+          width: ScreenUtil().screenWidth,
+          imagePath: splashImage,
+        ),
+      ),
+    );
+  }
 }

@@ -6,7 +6,6 @@ import 'package:unk/common/common_validator.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
 import 'package:unk/common/route_list.dart';
-import 'package:unk/common/text_style.dart';
 import 'package:unk/widgets/strings.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -60,10 +59,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       children: [
                         CommonWidget.commonText(
                           text: Strings.signup,
-                          style: poppinsBold.copyWith(
-                            fontSize: 26,
-                            color: AppColor.primary1Color,
-                          ),
+                          fontSize: 26,
+                          color: AppColor.primary1Color,
                         ),
                       ],
                     ),
@@ -71,17 +68,15 @@ class _SignupScreenState extends State<SignupScreen> {
                       height: 30,
                     ),
                     CommonWidget.commonText(
-                      text: Strings.enterEmailID,
-                      style: poppinsMedium.copyWith(
-                        color: AppColor.primary1Color,
-                      ),
+                      text: Strings.enter_email_id,
+                      color: AppColor.primary1Color,
                     ),
                     CommonWidget.sizedBox(
                       height: 5,
                     ),
                     CommonWidget.textFormField(
                       keyboardType: TextInputType.emailAddress,
-                      hintText: Strings.hintEmail,
+                      hintText: Strings.usergmail_com,
                       hintColor: AppColor.primary1Color,
                       textInputAction: TextInputAction.next,
                       suffixIcon: CommonWidget.commonIcon(
@@ -93,10 +88,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       height: 15,
                     ),
                     CommonWidget.commonText(
-                      text: Strings.enterPassword,
-                      style: poppinsMedium.copyWith(
-                        color: AppColor.primary1Color,
-                      ),
+                      text: Strings.enter_password,
+                      color: AppColor.primary1Color,
                     ),
                     CommonWidget.sizedBox(
                       height: 5,
@@ -116,10 +109,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       height: 15,
                     ),
                     CommonWidget.commonText(
-                      text: Strings.rePassword,
-                      style: poppinsMedium.copyWith(
-                        color: AppColor.primary1Color,
-                      ),
+                      text: Strings.enter_re_password,
+                      color: AppColor.primary1Color,
                     ),
                     CommonWidget.sizedBox(
                       height: 5,
@@ -143,10 +134,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       buttonColor: AppColor.primary2Color,
                       color: AppColor.white1Color,
                       text: Strings.signup,
-                      textStyle: poppinsBold.copyWith(
-                        color: AppColor.white1Color,
-                        fontSize: 16,
-                      ),
+                      fontSize: 16,
                       onTap: () {},
                     ),
                     CommonWidget.sizedBox(height: 90),
@@ -154,21 +142,17 @@ class _SignupScreenState extends State<SignupScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CommonWidget.commonText(
-                          text: Strings.haveAccount,
-                          style: interRegular.copyWith(
-                            fontSize: 13,
-                            color: AppColor.default1Color,
-                          ),
+                          text: Strings.already_have_an_account,
+                          fontSize: 13,
+                          color: AppColor.default1Color,
                         ),
                         CommonWidget.commonButton(
                           width: 70,
                           height: 30,
                           buttonColor: AppColor.white1Color,
-                          text: Strings.loginNow,
-                          textStyle: interBold.copyWith(
-                            fontSize: 13,
-                            color: AppColor.primary1Color,
-                          ),
+                          text: Strings.login_now,
+                          fontSize: 13,
+                          color: AppColor.primary1Color,
                           onTap: () {
                             CommonRoute.pushNamed(page: RouteList.login_screen);
                           },

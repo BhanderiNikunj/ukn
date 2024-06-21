@@ -7,15 +7,15 @@ class Strings {
   static String no = "No";
   static String login = "Login";
   static String signup = "Signup";
-  static String enterEmailID = "Enter Email id";
-  static String hintEmail = "user@gmail.com";
-  static String enterPassword = "Enter Password";
+  static String enter_email_id = "Enter Email id";
+  static String usergmail_com = "user@gmail.com";
+  static String enter_password = "Enter Password";
   static String hintPassword = "********";
-  static String rePassword = "Enter Re-Password";
-  static String dontHaveAccount = "Don’t have an account? ";
-  static String registerNow = "Register Now";
-  static String haveAccount = "Already have an account? ";
-  static String loginNow = "Login Now";
+  static String enter_re_password = "Enter Re-Password";
+  static String dont_have_an_account = "Don’t have an account? ";
+  static String register_now = "Register Now";
+  static String already_have_an_account = "Already have an account? ";
+  static String login_now = "Login Now";
 }
 
 void loadGujaratiLanguage() {

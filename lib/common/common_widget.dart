@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_router.dart';
-import 'package:unk/common/text_style.dart';
 import 'package:unk/widgets/images.dart';
 import 'package:unk/widgets/strings.dart';
 
@@ -46,7 +45,7 @@ class CommonWidget {
         contentPadding: contentPadding,
         suffixIcon: suffixIcon,
         hintText: hintText ?? Strings.enter_data,
-        hintStyle: poppinsLight.copyWith(
+        hintStyle: TextStyle(
           color: hintColor ?? AppColor.default6Color,
           fontSize: fontSize ?? 14.sp,
         ),
@@ -180,11 +179,11 @@ class CommonWidget {
         color: color ?? AppColor.white1Color,
         borderRadius: isBorderRadiusOnly
             ? BorderRadius.only(
-          bottomLeft: Radius.circular(bottomLeft ?? 10.r),
-          bottomRight: Radius.circular(bottomRight ?? 10.r),
-          topLeft: Radius.circular(topLeft ?? 10.r),
-          topRight: Radius.circular(topRight ?? 10.r),
-        )
+                bottomLeft: Radius.circular(bottomLeft ?? 10.r),
+                bottomRight: Radius.circular(bottomRight ?? 10.r),
+                topLeft: Radius.circular(topLeft ?? 10.r),
+                topRight: Radius.circular(topRight ?? 10.r),
+              )
             : BorderRadius.circular(radius ?? 10.r),
       ),
       child: child,
@@ -299,7 +298,7 @@ class CommonWidget {
           width: width,
           height: height,
           colorFilter:
-          color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+              color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
           placeholderBuilder: (context) => sizedBox(
             height: height,
             width: width,
@@ -314,11 +313,11 @@ class CommonWidget {
         return ClipRRect(
           borderRadius: isBorderOnlySide == true
               ? BorderRadius.only(
-            bottomLeft: bottomLeft ?? Radius.zero,
-            bottomRight: bottomRight ?? Radius.zero,
-            topLeft: topLeft ?? Radius.zero,
-            topRight: topRight ?? Radius.zero,
-          )
+                  bottomLeft: bottomLeft ?? Radius.zero,
+                  bottomRight: bottomRight ?? Radius.zero,
+                  topLeft: topLeft ?? Radius.zero,
+                  topRight: topRight ?? Radius.zero,
+                )
               : BorderRadius.circular(borderRadius ?? 0),
           child: CachedNetworkImage(
             imageUrl: imagePath,
@@ -351,7 +350,7 @@ class CommonWidget {
         width: width,
         height: height,
         colorFilter:
-        color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+            color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
       );
     } else if (imagePath.startsWith('assets')) {
       return Padding(
@@ -374,7 +373,7 @@ class CommonWidget {
         width: width,
         height: height,
         colorFilter:
-        color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+            color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
       );
     } else {
       return Image.file(

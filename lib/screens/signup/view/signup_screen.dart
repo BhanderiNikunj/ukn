@@ -96,7 +96,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     CommonWidget.textFormField(
                       keyboardType: TextInputType.text,
-                      hintText: Strings.hintPassword,
+                      hintText: Strings.hint_password,
                       hintColor: AppColor.primary1Color,
                       obscureText: true,
                       textInputAction: TextInputAction.next,
@@ -117,7 +117,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     CommonWidget.textFormField(
                       keyboardType: TextInputType.text,
-                      hintText: Strings.hintPassword,
+                      hintText: Strings.hint_password,
                       hintColor: AppColor.primary1Color,
                       obscureText: true,
                       textInputAction: TextInputAction.done,

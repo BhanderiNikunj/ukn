@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   CommonWidget.textFormField(
                     keyboardType: TextInputType.text,
-                    hintText: Strings.hintPassword,
+                    hintText: Strings.hint_password,
                     hintColor: AppColor.primary1Color,
                     textInputAction: TextInputAction.done,
                     obscureText: true,

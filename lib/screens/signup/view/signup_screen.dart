@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_router.dart';
 import 'package:unk/common/common_validator.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
-import 'package:unk/common/route_list.dart';
+import 'package:unk/screens/signup/controller/signup_controller.dart';
+import 'package:unk/widgets/images.dart';
 import 'package:unk/widgets/strings.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -16,156 +18,204 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  late SignupController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(SignupController());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => CommonValidator.hideKeyboard,
       child: SafeArea(
         child: Scaffold(
-          body: Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              Center(
-                child: CommonWidget.imageBuilder(
-                  height: ScreenUtil().screenHeight,
-                  width: ScreenUtil().screenWidth,
-                  imagePath: splashImage,
+          resizeToAvoidBottomInset: false,
+          body: GetBuilder(
+            init: controller,
+            builder: (_) {
+              return Container(
+                decoration: BoxDecoration(
+                  gradient: RadialGradient(
+                    colors: [
+                      AppColor.primary2Color,
+                      AppColor.primary2Color,
+                      AppColor.primary2Color,
+                      AppColor.primary1Color,
+                    ],
+                  ),
                 ),
-              ),
-              Positioned(
-                top: 40,
-                child: CommonWidget.imageBuilder(
-                  height: 120,
-                  width: 120,
-                  imagePath: appLogo,
-                ),
-              ),
-            ],
-          ),
-          bottomSheet: SingleChildScrollView(
-            child: BottomSheet(
-              enableDrag: false,
-              backgroundColor: AppColor.white1Color,
-              onClosing: () => context,
-              builder: (context) => Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
+                child: Stack(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CommonWidget.commonText(
-                          text: Strings.signup,
-                          fontSize: 26,
-                          color: AppColor.primary1Color,
+                        Padding(
+                          padding: EdgeInsets.only(top: 45.h),
+                          child: CommonWidget.imageBuilder(
+                            imagePath: appLogo,
+                            height: 130,
+                          ),
                         ),
                       ],
                     ),
-                    CommonWidget.sizedBox(
-                      height: 30,
-                    ),
-                    CommonWidget.commonText(
-                      text: Strings.enter_email_id,
-                      color: AppColor.primary1Color,
-                    ),
-                    CommonWidget.sizedBox(
-                      height: 5,
-                    ),
-                    CommonWidget.textFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      hintText: Strings.ex_email_id,
-                      hintColor: AppColor.primary1Color,
-                      textInputAction: TextInputAction.next,
-                      suffixIcon: CommonWidget.commonIcon(
-                        icon: Icons.email_rounded,
-                        color: AppColor.primary1Color,
-                      ),
-                    ),
-                    CommonWidget.sizedBox(
-                      height: 15,
-                    ),
-                    CommonWidget.commonText(
-                      text: Strings.enter_password,
-                      color: AppColor.primary1Color,
-                    ),
-                    CommonWidget.sizedBox(
-                      height: 5,
-                    ),
-                    CommonWidget.textFormField(
-                      keyboardType: TextInputType.text,
-                      hintText: Strings.hint_password,
-                      hintColor: AppColor.primary1Color,
-                      obscureText: true,
-                      textInputAction: TextInputAction.next,
-                      suffixIcon: CommonWidget.commonIcon(
-                        icon: Icons.visibility_off_rounded,
-                        color: AppColor.primary1Color,
-                      ),
-                    ),
-                    CommonWidget.sizedBox(
-                      height: 15,
-                    ),
-                    CommonWidget.commonText(
-                      text: Strings.enter_re_password,
-                      color: AppColor.primary1Color,
-                    ),
-                    CommonWidget.sizedBox(
-                      height: 5,
-                    ),
-                    CommonWidget.textFormField(
-                      keyboardType: TextInputType.text,
-                      hintText: Strings.hint_password,
-                      hintColor: AppColor.primary1Color,
-                      obscureText: true,
-                      textInputAction: TextInputAction.done,
-                      suffixIcon: CommonWidget.commonIcon(
-                        icon: Icons.visibility_off_rounded,
-                        color: AppColor.primary1Color,
-                      ),
-                    ),
-                    CommonWidget.sizedBox(
-                      height: 40,
-                    ),
-                    CommonWidget.commonButton(
-                      width: double.infinity,
-                      buttonColor: AppColor.primary2Color,
-                      color: AppColor.white1Color,
-                      text: Strings.signup,
-                      fontSize: 16,
-                      onTap: () {},
-                    ),
-                    CommonWidget.sizedBox(height: 90),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CommonWidget.commonText(
-                          text: Strings.already_have_an_account,
-                          fontSize: 13,
-                          color: AppColor.default1Color,
-                        ),
-                        CommonWidget.commonButton(
-                          width: 70,
-                          height: 30,
-                          buttonColor: AppColor.white1Color,
-                          text: Strings.login_now,
-                          fontSize: 13,
-                          color: AppColor.primary1Color,
-                          onTap: () {
-                            CommonRoute.pushNamed(page: RouteList.login_screen);
-                          },
-                        ),
-                      ],
-                    ),
+                    bottomView(),
                   ],
                 ),
-              ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget bottomView() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        height: ScreenUtil().screenHeight * 0.68,
+        width: ScreenUtil().screenWidth,
+        decoration: BoxDecoration(
+          color: AppColor.white1Color,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.r),
+            topRight: Radius.circular(30.r),
+          ),
+        ),
+        child: Form(
+          key: controller.formKey,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: Column(
+              children: [
+                CommonWidget.sizedBox(height: 20),
+                CommonWidget.commonText(
+                  text: Strings.login,
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: AppColor.primary1Color,
+                ),
+                CommonWidget.sizedBox(height: 38),
+                textFeildView(
+                  controller: controller.emailIdController,
+                  title: Strings.enter_email_id,
+                  hint: Strings.ex_email_id,
+                  errorMessage: Strings.please_enter_email,
+                  imagePath: Images.email_svg,
+                ),
+                CommonWidget.sizedBox(height: 10),
+                textFeildView(
+                  controller: controller.passwordController,
+                  title: Strings.enter_password,
+                  hint: Strings.hint_password,
+                  errorMessage: Strings.please_enter_password,
+                  imagePath: controller.isShowText
+                      ? Images.close_eye_svg
+                      : Images.open_eye_svg,
+                  isShowText: controller.isShowText,
+                  onTap: () {
+                    controller.isShowText = !controller.isShowText;
+                    controller.update();
+                  },
+                ),
+                CommonWidget.sizedBox(height: 10),
+                textFeildView(
+                  controller: controller.rePasswordController,
+                  title: Strings.enter_re_password,
+                  hint: Strings.hint_password,
+                  errorMessage: Strings.please_enter_password,
+                  imagePath: controller.isReShowText
+                      ? Images.close_eye_svg
+                      : Images.open_eye_svg,
+                  isShowText: controller.isReShowText,
+                  onTap: () {
+                    controller.isReShowText = !controller.isReShowText;
+                    controller.update();
+                  },
+                ),
+                CommonWidget.sizedBox(height: 38),
+                CommonWidget.commonButton(
+                  text: Strings.login,
+                  onTap: () {
+                    bool? isValid = controller.formKey.currentState?.validate();
+
+                    if (isValid ?? false) {}
+                  },
+                ),
+                const Spacer(),
+                InkWell(
+                  onTap: () => CommonRoute.pop(),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CommonWidget.commonText(
+                        text: Strings.already_have_an_account,
+                        fontSize: 12,
+                      ),
+                      CommonWidget.commonText(
+                        text: Strings.login_now,
+                        color: AppColor.primary1Color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ],
+                  ),
+                ),
+                CommonWidget.sizedBox(height: 38),
+              ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget textFeildView({
+    required TextEditingController controller,
+    required String title,
+    required String hint,
+    required String imagePath,
+    required String errorMessage,
+    void Function()? onTap,
+    bool isShowText = false,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        CommonWidget.commonText(
+          text: title,
+          fontSize: 14,
+          color: AppColor.primary1Color,
+        ),
+        CommonWidget.sizedBox(height: 5),
+        CommonWidget.textFormField(
+          hintText: hint,
+          obscureText: isShowText,
+          controller: controller,
+          hintColor: AppColor.primary1Color,
+          textColor: AppColor.primary1Color,
+          validator: (value) {
+            if (value?.isEmpty ?? false) {
+              return errorMessage;
+            }
+            return null;
+          },
+          suffixIcon: InkWell(
+            onTap: onTap,
+            child: Container(
+              alignment: Alignment.center,
+              width: 24,
+              child: CommonWidget.imageBuilder(
+                imagePath: imagePath,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

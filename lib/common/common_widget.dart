@@ -51,27 +51,31 @@ class CommonWidget {
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
-          borderSide: BorderSide(color: borderColor ?? AppColor.default1Color),
+          borderSide: BorderSide(
+              color: borderColor ?? AppColor.default1Color, width: 2.w),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
-          borderSide: BorderSide(color: AppColor.red1Color),
+          borderSide: BorderSide(color: AppColor.red1Color, width: 2.w),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
-          borderSide: BorderSide(color: borderColor ?? AppColor.default1Color),
+          borderSide: BorderSide(
+              color: borderColor ?? AppColor.default1Color, width: 2.w),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
-          borderSide: BorderSide(color: borderColor ?? AppColor.default1Color),
+          borderSide: BorderSide(
+              color: borderColor ?? AppColor.default1Color, width: 2.w),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
-          borderSide: BorderSide(color: borderColor ?? AppColor.default1Color),
+          borderSide: BorderSide(
+              color: borderColor ?? AppColor.default1Color, width: 2.w),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
-          borderSide: BorderSide(color: AppColor.red1Color),
+          borderSide: BorderSide(color: AppColor.red1Color, width: 2.w),
         ),
       ),
     );
@@ -93,9 +97,9 @@ class CommonWidget {
       onTap: onTap,
       child: Container(
         height: height?.h ?? 50.h,
-        width: width?.w ?? 200.w,
+        width: width?.w ?? ScreenUtil().screenWidth,
         decoration: BoxDecoration(
-          color: buttonColor ?? AppColor.secondery1Color,
+          color: buttonColor ?? AppColor.primary2Color,
           borderRadius: BorderRadius.circular(radius?.r ?? 10.r),
         ),
         alignment: Alignment.center,

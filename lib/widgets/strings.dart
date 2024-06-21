@@ -16,6 +16,8 @@ class Strings {
   static String register_now = "Register Now";
   static String already_have_an_account = "Already have an account? ";
   static String login_now = "Login Now";
+  static String please_enter_email = "Please Enter Email";
+  static String please_enter_password = "Please Enter Password";
 }
 
 void loadGujaratiLanguage() {}

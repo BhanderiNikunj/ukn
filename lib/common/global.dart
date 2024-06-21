@@ -11,4 +11,4 @@ List<GetPage> getPages = [
 ];
 
  String splashImage = "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/images/splash_screen/Splash%20Screen.jpg";
- String appLogo = "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/images/splash_screen/Splash%20Screen.jpg";
+ String appLogo = "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/images/splash_screen/app_logo.png";

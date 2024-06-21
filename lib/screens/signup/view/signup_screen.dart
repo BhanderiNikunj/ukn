@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:unk/common/colors.dart';
+import 'package:unk/common/common_router.dart';
 import 'package:unk/common/common_validator.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
+import 'package:unk/common/route_list.dart';
 import 'package:unk/common/text_style.dart';
+import 'package:unk/widgets/strings.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -57,7 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CommonWidget.commonText(
-                          text: "Signup",
+                          text: Strings.signup,
                           style: poppinsBold.copyWith(
                             fontSize: 26,
                             color: AppColor.primary1Color,
@@ -69,7 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       height: 30,
                     ),
                     CommonWidget.commonText(
-                      text: "Enter Email id",
+                      text: Strings.enterEmailID,
                       style: poppinsMedium.copyWith(
                         color: AppColor.primary1Color,
                       ),
@@ -79,7 +81,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     CommonWidget.textFormField(
                       keyboardType: TextInputType.emailAddress,
-                      hintText: "user@gmail.com",
+                      hintText: Strings.hintEmail,
                       hintColor: AppColor.primary1Color,
                       textInputAction: TextInputAction.next,
                       suffixIcon: CommonWidget.commonIcon(
@@ -91,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       height: 15,
                     ),
                     CommonWidget.commonText(
-                      text: "Enter Password",
+                      text: Strings.enterPassword,
                       style: poppinsMedium.copyWith(
                         color: AppColor.primary1Color,
                       ),
@@ -101,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     CommonWidget.textFormField(
                       keyboardType: TextInputType.text,
-                      hintText: "********",
+                      hintText: Strings.hintPassword,
                       hintColor: AppColor.primary1Color,
                       obscureText: true,
                       textInputAction: TextInputAction.next,
@@ -114,7 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       height: 15,
                     ),
                     CommonWidget.commonText(
-                      text: "Enter Re-Password",
+                      text: Strings.rePassword,
                       style: poppinsMedium.copyWith(
                         color: AppColor.primary1Color,
                       ),
@@ -124,7 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     CommonWidget.textFormField(
                       keyboardType: TextInputType.text,
-                      hintText: "********",
+                      hintText: Strings.hintPassword,
                       hintColor: AppColor.primary1Color,
                       obscureText: true,
                       textInputAction: TextInputAction.done,
@@ -140,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       width: double.infinity,
                       buttonColor: AppColor.primary2Color,
                       color: AppColor.white1Color,
-                      text: "Signup",
+                      text: Strings.signup,
                       textStyle: poppinsBold.copyWith(
                         color: AppColor.white1Color,
                         fontSize: 16,
@@ -152,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CommonWidget.commonText(
-                          text: "Already have an account? ",
+                          text: Strings.haveAccount,
                           style: interRegular.copyWith(
                             fontSize: 13,
                             color: AppColor.default1Color,
@@ -162,13 +164,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           width: 70,
                           height: 30,
                           buttonColor: AppColor.white1Color,
-                          text: "Login Now",
+                          text: Strings.loginNow,
                           textStyle: interBold.copyWith(
                             fontSize: 13,
                             color: AppColor.primary1Color,
                           ),
                           onTap: () {
-                            Get.toNamed("/login_screen");
+                            CommonRoute.pushNamed(page: RouteList.login_screen);
                           },
                         ),
                       ],

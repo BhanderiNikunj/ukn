@@ -1,4 +1,4 @@
-package com.example.unk
+package com.ukn.earning.app
 
 import io.flutter.embedding.android.FlutterActivity
 

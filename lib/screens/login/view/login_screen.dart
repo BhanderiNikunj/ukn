@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   CommonWidget.textFormField(
                     keyboardType: TextInputType.emailAddress,
-                    hintText: Strings.usergmail_com,
+                    hintText: Strings.ex_email_id,
                     hintColor: AppColor.primary1Color,
                     textInputAction: TextInputAction.next,
                     suffixIcon: CommonWidget.commonIcon(

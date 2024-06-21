@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_router.dart';
 import 'package:unk/common/text_style.dart';
@@ -176,11 +180,11 @@ class CommonWidget {
         color: color ?? AppColor.white1Color,
         borderRadius: isBorderRadiusOnly
             ? BorderRadius.only(
-                bottomLeft: Radius.circular(bottomLeft ?? 10.r),
-                bottomRight: Radius.circular(bottomRight ?? 10.r),
-                topLeft: Radius.circular(topLeft ?? 10.r),
-                topRight: Radius.circular(topRight ?? 10.r),
-              )
+          bottomLeft: Radius.circular(bottomLeft ?? 10.r),
+          bottomRight: Radius.circular(bottomRight ?? 10.r),
+          topLeft: Radius.circular(topLeft ?? 10.r),
+          topRight: Radius.circular(topRight ?? 10.r),
+        )
             : BorderRadius.circular(radius ?? 10.r),
       ),
       child: child,
@@ -270,36 +274,163 @@ class CommonWidget {
 
   static Widget imageBuilder({
     required String imagePath,
-    BoxFit? fit,
     double? height,
     double? width,
+    double? borderRadius,
+    int? cacheWidth,
+    BoxFit? fit,
     Color? color,
+    bool? isBorderOnlySide,
+    Radius? bottomLeft,
+    Radius? bottomRight,
+    Radius? topLeft,
+    Radius? topRight,
+    EdgeInsets? padding,
+    double? horizontalPadding,
+    double? verticalPadding,
   }) {
-    if (imagePath.startsWith('assets')) {
-      return Image.asset(
-        imagePath,
-        fit: fit,
-        height: height,
-        width: width,
-        color: color,
-        errorBuilder: (context, error, stackTrace) {
-          return Image.asset(
-            Images.wraning_image,
-            color: AppColor.primary1Color,
-          );
-        },
-      );
+    if (imagePath.isEmpty) {
+      return Center(child: warningIcon(color: color));
     } else if (imagePath.startsWith('https')) {
-      return Image.network(
+      if (imagePath.endsWith('svg')) {
+        return SvgPicture.network(
+          imagePath,
+          fit: fit ?? BoxFit.fitWidth,
+          width: width,
+          height: height,
+          colorFilter:
+          color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+          placeholderBuilder: (context) => sizedBox(
+            height: height,
+            width: width,
+            child: sizedBox(
+              height: height,
+              width: width,
+              child: loadingIos(),
+            ),
+          ),
+        );
+      } else {
+        return ClipRRect(
+          borderRadius: isBorderOnlySide == true
+              ? BorderRadius.only(
+            bottomLeft: bottomLeft ?? Radius.zero,
+            bottomRight: bottomRight ?? Radius.zero,
+            topLeft: topLeft ?? Radius.zero,
+            topRight: topRight ?? Radius.zero,
+          )
+              : BorderRadius.circular(borderRadius ?? 0),
+          child: CachedNetworkImage(
+            imageUrl: imagePath,
+            fit: fit ?? BoxFit.cover,
+            memCacheWidth: cacheWidth,
+            color: color,
+            height: height,
+            width: width,
+            placeholder: (context, url) => sizedBox(
+              height: height,
+              width: width,
+              child: loadingIos(),
+            ),
+            errorListener: (value) => sizedBox(
+              height: height,
+              width: width,
+              child: loadingIos(),
+            ),
+            errorWidget: (context, error, stackTrace) => warningIcon(
+              color: color,
+              bgColor: Colors.grey.withOpacity(0.15),
+            ),
+          ),
+        );
+      }
+    } else if (imagePath.startsWith('assets') && imagePath.endsWith('.svg')) {
+      return SvgPicture.asset(
         imagePath,
-        fit: fit ?? BoxFit.cover,
-        height: height,
+        fit: fit ?? BoxFit.fitWidth,
         width: width,
-        color: color,
+        height: height,
+        colorFilter:
+        color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+      );
+    } else if (imagePath.startsWith('assets')) {
+      return Padding(
+        padding: padding ?? EdgeInsets.zero,
+        child: Image.asset(
+          imagePath,
+          fit: fit ?? BoxFit.fitWidth,
+          width: width,
+          height: height,
+          color: color,
+          cacheWidth: cacheWidth,
+          errorBuilder: (context, error, stackTrace) =>
+              warningIcon(color: color),
+        ),
+      );
+    } else if (imagePath.endsWith('.svg')) {
+      return SvgPicture.file(
+        File(imagePath),
+        fit: fit ?? BoxFit.fitWidth,
+        width: width,
+        height: height,
+        colorFilter:
+        color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
       );
     } else {
-      return sizedBox(isShrink: true);
+      return Image.file(
+        File(imagePath),
+        fit: fit ?? BoxFit.fitWidth,
+        width: width,
+        height: height,
+        color: color,
+        cacheWidth: cacheWidth,
+        errorBuilder: (context, error, stackTrace) => warningIcon(color: color),
+      );
     }
+  }
+
+  static Widget loadingIos({bool isShowListLoader = false}) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(16.r),
+        child: sizedBox(
+          height: isShowListLoader ? 100 : 300,
+          width: isShowListLoader ? 100 : 300,
+          child: Center(
+            child: Center(
+              child: CircularProgressIndicator(
+                color: AppColor.primary1Color,
+                strokeWidth: 2,
+                backgroundColor: AppColor.default6Color,
+                strokeCap: StrokeCap.round,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget warningIcon({
+    double? width,
+    double? height,
+    Color? color,
+    Alignment? alignment,
+    Color? bgColor,
+  }) {
+    return Container(
+      color: bgColor,
+      child: Center(
+        child: SvgPicture.asset(
+          Images.wraning_image,
+          width: width ?? 32.w,
+          height: height ?? 32.h,
+          colorFilter: ColorFilter.mode(
+              color ?? AppColor.default1Color, BlendMode.srcIn),
+          alignment: alignment ?? Alignment.center,
+        ),
+      ),
+    );
   }
 
   static Future<dynamic> commonDialog({

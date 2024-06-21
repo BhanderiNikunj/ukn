@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_validator.dart';
 import 'package:unk/common/common_widget.dart';
+import 'package:unk/common/global.dart';
 import 'package:unk/common/text_style.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -24,10 +26,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             children: [
               Center(
                 child: CommonWidget.imageBuilder(
-                  height: double.infinity,
-                  width: double.infinity,
-                  imagePath:
-                  "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/images/splash_screen/Splash%20Screen.jpg",
+                  height: ScreenUtil().screenHeight,
+                  width: ScreenUtil().screenWidth,
+                  imagePath: splashImage,
                 ),
               ),
               Positioned(
@@ -35,8 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: CommonWidget.imageBuilder(
                   height: 120,
                   width: 120,
-                  imagePath:
-                  "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/images/splash_screen/app_logo.png",
+                  imagePath: appLogo,
                 ),
               ),
             ],
@@ -48,7 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               onClosing: () => context,
               builder: (context) => Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,

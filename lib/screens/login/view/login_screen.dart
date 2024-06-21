@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_validator.dart';
 import 'package:unk/common/common_widget.dart';
+import 'package:unk/common/global.dart';
 import 'package:unk/common/text_style.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -24,8 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: CommonWidget.imageBuilder(
                 height: double.infinity,
                 width: double.infinity,
-                imagePath:
-                    "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/images/splash_screen/Splash%20Screen.jpg",
+                imagePath: splashImage,
               ),
             ),
             Positioned(
@@ -33,8 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: CommonWidget.imageBuilder(
                 height: 120,
                 width: 120,
-                imagePath:
-                    "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/images/splash_screen/app_logo.png",
+                imagePath: appLogo,
               ),
             ),
           ],
@@ -89,7 +87,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   CommonWidget.commonText(
                     text: "Enter Password",
-                    style: poppinsMedium.copyWith(color: AppColor.primary1Color,),
+                    style: poppinsMedium.copyWith(
+                      color: AppColor.primary1Color,
+                    ),
                   ),
                   CommonWidget.sizedBox(
                     height: 5,

@@ -8,9 +8,9 @@ class Strings {
   static String login = "Login";
   static String signup = "Signup";
   static String enter_email_id = "Enter Email id";
-  static String usergmail_com = "user@gmail.com";
+  static String ex_email_id = "user@gmail.com";
   static String enter_password = "Enter Password";
-  static String hint_password = "********";
+  static String hint_password = "* * * * * * * *";
   static String enter_re_password = "Enter Re-Password";
   static String dont_have_an_account = "Don’t have an account? ";
   static String register_now = "Register Now";

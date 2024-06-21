@@ -18,6 +18,7 @@ class _UknAppState extends State<UknApp> {
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
         child: GetMaterialApp(
+          debugShowCheckedModeBanner: false,
           initialRoute: RouteList.initial,
           getPages: getPages,
         ),

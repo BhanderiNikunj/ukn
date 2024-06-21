@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_router.dart';
+import 'package:unk/common/text_style.dart';
 import 'package:unk/widgets/images.dart';
 import 'package:unk/widgets/strings.dart';
 
@@ -22,8 +23,10 @@ class CommonWidget {
     TextInputType? keyboardType,
     void Function(String)? onChanged,
     EdgeInsetsGeometry? contentPadding,
+    TextInputAction? textInputAction,
   }) {
     return TextFormField(
+      textInputAction: textInputAction,
       keyboardType: keyboardType ?? TextInputType.name,
       controller: controller,
       validator: validator,
@@ -39,9 +42,9 @@ class CommonWidget {
         contentPadding: contentPadding,
         suffixIcon: suffixIcon,
         hintText: hintText ?? Strings.enter_data,
-        hintStyle: TextStyle(
+        hintStyle: poppinsLight.copyWith(
           color: hintColor ?? AppColor.default6Color,
-          fontSize: fontSize ?? 16.sp,
+          fontSize: fontSize ?? 14.sp,
         ),
         // filled: true,
         // fillColor: fillColor,
@@ -82,6 +85,7 @@ class CommonWidget {
     double? radius,
     Color? color,
     double? fontSize,
+    TextStyle? textStyle,
   }) {
     return InkWell(
       splashFactory: NoSplash.splashFactory,
@@ -95,6 +99,7 @@ class CommonWidget {
         ),
         alignment: Alignment.center,
         child: commonText(
+          style: textStyle,
           text: text,
           color: color ?? AppColor.white1Color,
           fontSize: fontSize ?? 16.sp,

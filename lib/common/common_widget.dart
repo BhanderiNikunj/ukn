@@ -29,6 +29,7 @@ class CommonWidget {
     TextInputAction? textInputAction,
   }) {
     return TextFormField(
+      autofocus: false,
       textInputAction: textInputAction,
       keyboardType: keyboardType ?? TextInputType.name,
       controller: controller,
@@ -158,11 +159,11 @@ class CommonWidget {
         color: color ?? AppColor.white1Color,
         borderRadius: isBorderRadiusOnly
             ? BorderRadius.only(
-          bottomLeft: Radius.circular(bottomLeft?.r ?? 10.r),
-          bottomRight: Radius.circular(bottomRight?.r ?? 10.r),
-          topLeft: Radius.circular(topLeft?.r ?? 10.r),
-          topRight: Radius.circular(topRight?.r ?? 10.r),
-        )
+                bottomLeft: Radius.circular(bottomLeft?.r ?? 10.r),
+                bottomRight: Radius.circular(bottomRight?.r ?? 10.r),
+                topLeft: Radius.circular(topLeft?.r ?? 10.r),
+                topRight: Radius.circular(topRight?.r ?? 10.r),
+              )
             : BorderRadius.circular(radius?.r ?? 10.r),
       ),
       child: child,
@@ -268,7 +269,7 @@ class CommonWidget {
           width: width?.w,
           height: height?.h,
           colorFilter:
-          color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+              color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
           placeholderBuilder: (context) => sizedBox(
             width: width,
             height: height,
@@ -283,11 +284,11 @@ class CommonWidget {
         return ClipRRect(
           borderRadius: isBorderOnlySide == true
               ? BorderRadius.only(
-            bottomLeft: bottomLeft?.r ?? Radius.zero,
-            bottomRight: bottomRight?.r ?? Radius.zero,
-            topLeft: topLeft?.r ?? Radius.zero,
-            topRight: topRight?.r ?? Radius.zero,
-          )
+                  bottomLeft: bottomLeft?.r ?? Radius.zero,
+                  bottomRight: bottomRight?.r ?? Radius.zero,
+                  topLeft: topLeft?.r ?? Radius.zero,
+                  topRight: topRight?.r ?? Radius.zero,
+                )
               : BorderRadius.circular(borderRadius?.r ?? 0),
           child: CachedNetworkImage(
             imageUrl: imagePath,
@@ -320,7 +321,7 @@ class CommonWidget {
         width: width?.w,
         height: height?.h,
         colorFilter:
-        color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+            color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
       );
     } else if (imagePath.startsWith('assets')) {
       return Padding(
@@ -343,7 +344,7 @@ class CommonWidget {
         width: width?.w,
         height: height?.h,
         colorFilter:
-        color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+            color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
       );
     } else {
       return Image.file(
@@ -411,62 +412,62 @@ class CommonWidget {
     required String subTitleText,
   }) {
     return showDialog(
-        context: context,
-        builder: (_) {
-          return AlertDialog(
-            contentPadding: EdgeInsets.zero,
-            backgroundColor: AppColor.white1Color,
-            titlePadding: EdgeInsets.zero,
-            insetPadding: EdgeInsets.symmetric(
-              horizontal: 16.w,
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.zero,
+          backgroundColor: AppColor.white1Color,
+          titlePadding: EdgeInsets.zero,
+          insetPadding: EdgeInsets.symmetric(
+            horizontal: 16.w,
+          ),
+          surfaceTintColor: AppColor.white1Color,
+          title: Container(
+            alignment: Alignment.center,
+            height: 50.h,
+            width: ScreenUtil().screenWidth,
+            child: commonText(
+              text: titleText,
+              textAlign: TextAlign.center,
             ),
-            surfaceTintColor: AppColor.white1Color,
-            title: Container(
-              alignment: Alignment.center,
-              height: 50.h,
-              width: ScreenUtil().screenWidth,
-              child: commonText(
-                text: titleText,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            content: sizedBox(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  commonText(
-                    text: subTitleText,
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                  ),
-                  sizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      sizedBox(width: 10),
-                      Expanded(
-                        child: commonButton(
-                          height: 50.h,
-                          text: Strings.no,
-                          onTap: () => CommonRoute.pop(),
-                        ),
+          ),
+          content: sizedBox(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                commonText(
+                  text: subTitleText,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                ),
+                sizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    sizedBox(width: 10),
+                    Expanded(
+                      child: commonButton(
+                        height: 50.h,
+                        text: Strings.no,
+                        onTap: () => CommonRoute.pop(),
                       ),
-                      sizedBox(width: 10),
-                      Expanded(
-                        child: commonButton(
-                          height: 50.h,
-                          text: Strings.yes,
-                          onTap: onTap,
-                        ),
+                    ),
+                    sizedBox(width: 10),
+                    Expanded(
+                      child: commonButton(
+                        height: 50.h,
+                        text: Strings.yes,
+                        onTap: onTap,
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          );
-          },
+          ),
         );
-    }
+      },
+    );
+  }
 }

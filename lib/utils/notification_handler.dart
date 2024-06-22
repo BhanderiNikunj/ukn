@@ -21,7 +21,7 @@ Future<void> loadMobileNotification() async {
 }
 
 class LocalNotificationService {
-  static final FlutterLocalNotificationsPlugin _notificationsPlugin =
+  static FlutterLocalNotificationsPlugin notificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
   static Future<void> initialize() async {
@@ -35,7 +35,7 @@ class LocalNotificationService {
         defaultPresentSound: true,
       ),
     );
-    await _notificationsPlugin.initialize(
+    await notificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: (details) {
         if (details.input != null) {}
@@ -61,7 +61,7 @@ class LocalNotificationService {
           channelShowBadge: true,
         ),
       );
-      await _notificationsPlugin.show(
+      await notificationsPlugin.show(
         id,
         message.notification?.title,
         message.notification?.body,
@@ -74,6 +74,7 @@ class LocalNotificationService {
   }
 }
 
+@pragma('vm:entry-point')
 Future<void> backgroundHandler(RemoteMessage msg) async {
   await LocalNotificationService.display(msg);
 }

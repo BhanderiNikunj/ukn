@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "207043333883",
+    "project_id": "ukn-earning-app",
+    "storage_bucket": "ukn-earning-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207043333883:android:2eb84f215513cc8bb62a5e",
+        "android_client_info": {
+          "package_name": "com.ukn.earning.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmogJ4DEEE4Fxn6Iht5artpY4yUlOCglY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

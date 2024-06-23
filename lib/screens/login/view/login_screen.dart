@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    controller = Get.put(LoginController());
+    controller = Get.put(LoginController()); //ak var git destop joi let
     super.initState();
   }
 
@@ -61,7 +61,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: EdgeInsets.only(top: 45.h),
                         child: CommonWidget.imageBuilder(
-                          imagePath: appLogo,
+                          imagePath: generalSettingModel?.data.logoImage ??
+                              Images.splash_iamge,
                           height: 130,
                         ),
                       ),
@@ -131,8 +132,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   text: Strings.login,
                   onTap: () {
                     bool? isValid = controller.formKey.currentState?.validate();
-
-                    if (isValid ?? false) {}
+                    if (isValid ?? false) {
+                      controller.userLogin();
+                    }
                   },
                 ),
                 const Spacer(),

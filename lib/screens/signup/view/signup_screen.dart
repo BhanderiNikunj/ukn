@@ -55,7 +55,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         Padding(
                           padding: EdgeInsets.only(top: 45.h),
                           child: CommonWidget.imageBuilder(
-                            imagePath: appLogo,
+                            imagePath: generalSettingModel?.data.logoImage ??
+                              Images.splash_iamge,
                             height: 130,
                           ),
                         ),

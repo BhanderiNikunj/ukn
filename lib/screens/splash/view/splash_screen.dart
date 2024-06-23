@@ -4,7 +4,6 @@ import 'package:unk/common/common_router.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
 import 'package:unk/common/route_list.dart';
-import 'package:unk/utils/api_helper.dart';
 import 'package:unk/widgets/images.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,7 +18,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    ApiHelper.getGeneralSettingData();
     super.initState();
     Future.delayed(
       Duration(seconds: splashDuration),

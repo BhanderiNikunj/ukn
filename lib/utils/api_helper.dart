@@ -55,7 +55,11 @@ class ApiHelper {
         "email_id": loginData.email,
         "password": loginData.password,
       },
-    );
+    );//tenu ak var pull kri ne git ma lai le ne bhai laptop le che aetle amna
+    // 1 min ee var run thay java de pela
+    
+
+    print("==================$json");
 
     return LoginModel.fromJson(json);
   }

@@ -22,9 +22,8 @@ class LoginController extends GetxController {
     );
     LoginModel data = await ApiHelper.userLoginData(loginData: loginData);
     if (data.status) {
-      print("=================Success");
       CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+      return;
     }
-    print("=================Failed");
   }
 }

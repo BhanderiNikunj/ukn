@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_router.dart';
 import 'package:unk/common/common_widget.dart';
+import 'package:unk/common/global.dart';
 import 'package:unk/common/route_list.dart';
 import 'package:unk/screens/login/controller/login_controller.dart';
 import 'package:unk/widgets/strings.dart';
@@ -21,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    controller = Get.put(LoginController());//ak var git destop joi let
+    controller = Get.put(LoginController()); //ak var git destop joi let
     super.initState();
   }
 
@@ -60,7 +61,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: EdgeInsets.only(top: 45.h),
                         child: CommonWidget.imageBuilder(
-                          imagePath: Images.splash_iamge,
+                          imagePath: generalSettingModel?.data.logoImage ??
+                              Images.splash_iamge,
                           height: 130,
                         ),
                       ),

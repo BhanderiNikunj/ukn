@@ -5,6 +5,7 @@ import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_router.dart';
 import 'package:unk/common/common_validator.dart';
 import 'package:unk/common/common_widget.dart';
+import 'package:unk/common/global.dart';
 import 'package:unk/screens/signup/controller/signup_controller.dart';
 import 'package:unk/widgets/images.dart';
 import 'package:unk/widgets/strings.dart';
@@ -54,7 +55,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         Padding(
                           padding: EdgeInsets.only(top: 45.h),
                           child: CommonWidget.imageBuilder(
-                            imagePath: Images.splash_iamge,
+                            imagePath: generalSettingModel?.data.logoImage ??
+                              Images.splash_iamge,
                             height: 130,
                           ),
                         ),

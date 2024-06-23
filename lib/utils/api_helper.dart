@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:unk/common/global.dart';
 import 'package:unk/model/general_setting_model.dart';
@@ -16,8 +17,11 @@ class ApiHelper {
   }) async {
     Uri uri = Uri.parse(base_url + apiPath);
     if (apiType == ApiType.GET) {
+      log("Api Url -> ${base_url + apiPath}");
       return await getCall(uri: uri);
     } else if (apiType == ApiType.POST) {
+      log("Api Url -> ${base_url + apiPath}");
+      log("Api Body -> $body");
       return await postCall(uri: uri, body: body);
     }
   }
@@ -55,12 +59,7 @@ class ApiHelper {
         "email_id": loginData.email,
         "password": loginData.password,
       },
-    );//tenu ak var pull kri ne git ma lai le ne bhai laptop le che aetle amna
-    // 1 min ee var run thay java de pela
-    
-
-    print("==================$json");
-
+    );
     return LoginModel.fromJson(json);
   }
 }

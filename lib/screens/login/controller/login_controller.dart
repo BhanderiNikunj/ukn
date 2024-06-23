@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:unk/model/login_model.dart';
+import 'package:unk/utils/api_helper.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailIdController = TextEditingController();
@@ -9,4 +11,17 @@ class LoginController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool isShowText = true;
+
+  Future<void> userLogin() async {
+    LoginDataModel loginData = LoginDataModel(
+      email: emailIdController.text,
+      password: passwordController.text,
+      id: "",
+    );
+    LoginModel data = await ApiHelper.userLoginData(loginData: loginData);
+    if (data.status) {
+      print("=================Success");
+    }
+    print("=================Failed");
+  }
 }

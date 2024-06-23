@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:unk/common/global.dart';
 import 'package:unk/common/route_list.dart';
+import 'package:unk/utils/api_helper.dart';
 
 class UknApp extends StatefulWidget {
   const UknApp({super.key});
@@ -12,6 +13,12 @@ class UknApp extends StatefulWidget {
 }
 
 class _UknAppState extends State<UknApp> {
+  @override
+  void initState() {
+    ApiHelper.getGeneralSettingData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

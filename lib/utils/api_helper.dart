@@ -2,7 +2,9 @@
 
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'package:unk/common/global.dart';
+import 'package:unk/model/general_setting_model.dart';
+import 'package:unk/model/login_model.dart';
 import 'package:unk/utils/api_constant.dart';
 import 'package:http/http.dart';
 
@@ -21,13 +23,7 @@ class ApiHelper {
   }
 
   static Future<dynamic> getCall({required Uri uri}) async {
-    var response = await get(
-      uri,
-      headers: {
-        "Accept": "application/json",
-        "X-localization": "en",
-      },
-    );
+    var response = await get(uri, headers: headers);
     return jsonDecode(response.body);
   }
 
@@ -35,14 +31,7 @@ class ApiHelper {
     required Uri uri,
     Map<String, String>? body,
   }) async {
-    var response = await post(
-      uri,
-      body: body,
-      headers: {
-        "Accept": "application/json",
-        "X-localization": "en",
-      },
-    );
+    var response = await post(uri, body: body, headers: headers);
     return jsonDecode(response.body);
   }
 
@@ -51,8 +40,23 @@ class ApiHelper {
       apiPath: 'general_setting.php',
       apiType: ApiType.GET,
     );
-    if (kDebugMode) {
-      print("=============$json");
-    }
+
+    GeneralSettingModel model = GeneralSettingModel.fromJson(json);
+    generalSettingModel = model;
+  }
+
+  static Future<LoginModel> userLoginData({
+    required LoginDataModel loginData,
+  }) async {
+    var json = await commonApiCall(
+      apiPath: 'auth/login.php',
+      apiType: ApiType.POST,
+      body: {
+        "email_id": loginData.email,
+        "password": loginData.password,
+      },
+    );
+
+    return LoginModel.fromJson(json);
   }
 }

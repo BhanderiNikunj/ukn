@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -27,14 +25,8 @@ Future<void> main() async {
 Future<void> defaultInitData() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  try{
-    FirebaseMessaging.onBackgroundMessage(backgroundHandler);
-    await loadMobileNotification();
-  }catch(error){
-    if (kDebugMode) {
-      print("===================$error");
-    }
-  }
+  FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+  await loadMobileNotification();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   log("=========${await GetAccessToken.getAccessToken()}");
 }

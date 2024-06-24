@@ -19,6 +19,7 @@ class LoginController extends GetxController {
       email: emailIdController.text,
       password: passwordController.text,
       id: "",
+      isAdmin: false,
     );
     LoginModel data = await ApiHelper.userLoginData(loginData: loginData);
     if (data.status) {

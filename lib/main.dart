@@ -22,9 +22,7 @@ Future<void> main() async {
 
 Future<void> defaultInitData() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
   await loadMobileNotification();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

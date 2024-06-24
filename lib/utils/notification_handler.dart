@@ -1,7 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:unk/common/colors.dart';
+import 'package:unk/firebase_options.dart';
 
 Future<void> loadMobileNotification() async {
   await LocalNotificationService.initialize();
@@ -10,12 +12,11 @@ Future<void> loadMobileNotification() async {
 
   FirebaseMessaging.onMessage.listen(
     (RemoteMessage message) async {
-      await LocalNotificationService.display(message);
-
       debugPrint('Handling a foreground message: ${message.messageId}');
       debugPrint('Message data: ${message.data}');
       debugPrint('Message notification: ${message.notification?.title}');
       debugPrint('Message notification: ${message.notification?.body}');
+      await LocalNotificationService.display(message);
     },
   );
 }
@@ -75,6 +76,11 @@ class LocalNotificationService {
 }
 
 @pragma('vm:entry-point')
-Future<void> backgroundHandler(RemoteMessage msg) async {
-  await LocalNotificationService.display(msg);
+Future<void> backgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  debugPrint('Handling a foreground message: ${message.messageId}');
+  debugPrint('Message data: ${message.data}');
+  debugPrint('Message notification: ${message.notification?.title}');
+  debugPrint('Message notification: ${message.notification?.body}');
+  await LocalNotificationService.display(message);
 }

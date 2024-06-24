@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_router.dart';
-import 'package:unk/common/common_validator.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
 import 'package:unk/screens/signup/controller/signup_controller.dart';
@@ -28,46 +27,43 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => CommonValidator.hideKeyboard,
-      child: SafeArea(
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: GetBuilder(
-            init: controller,
-            builder: (_) {
-              return Container(
-                decoration: BoxDecoration(
-                  gradient: RadialGradient(
-                    colors: [
-                      AppColor.primary2Color,
-                      AppColor.primary2Color,
-                      AppColor.primary2Color,
-                      AppColor.primary1Color,
-                    ],
-                  ),
-                ),
-                child: Stack(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 45.h),
-                          child: CommonWidget.imageBuilder(
-                            imagePath: generalSettingModel?.data.logoImage ??
-                                Images.splash_iamge,
-                            height: 130,
-                          ),
-                        ),
-                      ],
-                    ),
-                    bottomView(),
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: GetBuilder(
+          init: controller,
+          builder: (_) {
+            return Container(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [
+                    AppColor.primary2Color,
+                    AppColor.primary2Color,
+                    AppColor.primary2Color,
+                    AppColor.primary1Color,
                   ],
                 ),
-              );
-            },
-          ),
+              ),
+              child: Stack(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 45.h),
+                        child: CommonWidget.imageBuilder(
+                          imagePath: generalSettingModel?.data.logoImage ??
+                              Images.splash_iamge,
+                          height: 130,
+                        ),
+                      ),
+                    ],
+                  ),
+                  bottomView(),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
@@ -146,11 +142,17 @@ class _SignupScreenState extends State<SignupScreen> {
                           controller.formKey.currentState?.validate();
 
                       if (isValid ?? false) {
-                        if (controller.passwordController.text ==
-                            controller.rePasswordController.text) {
-                          controller.userSignUp();
+                        String password = controller.passwordController.text;
+                        String rePassword =
+                            controller.rePasswordController.text;
+                        if (password == rePassword) {
+                          controller.userSignUp(context: context);
                         } else {
-                          Get.snackbar("Incorret Password", "Enter password");
+                          CommonWidget.commonSnackBar(
+                            context: context,
+                            message: "Password Or re password dos't match",
+                            type: SnackBarType.errorData,
+                          );
                         }
                       }
                     },
@@ -219,7 +221,6 @@ class _SignupScreenState extends State<SignupScreen> {
           },
           suffixIcon: InkWell(
             onTap: onTap,
-
             child: Container(
               alignment: Alignment.center,
               width: 24,

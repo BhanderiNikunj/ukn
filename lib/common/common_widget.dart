@@ -470,4 +470,26 @@ class CommonWidget {
       },
     );
   }
+
+  static void commonSnackBar({
+    required BuildContext context,
+    required String message,
+    required SnackBarType type,
+  }) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: type == SnackBarType.successData
+            ? Colors.green
+            : AppColor.red1Color,
+        content: commonText(
+          text: message,
+          color: type == SnackBarType.successData
+              ? Colors.white
+              : AppColor.white1Color,
+        ),
+      ),
+    );
+  }
 }
+
+enum SnackBarType { successData, errorData }

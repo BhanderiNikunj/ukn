@@ -24,14 +24,8 @@ Future<void> main() async {
 Future<void> defaultInitData() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  try{
-    FirebaseMessaging.onBackgroundMessage(backgroundHandler);
-    await loadMobileNotification();
-  }catch(error){
-    if (kDebugMode) {
-      print("===================$error");
-    }
-  }
+  FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+  await loadMobileNotification();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   // log("=========${await GetAccessToken.getAccessToken()}");
 }

@@ -22,47 +22,46 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
     controller = Get.put(AddUserDataController());
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: GetBuilder(
-            init: controller,
-            builder: (_) {
-              return Container(
-                decoration: BoxDecoration(
-                  gradient: RadialGradient(
-                    colors: [
-                      AppColor.primary2Color,
-                      AppColor.primary2Color,
-                      AppColor.primary2Color,
-                      AppColor.primary1Color,
-                    ],
-                  ),
-                ),
-                child: Stack(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 15.h),
-                          child: CommonWidget.commonText(
-                            text: Strings.add_Your_Data,
-                            color: AppColor.white1Color,
-                            fontSize: 18.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                    bottomView(),
+          init: controller,
+          builder: (_) {
+            return Container(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [
+                    AppColor.primary2Color,
+                    AppColor.primary2Color,
+                    AppColor.primary2Color,
+                    AppColor.primary1Color,
                   ],
                 ),
-              );
-            }),
+              ),
+              child: Stack(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 15.h),
+                        child: CommonWidget.commonText(
+                          text: Strings.add_Your_Data,
+                          color: AppColor.white1Color,
+                          fontSize: 18.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+                  bottomView(),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

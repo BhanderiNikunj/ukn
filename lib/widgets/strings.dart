@@ -34,6 +34,7 @@ class Strings {
   static String select_date_of_birht = "Select Date of birth *";
   static String hint_of_birth = "Ex. 28/01/1998";
   static String please_select_date_of_birth = "Please Select Date Of Birth";
+  static String please_enter_valid_email_id = "Enter Valid Email id";
 }
 
 void loadGujaratiLanguage() {}

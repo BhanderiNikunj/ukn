@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:unk/common/colors.dart';
+import 'package:unk/common/common_widget.dart';
+import 'package:unk/widgets/strings.dart';
 
 class AddUserDataController extends GetxController {
   TextEditingController emailIdController = TextEditingController();
@@ -29,6 +31,17 @@ class AddUserDataController extends GetxController {
     if (results.isNotEmpty) {
       birthDateController.text =
           DateFormat('yyyy-MM-dd').format(results.first!);
+    }
+  }
+
+  void checkEmailValidator({required BuildContext context}) {
+    if (!emailIdController.text.endsWith("@gmail.com")) {
+      CommonWidget.commonSnackBar(
+        context: context,
+        message: Strings.please_enter_valid_email_id,
+        type: SnackBarType.errorData,
+      );
+      return;
     }
   }
 }

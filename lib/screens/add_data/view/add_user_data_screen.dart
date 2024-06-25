@@ -142,6 +142,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                     onTap: () {
                       bool? isValid =
                           controller.formKey.currentState?.validate();
+                      controller.checkEmailValidator(context: context);
                       if (isValid ?? false) {}
                     },
                   ),
@@ -183,6 +184,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
           controller: controller,
           hintColor: AppColor.primary1Color,
           textColor: AppColor.primary1Color,
+          borderColor: AppColor.primary1Color,
           validator: (value) {
             if (value?.isEmpty ?? false) {
               return errorMessage;

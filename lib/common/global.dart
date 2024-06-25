@@ -8,11 +8,10 @@ import 'package:unk/screens/signup/view/signup_screen.dart';
 import 'package:unk/screens/splash/view/splash_screen.dart';
 
 List<GetPage> getPages = [
-  // GetPage(name: RouteList.initial, page: () => const SplashScreen()),
+  GetPage(name: RouteList.initial, page: () => const SplashScreen()),
   GetPage(name: RouteList.login_screen, page: () => const LoginScreen()),
   GetPage(name: RouteList.signup_screen, page: () => const SignupScreen()),
   GetPage(name: RouteList.home_screen, page: () => const HomeScreen()),
-  GetPage(name: RouteList.initial, page: () => const AddUserDataScreen()),
   GetPage(name: RouteList.add_user_data_screen, page: () => const AddUserDataScreen()),
 ];
 

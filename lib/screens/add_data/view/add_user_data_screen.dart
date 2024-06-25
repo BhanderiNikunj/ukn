@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_widget.dart';
-import 'package:unk/screens/add_data/controller/add_data_controller.dart';
+import 'package:unk/screens/add_data/controller/add_user_data_controller.dart';
 import 'package:unk/widgets/strings.dart';
 
 class AddUserDataScreen extends StatefulWidget {
@@ -125,7 +125,6 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                     title: Strings.enter_Mobile_number,
                     hint: Strings.hint_mobileNo,
                     keyboardType: TextInputType.number,
-                    //errorMessage: Strings.please_enter_password,
                   ),
                   CommonWidget.sizedBox(height: 10),
                   textFeildView(

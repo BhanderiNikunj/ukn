@@ -62,4 +62,17 @@ class ApiHelper {
     );
     return LoginModel.fromJson(json);
   }
+  static Future<LoginModel> userSignupData({
+    required LoginDataModel signupData,
+  }) async {
+    var json = await commonApiCall(
+      apiPath: 'auth/signup.php',
+      apiType: ApiType.POST,
+      body: {
+        "email_id": signupData.email,
+        "password": signupData.password,
+      },
+    );
+    return LoginModel.fromJson(json);
+  }
 }

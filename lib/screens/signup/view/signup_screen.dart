@@ -192,7 +192,6 @@ class _SignupScreenState extends State<SignupScreen> {
     required String hint,
     required String imagePath,
     required String errorMessage,
-    void Function(String)? onChanged,
     void Function()? onTap,
     bool isShowText = false,
   }) {
@@ -207,7 +206,6 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
         CommonWidget.sizedBox(height: 5),
         CommonWidget.textFormField(
-          onChanged: onChanged,
           hintText: hint,
           obscureText: isShowText,
           controller: controller,

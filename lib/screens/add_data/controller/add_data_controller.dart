@@ -15,7 +15,7 @@ class AddUserDataController extends GetxController {
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  pickDate(BuildContext context) async {
+  void pickDate({required BuildContext context}) async {
     var results = await showCalendarDatePicker2Dialog(
           context: context,
           config: CalendarDatePicker2WithActionButtonsConfig(
@@ -26,7 +26,7 @@ class AddUserDataController extends GetxController {
           borderRadius: BorderRadius.circular(15),
         ) ??
         [];
-    if (results.isNotEmpty ?? false) {
+    if (results.isNotEmpty) {
       birthDateController.text =
           DateFormat('yyyy-MM-dd').format(results.first!);
     }

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:unk/common/route_list.dart';
 import 'package:unk/model/general_setting_model.dart';
-import 'package:unk/screens/add_data/view/add_data_screen.dart';
+import 'package:unk/screens/add_data/view/add_user_data_screen.dart';
 import 'package:unk/screens/home/view/home_screen.dart';
 import 'package:unk/screens/login/view/login_screen.dart';
 import 'package:unk/screens/signup/view/signup_screen.dart';

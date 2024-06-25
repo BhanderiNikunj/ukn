@@ -18,10 +18,11 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = Get.put(AddUserDataController());
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +135,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                     readOnly: true,
                     errorMessage: Strings.please_select_date_of_birth,
                     onTap: () {
-                      controller.pickDate(context);
+                      controller.pickDate(context: context);
                     },
                   ),
                   CommonWidget.sizedBox(height: 38),

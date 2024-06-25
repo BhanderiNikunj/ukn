@@ -22,11 +22,13 @@ class CommonWidget {
     Color? textColor,
     double? fontSize,
     bool enabled = true,
+    bool readOnly = false,
     Widget? suffixIcon,
     TextInputType? keyboardType,
     void Function(String)? onChanged,
     EdgeInsetsGeometry? contentPadding,
     TextInputAction? textInputAction,
+    void Function()? onTap,
   }) {
     return TextFormField(
       autofocus: false,
@@ -34,10 +36,12 @@ class CommonWidget {
       keyboardType: keyboardType ?? TextInputType.name,
       controller: controller,
       validator: validator,
+      readOnly: readOnly,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: obscureText,
       enabled: enabled,
       onChanged: onChanged,
+      onTap: onTap,
       style: TextStyle(
         color: textColor ?? AppColor.primary1Color,
         fontSize: fontSize?.sp ?? 16.sp,

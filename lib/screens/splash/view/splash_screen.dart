@@ -4,6 +4,7 @@ import 'package:unk/common/common_router.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
 import 'package:unk/common/route_list.dart';
+import 'package:unk/utils/ads_helper.dart';
 import 'package:unk/widgets/images.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,11 +19,17 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
+    loadAdAndNavigateScreen();
     super.initState();
-    Future.delayed(
+  }
+
+  Future<void> loadAdAndNavigateScreen() async {
+    await AdsHelper.loadAppOpenAd(adType: AdType.admob);
+    await Future.delayed(
       Duration(seconds: splashDuration),
       () {
-        CommonRoute.popAndPushNamed(page: RouteList.login_screen);
+        // CommonRoute.popAndPushNamed(page: RouteList.login_screen);
+        CommonRoute.popAndPushNamed(page: RouteList.home_screen);
       },
     );
   }
@@ -34,7 +41,8 @@ class _SplashScreenState extends State<SplashScreen> {
         child: CommonWidget.imageBuilder(
           height: ScreenUtil().screenHeight,
           width: ScreenUtil().screenWidth,
-          imagePath: generalSettingModel?.data.splashImage ?? Images.splash_iamge,
+          imagePath:
+              generalSettingModel?.data.splashImage ?? Images.splash_iamge,
         ),
       ),
     );

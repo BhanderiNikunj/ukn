@@ -49,7 +49,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                       Padding(
                         padding: EdgeInsets.only(top: 15.h),
                         child: CommonWidget.commonText(
-                          text: Strings.add_Your_Data,
+                          text: Strings.add_your_data,
                           color: AppColor.white1Color,
                           fontSize: 18.sp,
                         ),
@@ -89,28 +89,28 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                   CommonWidget.sizedBox(height: 30),
                   textFeildView(
                     controller: controller.firstNameController,
-                    title: Strings.enter_First_name,
+                    title: Strings.enter_first_name,
                     hint: Strings.ex_username,
                     keyboardType: TextInputType.name,
-                    requiredFeild: Strings.requiredTextFeild,
+                    requiredFeild: Strings.required_textfeild,
                     errorMessage: Strings.please_enter_first_name,
                   ),
                   CommonWidget.sizedBox(height: 10),
                   textFeildView(
                     controller: controller.lastNameController,
-                    title: Strings.enter_Last_name,
+                    title: Strings.enter_last_name,
                     hint: Strings.ex_surname,
                     keyboardType: TextInputType.name,
-                    requiredFeild: Strings.requiredTextFeild,
+                    requiredFeild: Strings.required_textfeild,
                     errorMessage: Strings.please_enter_last_name,
                   ),
                   CommonWidget.sizedBox(height: 10),
                   textFeildView(
                     controller: controller.middleNameController,
-                    title: Strings.enter_Middle_name,
+                    title: Strings.enter_middle_name,
                     hint: Strings.ex_middle_name,
                     keyboardType: TextInputType.name,
-                    requiredFeild: Strings.requiredTextFeild,
+                    requiredFeild: Strings.required_textfeild,
                     errorMessage: Strings.please_enter_middle_name,
                   ),
                   CommonWidget.sizedBox(height: 10),
@@ -119,13 +119,13 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                     title: Strings.enter_email_id,
                     hint: Strings.ex_email_id,
                     keyboardType: TextInputType.emailAddress,
-                    requiredFeild: Strings.requiredTextFeild,
+                    requiredFeild: Strings.required_textfeild,
                     errorMessage: Strings.please_enter_email,
                   ),
                   CommonWidget.sizedBox(height: 10),
                   textFeildView(
                     controller: controller.mobileController,
-                    title: Strings.enter_Mobile_number,
+                    title: Strings.enter_mobile_number,
                     hint: Strings.hint_mobileNo,
                     keyboardType: TextInputType.number,
                   ),
@@ -135,7 +135,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                     title: Strings.select_date_of_birht,
                     hint: Strings.hint_of_birth,
                     readOnly: true,
-                    requiredFeild: Strings.requiredTextFeild,
+                    requiredFeild: Strings.required_textfeild,
                     errorMessage: Strings.please_select_date_of_birth,
                     onTap: () {
                       controller.pickDate(context: context);
@@ -143,7 +143,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                   ),
                   CommonWidget.sizedBox(height: 38),
                   CommonWidget.commonButton(
-                    text: Strings.add_Your_Data,
+                    text: Strings.add_your_data,
                     onTap: () {
                       bool? isValid =
                           controller.formKey.currentState?.validate();

@@ -92,6 +92,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                     title: Strings.enter_First_name,
                     hint: Strings.ex_username,
                     keyboardType: TextInputType.name,
+                    requiredFeild: Strings.requiredTextFeild,
                     errorMessage: Strings.please_enter_first_name,
                   ),
                   CommonWidget.sizedBox(height: 10),
@@ -100,6 +101,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                     title: Strings.enter_Last_name,
                     hint: Strings.ex_surname,
                     keyboardType: TextInputType.name,
+                    requiredFeild: Strings.requiredTextFeild,
                     errorMessage: Strings.please_enter_last_name,
                   ),
                   CommonWidget.sizedBox(height: 10),
@@ -108,6 +110,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                     title: Strings.enter_Middle_name,
                     hint: Strings.ex_middle_name,
                     keyboardType: TextInputType.name,
+                    requiredFeild: Strings.requiredTextFeild,
                     errorMessage: Strings.please_enter_middle_name,
                   ),
                   CommonWidget.sizedBox(height: 10),
@@ -116,6 +119,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                     title: Strings.enter_email_id,
                     hint: Strings.ex_email_id,
                     keyboardType: TextInputType.emailAddress,
+                    requiredFeild: Strings.requiredTextFeild,
                     errorMessage: Strings.please_enter_email,
                   ),
                   CommonWidget.sizedBox(height: 10),
@@ -131,6 +135,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                     title: Strings.select_date_of_birht,
                     hint: Strings.hint_of_birth,
                     readOnly: true,
+                    requiredFeild: Strings.requiredTextFeild,
                     errorMessage: Strings.please_select_date_of_birth,
                     onTap: () {
                       controller.pickDate(context: context);
@@ -160,6 +165,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
     required TextEditingController controller,
     required String title,
     required String hint,
+    String? requiredFeild,
     String? errorMessage,
     bool readOnly = false,
     void Function()? onTap,
@@ -170,10 +176,19 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CommonWidget.commonText(
-          text: title,
-          fontSize: 14,
-          color: AppColor.primary1Color,
+        Row(
+          children: [
+            CommonWidget.commonText(
+              text: title,
+              fontSize: 14,
+              color: AppColor.primary1Color,
+            ),
+            CommonWidget.commonText(
+              text: requiredFeild ?? "",
+              fontSize: 14,
+              color: AppColor.red1Color,
+            ),
+          ],
         ),
         CommonWidget.sizedBox(height: 5),
         CommonWidget.textFormField(

@@ -28,6 +28,9 @@ class ApiHelper {
 
   static Future<dynamic> getCall({required Uri uri}) async {
     var response = await get(uri, headers: headers);
+    if (response.body.startsWith('<!doctype html>')) {
+      return null;
+    }
     return jsonDecode(response.body);
   }
 
@@ -36,6 +39,20 @@ class ApiHelper {
     Map<String, String>? body,
   }) async {
     var response = await post(uri, body: body, headers: headers);
+    if (response.body.startsWith('<!doctype html>')) {
+      return null;
+    }
+    return jsonDecode(response.body);
+  }
+
+  static Future<dynamic> directPostCall({
+    required Uri uri,
+    Map<String, String>? body,
+  }) async {
+    var response = await post(uri, body: body, headers: headers);
+    if (response.body.startsWith('<!doctype html>')) {
+      return null;
+    }
     return jsonDecode(response.body);
   }
 
@@ -44,7 +61,9 @@ class ApiHelper {
       apiPath: 'general_setting.php',
       apiType: ApiType.GET,
     );
-
+    if (json == null) {
+      return;
+    }
     GeneralSettingModel model = GeneralSettingModel.fromJson(json);
     generalSettingModel = model;
   }
@@ -62,6 +81,7 @@ class ApiHelper {
     );
     return LoginModel.fromJson(json);
   }
+
   static Future<LoginModel> userSignupData({
     required LoginDataModel signupData,
   }) async {

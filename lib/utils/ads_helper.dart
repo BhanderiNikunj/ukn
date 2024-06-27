@@ -7,7 +7,7 @@ class AdsHelper {
     BannerAd? bannerAd;
     if (adType == AdType.admob) {
       bannerAd = BannerAd(
-        size: AdSize.fluid,
+        size: AdSize.banner,
         adUnitId: generalSettingModel?.data.admob.bannerAd ??
             "ca-app-pub-3940256099942544/6300978111",
         listener: BannerAdListener(

@@ -8,6 +8,7 @@ import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/route_list.dart';
 import 'package:unk/model/login_model.dart';
 import 'package:unk/utils/api_helper.dart';
+import 'package:unk/utils/shared_helper.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailIdController = TextEditingController();
@@ -21,7 +22,7 @@ class LoginController extends GetxController {
     LoginDataModel loginData = LoginDataModel(
       email: emailIdController.text,
       password: passwordController.text,
-      id: "",
+      id: 0,
       isAdmin: false,
     );
 
@@ -42,6 +43,8 @@ class LoginController extends GetxController {
     }
     LoginModel data = await ApiHelper.userLoginData(loginData: loginData);
     if (data.status) {
+      await SharedHelper.setLoginValue(isLogin: true);
+      await SharedHelper.setLoginData(loginId: data.data.id);
       CommonRoute.popAndPushNamed(page: RouteList.home_screen);
       CommonWidget.commonSnackBar(
         context: context,

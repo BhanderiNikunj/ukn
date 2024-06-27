@@ -20,7 +20,7 @@ class SignupController extends GetxController {
 
   Future<void> userSignUp({required BuildContext context}) async {
     LoginDataModel data = LoginDataModel(
-      id: "",
+      id: 0,
       email: emailIdController.text,
       password: passwordController.text,
       isAdmin: false,
@@ -45,7 +45,10 @@ class SignupController extends GetxController {
     LoginModel apiResponse = await ApiHelper.userSignupData(signupData: data);
 
     if (apiResponse.status) {
-      CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+      CommonRoute.popAndPushNamed(
+        page: RouteList.add_user_data_screen,
+        arguments: apiResponse.data,
+      );
       CommonWidget.commonSnackBar(
         context: context,
         message: apiResponse.message,

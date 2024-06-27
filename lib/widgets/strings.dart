@@ -32,9 +32,12 @@ class Strings {
   static String please_enter_last_name = "Please Enter Last Name";
   static String please_enter_middle_name = "Please Enter Middle Name";
   static String select_date_of_birht = "Select Date of birth";
+  static String select_gender = "Select Gender";
+  static String please_select_gender = "Please Select Gender";
   static String hint_of_birth = "Ex. 28/01/1998";
   static String please_select_date_of_birth = "Please Select Date Of Birth";
   static String please_enter_valid_email_id = "Enter Valid Email id";
+  static String please_enter_valid_mobile_number = "Enter Valid Mobile Number";
   static String required_textfeild = " *";
 }
 

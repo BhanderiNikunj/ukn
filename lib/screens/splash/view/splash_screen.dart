@@ -5,6 +5,7 @@ import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
 import 'package:unk/common/route_list.dart';
 import 'package:unk/utils/ads_helper.dart';
+import 'package:unk/utils/shared_helper.dart';
 import 'package:unk/widgets/images.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,10 +26,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> loadAdAndNavigateScreen() async {
     await AdsHelper.loadAppOpenAd(adType: AdType.admob);
+    bool isLogin = await SharedHelper.getLoginValue();
     await Future.delayed(
       Duration(seconds: splashDuration),
       () {
-        CommonRoute.popAndPushNamed(page: RouteList.login_screen);
+        if (isLogin) {
+          CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+        } else {
+          CommonRoute.popAndPushNamed(page: RouteList.login_screen);
+        }
       },
     );
   }

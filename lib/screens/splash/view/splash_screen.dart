@@ -28,8 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(
       Duration(seconds: splashDuration),
       () {
-        // CommonRoute.popAndPushNamed(page: RouteList.login_screen);
-        CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+        CommonRoute.popAndPushNamed(page: RouteList.login_screen);
       },
     );
   }

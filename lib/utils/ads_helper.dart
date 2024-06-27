@@ -87,7 +87,7 @@ class AdsHelper {
             debugPrint("========Rewarded Ad Load Success");
             ad.show(
               onUserEarnedReward: (ad, reward) {
-                print("============${reward.amount}");
+                debugPrint("============${reward.amount}");
               },
             );
           },
@@ -106,7 +106,7 @@ class AdsHelper {
             debugPrint("========Rewarded Ad Load Success");
             ad.show(
               onUserEarnedReward: (ad, reward) {
-                print("============${reward.amount}");
+                debugPrint("============${reward.amount}");
               },
             );
           },

@@ -4,8 +4,10 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:unk/common/global.dart';
+import 'package:unk/model/common_model.dart';
 import 'package:unk/model/general_setting_model.dart';
 import 'package:unk/model/login_model.dart';
+import 'package:unk/model/user_data_model.dart';
 import 'package:unk/utils/api_constant.dart';
 import 'package:http/http.dart';
 
@@ -94,5 +96,26 @@ class ApiHelper {
       },
     );
     return LoginModel.fromJson(json);
+  }
+
+  static Future<CommonModel> addUserData({required UserData userData}) async {
+    var json = await commonApiCall(
+      apiPath: 'user_data/add_user_data.php',
+      apiType: ApiType.POST,
+      body: {
+        "login_id": userData.loginId.toString(),
+        "first_name": userData.firstName,
+        "middle_name": userData.middleName,
+        "last_name": userData.lastName,
+        "date_of_birth": userData.lastName,
+        "gender": userData.lastName,
+        "contect_number": userData.lastName,
+        "user_point": userData.userPoint,
+        "profile_photo": userData.profilePhoto,
+        "user_device_token": userData.userDeviceToken,
+        "email_id": userData.emailId,
+      },
+    );
+    return CommonModel.fromJson(json);
   }
 }

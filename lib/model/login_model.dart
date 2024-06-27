@@ -15,7 +15,7 @@ class LoginModel {
         data: json["data"] != null
             ? LoginDataModel.fromJson(json["data"])
             : LoginDataModel(
-                id: "",
+                id: 0,
                 email: "",
                 password: "",
                 isAdmin: false,
@@ -24,7 +24,7 @@ class LoginModel {
 }
 
 class LoginDataModel {
-  final String id;
+  final int id;
   final String email;
   final String password;
   final bool isAdmin;
@@ -37,7 +37,7 @@ class LoginDataModel {
   });
 
   factory LoginDataModel.fromJson(Map<String, dynamic> json) => LoginDataModel(
-        id: json["id"]?.toString() ?? "",
+        id: int.tryParse(json["id"]?.toString() ?? "0") ?? 0,
         email: json["email"]?.toString() ?? "",
         password: json["password"]?.toString() ?? "",
         isAdmin: bool.tryParse(json["is_admin"]?.toString() ?? "") ?? false,

@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:unk/common/colors.dart';
+import 'package:http/http.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:unk/firebase_options.dart';
 
 Future<void> loadMobileNotification() async {
@@ -47,31 +50,42 @@ class LocalNotificationService {
   static Future<void> display(RemoteMessage message) async {
     try {
       final id = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+      Uint8List imageByte = await loadImage(image: message.data["image"]);
       NotificationDetails notificationDetails = NotificationDetails(
         android: AndroidNotificationDetails(
-          color: AppColor.primary1Color,
-          colorized: true,
           message.notification?.android?.sound ?? "Channel Id",
           message.notification?.android?.sound ?? "Main Channel",
+          largeIcon: ByteArrayAndroidBitmap(imageByte),
           groupKey: message.senderId,
           importance: Importance.max,
-          playSound: true,
           icon: "@mipmap/ic_launcher",
           priority: Priority.high,
           fullScreenIntent: true,
           channelShowBadge: true,
+          number: 5,
         ),
       );
       await notificationsPlugin.show(
         id,
-        message.notification?.title,
-        message.notification?.body,
+        message.data["title"],
+        message.data["body"],
         notificationDetails,
-        payload: message.data['route'],
       );
     } catch (e) {
       debugPrint(e.toString());
     }
+  }
+
+  static Future<Uint8List> loadImage({required String image}) async {
+    var dir = await getTemporaryDirectory();
+    File imageFile = File('${dir.path}/${image.split('/').last}');
+    if (await imageFile.exists()) {
+      return await imageFile.readAsBytes();
+    }
+    var res = await get(Uri.parse(image));
+    imageFile.create(recursive: true);
+    imageFile.writeAsBytes(res.bodyBytes);
+    return await imageFile.readAsBytes();
   }
 }
 

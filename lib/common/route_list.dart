@@ -5,4 +5,5 @@ class RouteList {
   static const String login_screen = "/login_screen";
   static const String signup_screen = "/signup_screen";
   static const String home_screen = "/home_screen";
+  static const String add_user_data_screen = "/add_user_data_screen";
 }

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:unk/firebase_options.dart';
 import 'package:unk/ukn_app.dart';
@@ -27,6 +28,7 @@ Future<void> defaultInitData() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
   await loadMobileNotification();
+  MobileAds.instance.initialize();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   log("=========${await GetAccessToken.getAccessToken()}");
 }

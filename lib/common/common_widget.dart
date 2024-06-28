@@ -494,6 +494,51 @@ class CommonWidget {
       ),
     );
   }
+
+  static Widget commonScreenUI({required String title, Widget? child}) {
+    return Scaffold(
+      backgroundColor: AppColor.primary1Color,
+      body: Stack(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 20.w, top: 10.h),
+            child: Row(
+              children: [
+                InkWell(
+                  splashColor: Colors.transparent,
+                  splashFactory: NoSplash.splashFactory,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () => CommonRoute.pop(),
+                  child: Container(
+                    height: 30.h,
+                    width: 50.w,
+                    alignment: Alignment.centerLeft,
+                    child: imageBuilder(imagePath: Images.back_arrow_svg),
+                  ),
+                ),
+                commonText(text: title, color: AppColor.white1Color),
+              ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: ScreenUtil().screenHeight * 0.88,
+              decoration: BoxDecoration(
+                color: AppColor.white1Color,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30.r),
+                  topRight: Radius.circular(30.r),
+                ),
+              ),
+              child: child,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 enum SnackBarType { successData, errorData }

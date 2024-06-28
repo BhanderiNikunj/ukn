@@ -151,6 +151,52 @@ class AdsHelper {
       );
     }
   }
+
+  static Future<NativeAd?> loadNativeAd({required AdType adType}) async {
+    NativeAd? nativeAd;
+    if (adType == AdType.admob) {
+      nativeAd = NativeAd(
+        adUnitId: 1 == 1
+            ? "ca-app-pub-3940256099942544/2247696110"
+            : generalSettingModel?.data.admob.nativeAd ??
+                "ca-app-pub-3940256099942544/2247696110",
+        listener: NativeAdListener(
+          onAdLoaded: (ad) {
+            debugPrint("========Native Ad Load Success");
+          },
+          onAdFailedToLoad: (ad, error) {
+            debugPrint("=============$error");
+            ad.dispose();
+          },
+        ),
+        request: const AdManagerAdRequest(),
+        factoryId: 'adFactoryExample'
+        // nativeTemplateStyle: NativeTemplateStyle(
+        //   templateType: TemplateType.small,
+        // ),
+      );
+    } else if (adType == AdType.adx) {
+      nativeAd = NativeAd(
+        adUnitId: generalSettingModel?.data.admob.nativeAd ??
+            "ca-app-pub-3940256099942544/2247696110",
+        listener: NativeAdListener(
+          onAdLoaded: (ad) {
+            debugPrint("========Native Ad Load Success");
+          },
+          onAdFailedToLoad: (ad, error) {
+            debugPrint("=============$error");
+            ad.dispose();
+          },
+        ),
+        request: const AdManagerAdRequest(),
+        nativeTemplateStyle: NativeTemplateStyle(
+          templateType: TemplateType.medium,
+        ),
+      );
+    }
+    await nativeAd?.load();
+    return nativeAd;
+  }
 }
 
 enum AdType { admob, adx }

@@ -6,7 +6,7 @@ import 'package:unk/utils/ads_helper.dart';
 class RewardHistoryController extends GetxController {
   Map<int, BannerAd> mapOfNativeAd = {};
 
-  Future<BannerAd?> loadNativeAd({required int index}) async {
+  Future<BannerAd?> loadBannerAd({required int index}) async {
     if (mapOfNativeAd.containsKey(index)) {
       return mapOfNativeAd[index];
     }

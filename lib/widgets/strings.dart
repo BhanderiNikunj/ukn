@@ -39,6 +39,7 @@ class Strings {
   static String please_enter_valid_email_id = "Enter Valid Email id";
   static String please_enter_valid_mobile_number = "Enter Valid Mobile Number";
   static String required_textfeild = " *";
+  static String reward_history = "Reward History";
 }
 
 void loadGujaratiLanguage() {}

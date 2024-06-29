@@ -5,6 +5,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/screens/reward_history/controller/reward_history_controller.dart';
+import 'package:unk/widgets/strings.dart';
 
 class RewardHistoryScreen extends StatefulWidget {
   const RewardHistoryScreen({super.key});
@@ -25,9 +26,9 @@ class _RewardHistoryScreenState extends State<RewardHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return CommonWidget.commonScreenUI(
-      title: 'Reward History',
+      title: Strings.reward_history,
       child: ListView.separated(
-        itemCount: 20,
+        itemCount: 50,
         separatorBuilder: (context, index) {
           if ((index + 1) % 5 == 0) {
             return Container(
@@ -38,7 +39,7 @@ class _RewardHistoryScreenState extends State<RewardHistoryScreen> {
               ),
               color: AppColor.default1Color,
               child: FutureBuilder(
-                future: controller.loadNativeAd(index: index),
+                future: controller.loadBannerAd(index: index),
                 builder: (context, snapshot) {
                   if (snapshot.data != null) {
                     return AdWidget(ad: snapshot.data!);

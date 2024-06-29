@@ -495,7 +495,11 @@ class CommonWidget {
     );
   }
 
-  static Widget commonScreenUI({required String title, Widget? child}) {
+  static Widget commonScreenUI({
+    required String title,
+    Widget? child,
+    double? height,
+  }) {
     return Scaffold(
       backgroundColor: AppColor.primary1Color,
       body: Stack(
@@ -524,7 +528,7 @@ class CommonWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: ScreenUtil().screenHeight * 0.88,
+              height: height ?? ScreenUtil().screenHeight * 0.88,
               decoration: BoxDecoration(
                 color: AppColor.white1Color,
                 borderRadius: BorderRadius.only(

@@ -3,11 +3,14 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:unk/common/global.dart';
 
 class AdsHelper {
-  static Future<BannerAd?> loadBannerAd({required AdType adType}) async {
+  static Future<BannerAd?> loadBannerAd({
+    required AdType adType,
+    AdSize? size,
+  }) async {
     BannerAd? bannerAd;
     if (adType == AdType.admob) {
       bannerAd = BannerAd(
-        size: AdSize.banner,
+        size: size ?? AdSize.banner,
         adUnitId: generalSettingModel?.data.admob.bannerAd ??
             "ca-app-pub-3940256099942544/6300978111",
         listener: BannerAdListener(
@@ -23,7 +26,7 @@ class AdsHelper {
       );
     } else if (adType == AdType.adx) {
       bannerAd = BannerAd(
-        size: AdSize.banner,
+        size: size ?? AdSize.banner,
         adUnitId:
             generalSettingModel?.data.adx.bannerAd ?? "/6499/example/banner",
         listener: BannerAdListener(
@@ -156,25 +159,25 @@ class AdsHelper {
     NativeAd? nativeAd;
     if (adType == AdType.admob) {
       nativeAd = NativeAd(
-        adUnitId: 1 == 1
-            ? "ca-app-pub-3940256099942544/2247696110"
-            : generalSettingModel?.data.admob.nativeAd ??
-                "ca-app-pub-3940256099942544/2247696110",
-        listener: NativeAdListener(
-          onAdLoaded: (ad) {
-            debugPrint("========Native Ad Load Success");
-          },
-          onAdFailedToLoad: (ad, error) {
-            debugPrint("=============$error");
-            ad.dispose();
-          },
-        ),
-        request: const AdManagerAdRequest(),
-        factoryId: 'adFactoryExample'
-        // nativeTemplateStyle: NativeTemplateStyle(
-        //   templateType: TemplateType.small,
-        // ),
-      );
+          adUnitId: 1 == 1
+              ? "ca-app-pub-3940256099942544/2247696110"
+              : generalSettingModel?.data.admob.nativeAd ??
+                  "ca-app-pub-3940256099942544/2247696110",
+          listener: NativeAdListener(
+            onAdLoaded: (ad) {
+              debugPrint("========Native Ad Load Success");
+            },
+            onAdFailedToLoad: (ad, error) {
+              debugPrint("=============$error");
+              ad.dispose();
+            },
+          ),
+          request: const AdManagerAdRequest(),
+          factoryId: 'adFactoryExample'
+          // nativeTemplateStyle: NativeTemplateStyle(
+          //   templateType: TemplateType.small,
+          // ),
+          );
     } else if (adType == AdType.adx) {
       nativeAd = NativeAd(
         adUnitId: generalSettingModel?.data.admob.nativeAd ??

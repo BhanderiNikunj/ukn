@@ -89,7 +89,7 @@ class LocalNotificationService {
   }
 }
 
-@pragma('vm:entry-point')
+@pragma("vm:entry-point")
 Future<void> backgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   debugPrint('Handling a foreground message: ${message.messageId}');

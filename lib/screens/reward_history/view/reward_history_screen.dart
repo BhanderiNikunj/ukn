@@ -5,6 +5,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/screens/reward_history/controller/reward_history_controller.dart';
+import 'package:unk/widgets/images.dart';
 import 'package:unk/widgets/strings.dart';
 
 class RewardHistoryScreen extends StatefulWidget {
@@ -21,6 +22,12 @@ class _RewardHistoryScreenState extends State<RewardHistoryScreen> {
   void initState() {
     controller = Get.put(RewardHistoryController());
     super.initState();
+  }
+
+  @override 
+  void dispose(){
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -63,6 +70,20 @@ class _RewardHistoryScreenState extends State<RewardHistoryScreen> {
               vertical: 10.h,
             ),
             color: AppColor.primary1Color,
+            child: Row(
+              children: [
+                CommonWidget.imageBuilder(
+                  imagePath: Images.play_store_png,
+                ),
+                Column(
+                  children: [
+                    CommonWidget.commonText(
+                      text: 'Google Play Store',
+                    ),
+                  ],
+                ),
+              ],
+            ),
           );
         },
       ),

@@ -2,10 +2,11 @@
 
 class Images {
   static const String data_not_image = "assets/images/common/no_data_found.png";
-  static const String wraning_image = "assets/images/common/wraning.png";
   static const String splash_iamge = "assets/images/common/Splash Screen.jpg";
+  static const String play_store_png = "assets/images/reward_history/play_store.png";
 
   // SVG
+  static const String wraning_image_svg = "assets/images/common/wraning.svg";
   static const String email_svg = "assets/images/auth/email.svg";
   static const String close_eye_svg = "assets/images/auth/close_eye.svg";
   static const String open_eye_svg = "assets/images/auth/open_eye.svg";

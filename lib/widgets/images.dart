@@ -11,4 +11,5 @@ class Images {
   static const String close_eye_svg = "assets/images/auth/close_eye.svg";
   static const String open_eye_svg = "assets/images/auth/open_eye.svg";
   static const String back_arrow_svg = "assets/images/common/back_arrow.svg";
+  static const String next_arrow_svg = "assets/images/common/next_arrow.svg";
 }

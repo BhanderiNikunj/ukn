@@ -30,4 +30,6 @@ class AppColor {
   static Color red6Color = const Color(0xffBE8392);
 
   static Color white1Color = const Color(0xffFFFFFF);
+  static Color borderColor = const Color(0xff0F2A5F);
+  static Color gradientColor1 = const Color(0xff402A6A);
 }

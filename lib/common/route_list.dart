@@ -7,4 +7,6 @@ class RouteList {
   static const String home_screen = "/home_screen";
   static const String add_user_data_screen = "/add_user_data_screen";
   static const String reward_history_screen = "/reward_history_screen";
+  static const String redeem_screen = "/redeem_screen";
+  static const String redeem_reward_screen = "/redeem_reward_screen";
 }

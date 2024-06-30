@@ -4,6 +4,8 @@ import 'package:unk/model/general_setting_model.dart';
 import 'package:unk/screens/add_data/view/add_user_data_screen.dart';
 import 'package:unk/screens/home/view/home_screen.dart';
 import 'package:unk/screens/login/view/login_screen.dart';
+import 'package:unk/screens/redeem/view/redeem_screen.dart';
+import 'package:unk/screens/redeem_reward/view/redeem_reward_screen.dart';
 import 'package:unk/screens/reward_history/view/reward_history_screen.dart';
 import 'package:unk/screens/signup/view/signup_screen.dart';
 import 'package:unk/screens/splash/view/splash_screen.dart';
@@ -32,6 +34,14 @@ List<GetPage> getPages = [
   GetPage(
     name: RouteList.reward_history_screen,
     page: () => const RewardHistoryScreen(),
+  ),
+  GetPage(
+    name: RouteList.redeem_screen,
+    page: () => const RedeemScreen(),
+  ),
+  GetPage(
+    name: RouteList.redeem_reward_screen,
+    page: () => const RedeemRewardScreen(),
   ),
 ];
 

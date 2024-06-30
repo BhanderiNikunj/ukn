@@ -40,6 +40,12 @@ class Strings {
   static String please_enter_valid_mobile_number = "Enter Valid Mobile Number";
   static String required_textfeild = " *";
   static String reward_history = "Reward History";
+  static String redeem = "Redeem";
+  static String coin = " Coin";
+  static String coin_number = "573";
+  static String my_rewards = "My Rewards";
+  static String redeem_rewards_via = "Redeem Rewards Via";
+  static String redeem_reward  = "Redeem Reward ";
 }
 
 void loadGujaratiLanguage() {}

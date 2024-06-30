@@ -4,6 +4,8 @@ class Images {
   static const String data_not_image = "assets/images/common/no_data_found.png";
   static const String splash_iamge = "assets/images/common/Splash Screen.jpg";
   static const String play_store_png = "assets/images/reward_history/play_store.png";
+  static const String intro_1 = "assets/images/intro/scratch_card.png";
+  static const String intro_2 = "assets/images/intro/spine_while.png";
 
   // SVG
   static const String wraning_image_svg = "assets/images/common/wraning.svg";

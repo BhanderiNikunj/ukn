@@ -396,7 +396,7 @@ class CommonWidget {
       color: bgColor,
       child: Center(
         child: SvgPicture.asset(
-          Images.wraning_image,
+          Images.wraning_image_svg,
           width: width?.w ?? 32.w,
           height: height?.h ?? 32.h,
           colorFilter: ColorFilter.mode(
@@ -528,6 +528,7 @@ class CommonWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
+              width: ScreenUtil().screenWidth,
               height: height ?? ScreenUtil().screenHeight * 0.88,
               decoration: BoxDecoration(
                 color: AppColor.white1Color,

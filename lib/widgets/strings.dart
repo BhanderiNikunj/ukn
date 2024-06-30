@@ -40,6 +40,12 @@ class Strings {
   static String please_enter_valid_mobile_number = "Enter Valid Mobile Number";
   static String required_textfeild = " *";
   static String reward_history = "Reward History";
+  static String skip = "Skip";
+  static String intro_title_1 = "Scratch Cards and Win Real Cash Daily";
+  static String intro_title_desc_1 = "You can start from scratch card and complete\nactivities to make money quickly. Earn money on\na daily basic.";
+  static String intro_title_2 = "Get Daily Real money Prizes by spinning\nThe Wheel";
+  static String intro_title_desc_2 = "You can spin and earn daily. You can earn\nmoney daily easily. Start earning today.";
+  static String next = "Next";
 }
 
 void loadGujaratiLanguage() {}

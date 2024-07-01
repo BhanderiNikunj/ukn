@@ -38,7 +38,7 @@ class Datum {
 }
 
 class Category {
-  final String id;
+  final int id;
   final String name;
   final String imageUrl;
 
@@ -49,18 +49,18 @@ class Category {
   });
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
-        id: json["id"]?.toString() ?? "",
+        id: int.tryParse(json["id"]?.toString() ?? "") ?? 0,
         name: json["name"]?.toString() ?? "",
         imageUrl: json["image_url"]?.toString() ?? "",
       );
 }
 
 class CategoryDatum {
-  final String id;
+  final int id;
   final String name;
   final String imageUrl;
   final String videoUrl;
-  final String categoryId;
+  final int categoryId;
 
   CategoryDatum({
     required this.id,
@@ -71,11 +71,11 @@ class CategoryDatum {
   });
 
   factory CategoryDatum.fromJson(Map<String, dynamic> json) => CategoryDatum(
-        id: json["id"]?.toString() ?? "",
+        id: int.tryParse(json["id"]?.toString() ?? "") ?? 0,
         name: json["name"]?.toString() ?? "",
         imageUrl: json["image_url"]?.toString() ?? "",
         videoUrl: json["video_url"]?.toString() ?? "",
-        categoryId: json["category_id"]?.toString() ?? "",
+        categoryId: int.tryParse(json["category_id"]?.toString() ?? "") ?? 0,
       );
 
   Map<String, dynamic> toJson() => {

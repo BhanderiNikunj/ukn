@@ -496,8 +496,9 @@ class CommonWidget {
   }
 
   static Widget commonScreenUI({
-    required String title,
+    String? title,
     Widget? child,
+    Widget? titleWidget,
     double? height,
   }) {
     return Scaffold(
@@ -506,24 +507,25 @@ class CommonWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(left: 20.w, top: 10.h),
-            child: Row(
-              children: [
-                InkWell(
-                  splashColor: Colors.transparent,
-                  splashFactory: NoSplash.splashFactory,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () => CommonRoute.pop(),
-                  child: Container(
-                    height: 30.h,
-                    width: 50.w,
-                    alignment: Alignment.centerLeft,
-                    child: imageBuilder(imagePath: Images.back_arrow_svg),
-                  ),
+            child: titleWidget ??
+                Row(
+                  children: [
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      splashFactory: NoSplash.splashFactory,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () => CommonRoute.pop(),
+                      child: Container(
+                        height: 30.h,
+                        width: 50.w,
+                        alignment: Alignment.centerLeft,
+                        child: imageBuilder(imagePath: Images.back_arrow_svg),
+                      ),
+                    ),
+                    commonText(text: title ?? "", color: AppColor.white1Color),
+                  ],
                 ),
-                commonText(text: title, color: AppColor.white1Color),
-              ],
-            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,

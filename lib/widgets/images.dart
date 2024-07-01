@@ -13,4 +13,6 @@ class Images {
   static const String close_eye_svg = "assets/images/auth/close_eye.svg";
   static const String open_eye_svg = "assets/images/auth/open_eye.svg";
   static const String back_arrow_svg = "assets/images/common/back_arrow.svg";
+  static const String attech_svg = "assets/images/chat/attech.svg";
+  static const String send_svg = "assets/images/chat/send.svg";
 }

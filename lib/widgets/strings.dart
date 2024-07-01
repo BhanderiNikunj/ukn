@@ -46,6 +46,8 @@ class Strings {
   static String intro_title_2 = "Get Daily Real money Prizes by spinning\nThe Wheel";
   static String intro_title_desc_2 = "You can spin and earn daily. You can earn\nmoney daily easily. Start earning today.";
   static String next = "Next";
+  static String chat_box = "Chat Box";
+  static String type_a_message = "Type a message . . .";
 }
 
 void loadGujaratiLanguage() {}

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:unk/common/route_list.dart';
 import 'package:unk/model/general_setting_model.dart';
 import 'package:unk/screens/add_data/view/add_user_data_screen.dart';
+import 'package:unk/screens/chat/view/chat_support_screen.dart';
 import 'package:unk/screens/home/view/home_screen.dart';
 import 'package:unk/screens/intro/view/intro_screen.dart';
 import 'package:unk/screens/login/view/login_screen.dart';
@@ -37,6 +38,10 @@ List<GetPage> getPages = [
   GetPage(
     name: RouteList.intro_screen,
     page: () => const IntroScreen(),
+  ),
+  GetPage(
+    name: RouteList.chat_support_screen,
+    page: () => const ChatSupportScreen(),
   ),
 ];
 

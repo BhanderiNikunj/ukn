@@ -4,7 +4,6 @@ import 'package:unk/common/common_router.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
 import 'package:unk/common/route_list.dart';
-import 'package:unk/utils/ads_helper.dart';
 import 'package:unk/utils/shared_helper.dart';
 import 'package:unk/widgets/images.dart';
 
@@ -25,13 +24,14 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> loadAdAndNavigateScreen() async {
-    await AdsHelper.loadAppOpenAd(adType: AdType.admob);
+    // await AdsHelper.loadAppOpenAd(adType: AdType.admob);
     bool isLogin = await SharedHelper.getLoginValue();
     await Future.delayed(
       Duration(seconds: splashDuration),
       () {
         if (isLogin) {
-          CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+          CommonRoute.popAndPushNamed(page: RouteList.chat_support_screen);
+          // CommonRoute.popAndPushNamed(page: RouteList.home_screen);
         } else {
           CommonRoute.popAndPushNamed(page: RouteList.login_screen);
         }

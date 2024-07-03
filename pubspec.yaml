@@ -47,6 +47,7 @@ flutter:
     - assets/images/reward_history/
     - assets/images/intro/
     - assets/images/chat/
+    - assets/images/home/
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

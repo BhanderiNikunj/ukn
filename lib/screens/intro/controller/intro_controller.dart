@@ -8,12 +8,12 @@ class IntroController extends GetxController {
     IntroModel(
       title: Strings.intro_title_1,
       desc: Strings.intro_title_desc_1,
-      imagePath: Images.intro_1,
+      imagePath: Images.intro_1_svg,
     ),
     IntroModel(
       title: Strings.intro_title_2,
       desc: Strings.intro_title_desc_2,
-      imagePath: Images.intro_2,
+      imagePath: Images.intro_2_svg,
     ),
   ];
 

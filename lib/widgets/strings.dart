@@ -48,6 +48,7 @@ class Strings {
   static String next = "Next";
   static String chat_box = "Chat Box";
   static String type_a_message = "Type a message . . .";
+  static String category = "Category";
 }
 
 void loadGujaratiLanguage() {

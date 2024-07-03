@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/screens/home/controller/home_controller.dart';
+import 'package:unk/widgets/strings.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,8 +38,38 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return CommonWidget.commonScreenUI(
-      titleWidget: const Row(
-        children: [],
+      titleWidget: Row(
+        children: [
+          Container(
+            padding:
+                const EdgeInsets.only(left: 12, right: 12, bottom: 8, top: 8),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: Colors.black,
+              ),
+            ),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                ),
+                CommonWidget.commonText(text: "100"),
+              ],
+            ),
+          ),
+          const Spacer(),
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+            child: CommonWidget.commonText(text: "N"),
+          )
+        ],
       ),
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -50,98 +82,160 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CommonWidget.sizedBox(height: 15),
-                  CarouselSlider(
-                    items: List.generate(
-                      controller.homeModel?.data.slider.length ?? 0,
-                      (index) => CommonWidget.imageBuilder(
-                        imagePath:
-                            controller.homeModel?.data.slider[index].imageUrl ??
-                                "",
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.black),
+                    ),
+                    child: CarouselSlider(
+                      items: List.generate(
+                        controller.homeModel?.data.slider.length ?? 0,
+                        (index) => CommonWidget.imageBuilder(
+                          imagePath: controller
+                                  .homeModel?.data.slider[index].imageUrl ??
+                              "",
+                        ),
+                      ),
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        height: 160.h,
+                        enlargeFactor: 5,
                       ),
                     ),
-                    options: CarouselOptions(
-                      autoPlay: true,
-                      height: 160.h,
-                      enlargeFactor: 5,
+                  ),
+                  CommonWidget.sizedBox(height: 18),
+                
+                  // CommonWidget.sizedBox(height: 15),
+                  // Container(
+                  //   padding: EdgeInsets.only(left: 12.r, right: 12.r),
+                  //   height: 50.h,
+                  //   width: double.infinity,
+                  //   decoration: BoxDecoration(
+                  //     color: const Color(0xff402A6A),
+                  //     borderRadius: BorderRadius.circular(10.r),
+                  //   ),
+                  //   child: Row(
+                  //     children: [
+                  //       CommonWidget.commonText(
+                  //         text: "Redeem Your Coin",
+                  //         color: Colors.white,
+                  //       ),
+                  //       const Spacer(),
+                  //       const Icon(
+                  //         Icons.arrow_circle_right_outlined,
+                  //         color: Colors.white,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // CommonWidget.sizedBox(height: 10),
+                  // Container(
+                  //   padding: EdgeInsets.only(left: 12.r, right: 12.r),
+                  //   height: 50.h,
+                  //   width: double.infinity,
+                  //   decoration: BoxDecoration(
+                  //     color: const Color(0xffF7BB75),
+                  //     borderRadius: BorderRadius.circular(10.r),
+                  //   ),
+                  //   child: Row(
+                  //     children: [
+                  //       CommonWidget.commonText(
+                  //         text: "Spin And Win More Coin",
+                  //         color: Colors.black,
+                  //       ),
+                  //       const Spacer(),
+                  //       const Icon(
+                  //         Icons.arrow_circle_right_outlined,
+                  //         color: Colors.black,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // CommonWidget.sizedBox(height: 10),
+                  // Container(
+                  //   padding: EdgeInsets.only(left: 12.r, right: 12.r),
+                  //   height: 50.h,
+                  //   width: double.infinity,
+                  //   decoration: BoxDecoration(
+                  //     color: const Color(0xff7C0724),
+                  //     borderRadius: BorderRadius.circular(10.r),
+                  //   ),
+                  //   child: Row(
+                  //     children: [
+                  //       CommonWidget.commonText(
+                  //         text: "Scratch Card And Win Coin",
+                  //         color: Colors.white,
+                  //       ),
+                  //       const Spacer(),
+                  //       const Icon(
+                  //         Icons.arrow_circle_right_outlined,
+                  //         color: Colors.white,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // CommonWidget.sizedBox(height: 18),
+                  // CommonWidget.commonText(
+                  //   text: Strings.category,
+                  // ),
+                  // CommonWidget.sizedBox(height: 18),
+               
+                  // CommonWidget.sizedBox(height: 15),
+               
+                  CommonWidget.sizedBox(
+                    height: 70,
+                    child: ListView.builder(
+                      itemCount: 4,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return  Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: 70,
+                            width: 70,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: AppColor.primary1Color,
+                              width: 1,
+                              strokeAlign: 1
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Transform.rotate(
+                                   angle: -0.5, 
+                                  child: const Text(
+                                    "Spin",
+                                     style: const TextStyle(
+                                      decorationColor:
+                                          Colors.red, // Optional: color of the line
+                                      decorationThickness: 2.0, //
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: CommonWidget.imageBuilder(imagePath: "intro_2_svg")),
+                            ],
+                          ),
+                                                ),
+                        );
+                      },
                     ),
                   ),
-                  CommonWidget.sizedBox(height: 15),
-                  CommonWidget.commonText(
+                  CommonWidget.sizedBox(height: 14),
+                    CommonWidget.commonText(
                     text: "Get More Coin",
                     color: AppColor.primary1Color,
                     fontSize: 16,
                   ),
-                  CommonWidget.sizedBox(height: 15),
-                  Container(
-                    padding: EdgeInsets.only(left: 12.r, right: 12.r),
-                    height: 50.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff402A6A),
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Row(
-                      children: [
-                        CommonWidget.commonText(
-                          text: "Redeem Your Coin",
-                          color: Colors.white,
-                        ),
-                        const Spacer(),
-                        const Icon(
-                          Icons.arrow_circle_right_outlined,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
-                  ),
-                  CommonWidget.sizedBox(height: 10),
-                  Container(
-                    padding: EdgeInsets.only(left: 12.r, right: 12.r),
-                    height: 50.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: const Color(0xffF7BB75),
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Row(
-                      children: [
-                        CommonWidget.commonText(
-                          text: "Spin And Win More Coin",
-                          color: Colors.black,
-                        ),
-                        const Spacer(),
-                        const Icon(
-                          Icons.arrow_circle_right_outlined,
-                          color: Colors.black,
-                        ),
-                      ],
-                    ),
-                  ),
-                  CommonWidget.sizedBox(height: 10),
-                  Container(
-                    padding: EdgeInsets.only(left: 12.r, right: 12.r),
-                    height: 50.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff7C0724),
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Row(
-                      children: [
-                        CommonWidget.commonText(
-                          text: "Scratch Card And Win Coin",
-                          color: Colors.white,
-                        ),
-                        const Spacer(),
-                        const Icon(
-                          Icons.arrow_circle_right_outlined,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
-                  ),
-                  CommonWidget.sizedBox(height: 10),
-                  CommonWidget.sizedBox(
+                    CommonWidget.sizedBox(height: 10),
+                     CommonWidget.sizedBox(
                     height: 25,
                     child: ListView.builder(
                       itemCount:
@@ -151,7 +245,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () => controller.changeCategory(
-                            category: controller.homeModel?.data.category[index],
+                            category:
+                                controller.homeModel?.data.category[index],
                             index: index,
                           ),
                           child: Container(
@@ -183,21 +278,73 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   CommonWidget.sizedBox(height: 10),
-                  GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
+                     Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Colors.black,
+                      ),
                     ),
-                    itemCount: controller.categoryData.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        child: CommonWidget.imageBuilder(
-                          imagePath: controller.categoryData[index].imageUrl,
-                        ),
-                      );
-                    },
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      // gridDelegate:
+                      //     const SliverGridDelegateWithFixedCrossAxisCount(
+                      //   crossAxisCount: 2,
+                      // ),
+                      itemCount: controller.categoryData.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () async {
+                             var url = '${ controller.categoryData[index].videoUrl}';
+                            if (await canLaunch(url)) {
+                              await launch(url);
+                            } else {
+                              throw 'Could not launch $url';
+                            }
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: AppColor.secondery6Color,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: Colors.black,
+                              ),
+                            ),
+                            padding: const EdgeInsets.all(8),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    child: CommonWidget.imageBuilder(
+                                      imagePath: controller
+                                          .categoryData[index].imageUrl,
+                                    ),
+                                  ),
+                                  CommonWidget.sizedBox(height: 8),
+                                  Text(
+                                    controller.categoryData[index].name,
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               );

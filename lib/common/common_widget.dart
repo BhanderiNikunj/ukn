@@ -375,8 +375,8 @@ class CommonWidget {
               child: CircularProgressIndicator(
                 color: AppColor.primary1Color,
                 strokeWidth: 2,
-                backgroundColor: AppColor.default6Color,
-                strokeCap: StrokeCap.round,
+                backgroundColor: AppColor.white1Color,
+                strokeCap: StrokeCap.square,
               ),
             ),
           ),

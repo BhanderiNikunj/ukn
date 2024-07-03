@@ -1,0 +1,26 @@
+import 'package:get/get.dart';
+import 'package:unk/model/intro_model.dart';
+import 'package:unk/widgets/images.dart';
+import 'package:unk/widgets/strings.dart';
+
+class IntroController extends GetxController {
+  List<IntroModel> listOfIntro = [
+    IntroModel(
+      title: Strings.intro_title_1,
+      desc: Strings.intro_title_desc_1,
+      imagePath: Images.intro_1,
+    ),
+    IntroModel(
+      title: Strings.intro_title_2,
+      desc: Strings.intro_title_desc_2,
+      imagePath: Images.intro_2,
+    ),
+  ];
+
+  int selectedPageIndex = 0;
+
+  void changePangeIndex({required int index}) {
+    selectedPageIndex = index;
+    update();
+  }
+}

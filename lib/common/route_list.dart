@@ -9,4 +9,5 @@ class RouteList {
   static const String reward_history_screen = "/reward_history_screen";
   static const String redeem_screen = "/redeem_screen";
   static const String redeem_reward_screen = "/redeem_reward_screen";
+  static const String spin_wheel_screen = "/spin_wheel_screen";
 }

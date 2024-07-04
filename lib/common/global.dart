@@ -8,6 +8,7 @@ import 'package:unk/screens/redeem/view/redeem_screen.dart';
 import 'package:unk/screens/redeem_reward/view/redeem_reward_screen.dart';
 import 'package:unk/screens/reward_history/view/reward_history_screen.dart';
 import 'package:unk/screens/signup/view/signup_screen.dart';
+import 'package:unk/screens/spin_wheel/view/spin_wheel_screen.dart';
 import 'package:unk/screens/splash/view/splash_screen.dart';
 
 List<GetPage> getPages = [
@@ -42,6 +43,10 @@ List<GetPage> getPages = [
   GetPage(
     name: RouteList.redeem_reward_screen,
     page: () => const RedeemRewardScreen(),
+  ),
+  GetPage(
+    name: RouteList.spin_wheel_screen,
+    page: () => const SpinWheelScreen(),
   ),
 ];
 

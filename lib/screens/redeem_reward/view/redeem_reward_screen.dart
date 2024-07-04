@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
+import 'package:unk/model/general_setting_model.dart';
 import 'package:unk/widgets/strings.dart';
 
 class RedeemRewardScreen extends StatefulWidget {
@@ -13,79 +15,98 @@ class RedeemRewardScreen extends StatefulWidget {
 }
 
 class _RedeemRewardScreenState extends State<RedeemRewardScreen> {
+  int rewardsIndex = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
     return CommonWidget.commonScreenUI(
       title: Strings.redeem,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
-        child: ListView.builder(
-          itemCount: generalSettingModel?.data.redeemRewards.length ?? 0,
-          itemBuilder: (context, index) {
-            return ListView.builder(
-              shrinkWrap: true,
-              itemCount:
-              generalSettingModel?.data.redeemRewards[index].rewards.length ?? 0,
-              itemBuilder: (context, index) {
-                return Container(
-                  height: 75.h,
-                  width: ScreenUtil().screenWidth,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: AppColor.white1Color,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 5.0,
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 40.h,
-                            width: 40.w,
-                            margin:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                            decoration: BoxDecoration(
-                              color: AppColor.white1Color,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 5.0,
-                                ),
-                              ],
-                            ),
-                            // child: CommonWidget.imageBuilder(imagePath: ""),
+        child: generalSettingModel != null
+            ? ListView.builder(
+                shrinkWrap: true,
+                itemCount: generalSettingModel!
+                    .data.redeemRewards[rewardsIndex].rewards.length,
+                itemBuilder: (context, index) {
+                  Reward rewards = generalSettingModel!
+                      .data.redeemRewards[rewardsIndex].rewards[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Container(
+                      width: ScreenUtil().screenWidth,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: AppColor.white1Color,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 5.0,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
                             children: [
-                              CommonWidget.commonText(text: Strings.coin),
-                              Row(
+                              Container(
+                                height: 40.h,
+                                width: 40.w,
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 10,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppColor.white1Color,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 5.0,
+                                    ),
+                                  ],
+                                ),
+                                child: CommonWidget.imageBuilder(
+                                  // height: 70,
+                                  // width: 70,
+                                  imagePath: generalSettingModel?.data
+                                          .redeemRewards[rewardsIndex].image ??
+                                      "",
+                                ),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  CommonWidget.commonText(
-                                    text: Strings.redeem_reward,
+                                  Row(
+                                    children: [
+                                      CommonWidget.commonText(
+                                          text: Strings.redeemCoin),
+                                      CommonWidget.commonText(
+                                          text: rewards.coin.toString(),fontWeight: FontWeight.bold),
+                                    ],
                                   ),
-                                  // CommonWidget.commonText(
-                                  //   text: generalSettingModel?.data.redeemRewards[index].rewards[index].coin ?? "",
-                                  // ),
+                                  Row(
+                                    children: [
+                                      CommonWidget.commonText(
+                                        text: Strings.redeem_reward,
+                                      ),
+                                      CommonWidget.commonText(
+                                        fontWeight: FontWeight.bold,
+                                        text: rewards.money.toString(),
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                );
-              },
-            );
-          },
-        ),
+                    ),
+                  );
+                },
+              )
+            : CommonWidget.noDataFound(),
       ),
     );
   }

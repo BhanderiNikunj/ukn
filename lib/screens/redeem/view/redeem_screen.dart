@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:unk/common/colors.dart';
+import 'package:unk/common/common_router.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
+import 'package:unk/common/route_list.dart';
 import 'package:unk/widgets/images.dart';
 import 'package:unk/widgets/strings.dart';
 
@@ -61,7 +63,6 @@ class _RedeemScreenState extends State<RedeemScreen> {
                 ),
               ),
               width: ScreenUtil().screenWidth,
-              // Aa Icon Nathi aavta line ma
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -89,51 +90,58 @@ class _RedeemScreenState extends State<RedeemScreen> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Container(
-                    height: 70.h,
-                    width: ScreenUtil().screenWidth,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              width: 55.w,
-                              height: 55.h,
-                              child: CommonWidget.imageBuilder(
-                                fit: BoxFit.fill,
-                                imagePath: generalSettingModel
-                                        ?.data.redeemRewards[index].image ??
-                                    "",
+                  child: InkWell(
+                    onTap: () {
+                      CommonRoute.pushNamed(
+                        page: RouteList.redeem_reward_screen,
+                        arguments: index,
+                      );
+                    },
+                    child: Container(
+                      height: 70.h,
+                      width: ScreenUtil().screenWidth,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                width: 55.w,
+                                height: 55.h,
+                                child: CommonWidget.imageBuilder(
+                                  imagePath: generalSettingModel
+                                          ?.data.redeemRewards[index].image ??
+                                      "",
+                                ),
                               ),
-                            ),
-                            CommonWidget.sizedBox(width: 20),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CommonWidget.commonText(
-                                  text: generalSettingModel
-                                          ?.data.redeemRewards[index].name ??
-                                      "",
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColor.primary1Color,
-                                ),
-                                CommonWidget.commonText(
-                                  text: generalSettingModel
-                                          ?.data.redeemRewards[index].desc ??
-                                      "",
-                                  color: AppColor.primary4Color,
-                                ),
-                              ],
-                            ),
-                            const Spacer(),
-                            CommonWidget.imageBuilder(
-                              imagePath: Images.next_arrow_svg,
-                              width: 16.w,
-                              height: 16.h,
-                            ),
-                          ],
-                        ),
-                      ],
+                              CommonWidget.sizedBox(width: 20),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CommonWidget.commonText(
+                                    text: generalSettingModel
+                                            ?.data.redeemRewards[index].name ??
+                                        "",
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColor.primary1Color,
+                                  ),
+                                  CommonWidget.commonText(
+                                    text: generalSettingModel
+                                            ?.data.redeemRewards[index].desc ??
+                                        "",
+                                    color: AppColor.primary4Color,
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
+                              CommonWidget.imageBuilder(
+                                imagePath: Images.next_arrow_svg,
+                                width: 16.w,
+                                height: 16.h,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );

@@ -25,10 +25,12 @@ class _UknAppState extends State<UknApp> {
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
         child: GetMaterialApp(
-          initialRoute: RouteList.redeem_reward_screen,
+          initialRoute: RouteList.spin_wheel_screen,
           getPages: getPages,
         ),
       ),
     );
   }
 }
+
+

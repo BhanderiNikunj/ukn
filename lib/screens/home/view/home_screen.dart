@@ -86,22 +86,38 @@ class _HomeScreenState extends State<HomeScreen> {
             borderRadius: BorderRadius.circular(10.r),
           ),
           margin: EdgeInsets.only(bottom: 10.h, right: 10.w),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Stack(
             children: [
-              CommonWidget.imageBuilder(
-                imagePath: controller.categoryData[index].imageUrl,
-                borderRadius: 10.r,
-                height: 100.h,
+                  SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                       child:   Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                          Container(
+                            height: 105,
+                          ),
+                           Text(controller.categoryData[index].name,
+                                  //  maxLines: 10,
+                                  ),
+                         ],
+                       ),
+                        
+                      ),
+                    ),
+                 
+              Column(
+                mainAxisSize: MainAxisSize.min,
+               // crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommonWidget.imageBuilder(
+                    imagePath: controller.categoryData[index].imageUrl,
+                    borderRadius: 10.r,
+                    height: 100.h,
+                  ),
+                ],
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-                child: CommonWidget.commonText(
-                  text: controller.categoryData[index].name,
-                  maxLines: 2,
-                ),
-              ),
+               
             ],
           ),
         );

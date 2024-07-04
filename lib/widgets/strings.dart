@@ -49,6 +49,7 @@ class Strings {
   static String chat_box = "Chat Box";
   static String type_a_message = "Type a message . . .";
   static String category = "Category";
+  static String get_more_coins = "Get More coins";
 }
 
 void loadGujaratiLanguage() {

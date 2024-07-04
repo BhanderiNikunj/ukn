@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/screens/home/controller/home_controller.dart';
+import 'package:unk/widgets/strings.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,39 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return CommonWidget.commonScreenUI(
-      titleWidget: Row(
-        children: [
-          Container(
-            padding:
-                const EdgeInsets.only(left: 12, right: 12, bottom: 8, top: 8),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: Colors.black,
-              ),
-            ),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.star,
-                  color: Colors.yellow,
-                ),
-                CommonWidget.commonText(text: "100"),
-              ],
-            ),
-          ),
-          const Spacer(),
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-            ),
-            child: CommonWidget.commonText(text: "N"),
-          )
-        ],
-      ),
+      titleWidget: const Row(children: []),
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
@@ -80,228 +49,95 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CommonWidget.sizedBox(height: 15),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: CarouselSlider(
-                      items: List.generate(
-                        controller.homeModel?.data.slider.length ?? 0,
-                        (index) => CommonWidget.imageBuilder(
-                          imagePath: controller
-                                  .homeModel?.data.slider[index].imageUrl ??
-                              "",
-                        ),
-                      ),
-                      options: CarouselOptions(
-                        autoPlay: true,
-                        height: 160.h,
-                        enlargeFactor: 5,
-                      ),
-                    ),
-                  ),
-                  CommonWidget.sizedBox(height: 18),
+                  sliderView(),
+                  CommonWidget.sizedBox(height: 20),
                   offerView(),
-                  // CommonWidget.sizedBox(height: 15),
-                  // Container(
-                  //   padding: EdgeInsets.only(left: 12.r, right: 12.r),
-                  //   height: 50.h,
-                  //   width: double.infinity,
-                  //   decoration: BoxDecoration(
-                  //     color: const Color(0xff402A6A),
-                  //     borderRadius: BorderRadius.circular(10.r),
-                  //   ),
-                  //   child: Row(
-                  //     children: [
-                  //       CommonWidget.commonText(
-                  //         text: "Redeem Your Coin",
-                  //         color: Colors.white,
-                  //       ),
-                  //       const Spacer(),
-                  //       const Icon(
-                  //         Icons.arrow_circle_right_outlined,
-                  //         color: Colors.white,
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                  // CommonWidget.sizedBox(height: 10),
-                  // Container(
-                  //   padding: EdgeInsets.only(left: 12.r, right: 12.r),
-                  //   height: 50.h,
-                  //   width: double.infinity,
-                  //   decoration: BoxDecoration(
-                  //     color: const Color(0xffF7BB75),
-                  //     borderRadius: BorderRadius.circular(10.r),
-                  //   ),
-                  //   child: Row(
-                  //     children: [
-                  //       CommonWidget.commonText(
-                  //         text: "Spin And Win More Coin",
-                  //         color: Colors.black,
-                  //       ),
-                  //       const Spacer(),
-                  //       const Icon(
-                  //         Icons.arrow_circle_right_outlined,
-                  //         color: Colors.black,
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                  // CommonWidget.sizedBox(height: 10),
-                  // Container(
-                  //   padding: EdgeInsets.only(left: 12.r, right: 12.r),
-                  //   height: 50.h,
-                  //   width: double.infinity,
-                  //   decoration: BoxDecoration(
-                  //     color: const Color(0xff7C0724),
-                  //     borderRadius: BorderRadius.circular(10.r),
-                  //   ),
-                  //   child: Row(
-                  //     children: [
-                  //       CommonWidget.commonText(
-                  //         text: "Scratch Card And Win Coin",
-                  //         color: Colors.white,
-                  //       ),
-                  //       const Spacer(),
-                  //       const Icon(
-                  //         Icons.arrow_circle_right_outlined,
-                  //         color: Colors.white,
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                  // CommonWidget.sizedBox(height: 18),
-                  // CommonWidget.commonText(
-                  //   text: Strings.category,
-                  // ),
-                  // CommonWidget.sizedBox(height: 18),
-                  // CommonWidget.sizedBox(height: 15),
-                  // CommonWidget.sizedBox(height: 14),
-                  // CommonWidget.commonText(
-                  //   text: "Get More Coin",
-                  //   color: AppColor.primary1Color,
-                  //   fontSize: 16,
-                  // ),
-                  // CommonWidget.sizedBox(height: 10),
-                  // CommonWidget.sizedBox(
-                  //   height: 25,
-                  //   child: ListView.builder(
-                  //     itemCount:
-                  //         controller.homeModel?.data.category.length ?? 0,
-                  //     shrinkWrap: true,
-                  //     scrollDirection: Axis.horizontal,
-                  //     itemBuilder: (context, index) {
-                  //       return InkWell(
-                  //         onTap: () => controller.changeCategory(
-                  //           category:
-                  //               controller.homeModel?.data.category[index],
-                  //           index: index,
-                  //         ),
-                  //         child: Container(
-                  //           height: 25,
-                  //           padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  //           margin: EdgeInsets.symmetric(horizontal: 5.w),
-                  //           decoration: BoxDecoration(
-                  //             borderRadius: BorderRadius.circular(50.r),
-                  //             border: controller.selectedCategory == index
-                  //                 ? null
-                  //                 : Border.all(color: AppColor.primary1Color),
-                  //             color: controller.selectedCategory == index
-                  //                 ? AppColor.primary1Color
-                  //                 : AppColor.white1Color,
-                  //           ),
-                  //           alignment: Alignment.center,
-                  //           child: CommonWidget.commonText(
-                  //             text: controller
-                  //                     .homeModel?.data.category[index].name ??
-                  //                 "",
-                  //             color: controller.selectedCategory == index
-                  //                 ? AppColor.white1Color
-                  //                 : AppColor.primary1Color,
-                  //             fontSize: 13,
-                  //           ),
-                  //         ),
-                  //       );
-                  //     },
-                  //   ),
-                  // ),
-                  // CommonWidget.sizedBox(height: 10),
-                  // Container(
-                  //   padding: const EdgeInsets.all(8),
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(12),
-                  //     border: Border.all(
-                  //       color: Colors.black,
-                  //     ),
-                  //   ),
-                  //   child: ListView.builder(
-                  //     shrinkWrap: true,
-                  //     physics: const NeverScrollableScrollPhysics(),
-                  //     // gridDelegate:
-                  //     //     const SliverGridDelegateWithFixedCrossAxisCount(
-                  //     //   crossAxisCount: 2,
-                  //     // ),
-                  //     itemCount: controller.categoryData.length,
-                  //     itemBuilder: (context, index) {
-                  //       return InkWell(
-                  //         onTap: () async {
-                  //           var url =
-                  //               '${controller.categoryData[index].videoUrl}';
-                  //           if (await canLaunch(url)) {
-                  //             await launch(url);
-                  //           } else {
-                  //             throw 'Could not launch $url';
-                  //           }
-                  //         },
-                  //         child: Container(
-                  //           margin: const EdgeInsets.all(12),
-                  //           decoration: BoxDecoration(
-                  //             color: AppColor.secondery6Color,
-                  //             borderRadius: BorderRadius.circular(12),
-                  //             border: Border.all(
-                  //               color: Colors.black,
-                  //             ),
-                  //           ),
-                  //           padding: const EdgeInsets.all(8),
-                  //           child: SingleChildScrollView(
-                  //             child: Column(
-                  //               crossAxisAlignment: CrossAxisAlignment.start,
-                  //               children: [
-                  //                 Container(
-                  //                   decoration: BoxDecoration(
-                  //                     borderRadius: BorderRadius.circular(12),
-                  //                     border: Border.all(
-                  //                       color: Colors.black,
-                  //                     ),
-                  //                   ),
-                  //                   child: CommonWidget.imageBuilder(
-                  //                     imagePath: controller
-                  //                         .categoryData[index].imageUrl,
-                  //                   ),
-                  //                 ),
-                  //                 CommonWidget.sizedBox(height: 8),
-                  //                 Text(
-                  //                   controller.categoryData[index].name,
-                  //                   style: const TextStyle(
-                  //                     color: Colors.black,
-                  //                     fontWeight: FontWeight.bold,
-                  //                   ),
-                  //                 ),
-                  //               ],
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       );
-                  //     },
-                  //   ),
-                  // ),
+                  CommonWidget.sizedBox(height: 20),
+                  CommonWidget.commonText(
+                    text: Strings.get_more_coins,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 16,
+                  ),
+                  CommonWidget.sizedBox(height: 15),
+                  categoryList(),
+                  CommonWidget.sizedBox(height: 15),
+                  categoryDataList(),
                 ],
               );
             },
           ),
         ),
+      ),
+    );
+  }
+
+  Widget categoryDataList() {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+      shrinkWrap: true,
+      itemCount: controller.categoryData.length,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return Container(
+          decoration: BoxDecoration(
+            color: AppColor.secondery6Color,
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          margin: EdgeInsets.only(bottom: 10.h, right: 10.w),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CommonWidget.imageBuilder(
+                imagePath: controller.categoryData[index].imageUrl,
+                borderRadius: 10.r,
+                height: 100.h,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                child: CommonWidget.commonText(
+                  text: controller.categoryData[index].name,
+                  maxLines: 2,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget categoryList() {
+    return Row(
+      children: List.generate(
+        controller.homeModel?.data.category.length ?? 0,
+        (index) {
+          var data = controller.homeModel?.data.category[index];
+          return Container(
+            decoration: BoxDecoration(
+              color: controller.selectedCategory == index
+                  ? AppColor.primary1Color
+                  : AppColor.white1Color,
+              border: controller.selectedCategory == index
+                  ? null
+                  : Border.all(
+                      color: AppColor.primary1Color,
+                      width: 1.5.w,
+                    ),
+              borderRadius: BorderRadius.circular(50.r),
+            ),
+            margin: EdgeInsets.only(right: 10.w),
+            padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 7.h),
+            child: CommonWidget.commonText(
+              text: data?.name ?? "",
+              color: controller.selectedCategory == index
+                  ? AppColor.white1Color
+                  : AppColor.primary1Color,
+            ),
+          );
+        },
       ),
     );
   }
@@ -318,6 +154,36 @@ class _HomeScreenState extends State<HomeScreen> {
           child: CommonWidget.imageBuilder(
             imagePath: controller.offerListData[index],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget sliderView() {
+    return Container(
+      height: 160.h,
+      width: ScreenUtil().screenWidth,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: CarouselSlider(
+        items: List.generate(
+          controller.homeModel?.data.slider.length ?? 0,
+          (index) => Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            child: CommonWidget.imageBuilder(
+              imagePath:
+                  controller.homeModel?.data.slider[index].imageUrl ?? "",
+              borderRadius: 10.r,
+              width: ScreenUtil().screenWidth,
+            ),
+          ),
+        ),
+        options: CarouselOptions(
+          autoPlay: true,
+          animateToClosest: true,
+          enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+          enlargeFactor: 5,
         ),
       ),
     );

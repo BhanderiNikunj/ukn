@@ -7,6 +7,7 @@ import 'package:unk/screens/home/view/home_screen.dart';
 import 'package:unk/screens/intro/view/intro_screen.dart';
 import 'package:unk/screens/login/view/login_screen.dart';
 import 'package:unk/screens/reward_history/view/reward_history_screen.dart';
+import 'package:unk/screens/scratchecard/view/scratche_card.dart';
 import 'package:unk/screens/signup/view/signup_screen.dart';
 import 'package:unk/screens/splash/view/splash_screen.dart';
 
@@ -43,6 +44,10 @@ List<GetPage> getPages = [
     name: RouteList.chat_support_screen,
     page: () => const ChatSupportScreen(),
   ),
+   GetPage(
+    name: RouteList.scratche_card_screen,
+    page: () => const ScratcheCard(),
+  )
 ];
 
 GeneralSettingModel? generalSettingModel;

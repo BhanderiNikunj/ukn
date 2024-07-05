@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:unk/model/home_model.dart';
 import 'package:unk/utils/ads_helper.dart';
+import 'package:unk/utils/api_helper.dart';
+import 'package:unk/widgets/images.dart';
 
 class HomeController extends GetxController {
   BannerAd? bannerAdMob;
   BannerAd? bannerAdX;
+  HomeModel? homeModel;
+  int selectedCategory = 0;
+  List<CategoryDatum> categoryData = [];
+  List<String> offerListData = [
+    Images.spin_png,
+    Images.streak_png,
+    Images.scratech_png,
+  ];
 
   Future<void> loadBannerAdMob() async {
     try {
@@ -56,4 +67,38 @@ class HomeController extends GetxController {
       debugPrint("==========$e");
     }
   }
+
+  Future<void> gethomeData() async {
+    homeModel = await ApiHelper.getHomeData();
+    categoryData.addAll(homeModel?.data.categoryData ?? []);
+    update();
+  }
+
+  void changeCategory({Category? category, required int index}) {
+    selectedCategory = index;
+    categoryData.clear();
+    if (category?.id == 0) {
+      categoryData.addAll(homeModel?.data.categoryData ?? []);
+      update();
+      return;
+    }
+    List<CategoryDatum> data = homeModel?.data.categoryData
+            .where((element) => element.categoryId == category?.id)
+            .toList() ??
+        [];
+    categoryData.addAll(data);
+    update();
+  }
+}
+
+class OfferModel {
+  final String imagePath;
+  final String title;
+  final String route;
+
+  OfferModel({
+    required this.imagePath,
+    required this.title,
+    required this.route,
+  });
 }

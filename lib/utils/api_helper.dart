@@ -6,6 +6,7 @@ import 'dart:developer';
 import 'package:unk/common/global.dart';
 import 'package:unk/model/common_model.dart';
 import 'package:unk/model/general_setting_model.dart';
+import 'package:unk/model/home_model.dart';
 import 'package:unk/model/login_model.dart';
 import 'package:unk/model/user_data_model.dart';
 import 'package:unk/utils/api_constant.dart';
@@ -117,5 +118,13 @@ class ApiHelper {
       },
     );
     return CommonModel.fromJson(json);
+  }
+
+  static Future<HomeModel> getHomeData() async {
+    var json = await commonApiCall(
+      apiPath: 'home/home_data_get.php',
+      apiType: ApiType.GET,
+    );
+    return HomeModel.fromJson(json);
   }
 }

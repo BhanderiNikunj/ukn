@@ -1,21 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import 'package:calendar_date_picker2/calendar_date_picker2.dart'; 
 import 'package:intl/intl.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/common/route_list.dart';
-import 'package:unk/model/login_model.dart';
-import 'package:unk/model/user_data_model.dart';
-import 'package:unk/model/user_model.dart';
-import 'package:unk/utils/api_helper.dart';
-import 'package:unk/utils/shared_helper.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class AddUserDataController extends GetxController {
   TextEditingController emailIdController = TextEditingController();

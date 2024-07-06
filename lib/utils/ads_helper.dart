@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:unk/common/global.dart';
+import 'package:unk/exports.dart';
 
 class AdsHelper {
   static Future<BannerAd?> loadBannerAd({

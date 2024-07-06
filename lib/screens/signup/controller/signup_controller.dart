@@ -1,12 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/common/route_list.dart';
-import 'package:unk/model/login_model.dart';
-import 'package:unk/utils/api_helper.dart';
+import 'package:unk/exports.dart';
 
 class SignupController extends GetxController {
   TextEditingController emailIdController = TextEditingController();

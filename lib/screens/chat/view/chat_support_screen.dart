@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/common/global.dart';
-import 'package:unk/model/chat_support_model.dart';
-import 'package:unk/screens/chat/controller/chat_support_controller.dart';
-import 'package:unk/widgets/images.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class ChatSupportScreen extends StatefulWidget {
   const ChatSupportScreen({super.key});

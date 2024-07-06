@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/model/login_model.dart';
-import 'package:unk/screens/add_data/controller/add_user_data_controller.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class AddUserDataScreen extends StatefulWidget {
   const AddUserDataScreen({super.key});

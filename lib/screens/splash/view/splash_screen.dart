@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_router.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
@@ -42,10 +42,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.primary1Color,
       body: Center(
         child: CommonWidget.imageBuilder(
-          height: ScreenUtil().screenHeight,
-          width: ScreenUtil().screenWidth,
           imagePath:
               generalSettingModel?.data.splashImage ?? Images.splash_iamge,
         ),

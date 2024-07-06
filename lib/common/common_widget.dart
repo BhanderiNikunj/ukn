@@ -259,9 +259,6 @@ class CommonWidget {
     Radius? bottomRight,
     Radius? topLeft,
     Radius? topRight,
-    EdgeInsets? padding,
-    double? horizontalPadding,
-    double? verticalPadding,
   }) {
     if (imagePath.isEmpty) {
       return Center(child: warningIcon(color: color));
@@ -328,18 +325,15 @@ class CommonWidget {
             color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
       );
     } else if (imagePath.startsWith('assets')) {
-      return Padding(
-        padding: padding ?? EdgeInsets.zero,
-        child: Image.asset(
-          imagePath,
-          fit: fit ?? BoxFit.fitWidth,
-          width: width?.w,
-          height: height?.h,
-          color: color,
-          cacheWidth: cacheWidth,
-          errorBuilder: (context, error, stackTrace) =>
-              warningIcon(color: color),
-        ),
+      return Image.asset(
+        imagePath,
+        fit: fit ?? BoxFit.fitWidth,
+        width: width?.w,
+        height: height?.h,
+        color: color,
+        cacheWidth: cacheWidth,
+        errorBuilder: (context, error, stackTrace) =>
+            warningIcon(color: color),
       );
     } else if (imagePath.endsWith('.svg')) {
       return SvgPicture.file(

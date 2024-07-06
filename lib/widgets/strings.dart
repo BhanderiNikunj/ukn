@@ -45,8 +45,8 @@ class Strings {
   static String coin_number = "573";
   static String my_rewards = "My Rewards";
   static String redeem_rewards_via = "Redeem Rewards Via";
-  static String redeemCoin  = "Coin :-";
-  static String redeem_reward  = "Redeem Reward :-";
+  static String redeemCoin  = "Coin :- ";
+  static String redeem_reward  = "Redeem Reward :- ";
 }
 
 void loadGujaratiLanguage() {}

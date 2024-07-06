@@ -38,7 +38,7 @@ class _RedeemRewardScreenState extends State<RedeemRewardScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: AppColor.white1Color,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Colors.grey,
                             blurRadius: 5.0,
@@ -52,14 +52,16 @@ class _RedeemRewardScreenState extends State<RedeemRewardScreen> {
                               Container(
                                 height: 40.h,
                                 width: 40.w,
-                                margin: EdgeInsets.symmetric(
+                                alignment: Alignment.center,
+                                padding: const EdgeInsets.all(8),
+                                margin: const EdgeInsets.symmetric(
                                   horizontal: 10,
                                   vertical: 10,
                                 ),
                                 decoration: BoxDecoration(
                                   color: AppColor.white1Color,
                                   borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
                                       color: Colors.grey,
                                       blurRadius: 5.0,
@@ -67,8 +69,6 @@ class _RedeemRewardScreenState extends State<RedeemRewardScreen> {
                                   ],
                                 ),
                                 child: CommonWidget.imageBuilder(
-                                  // height: 70,
-                                  // width: 70,
                                   imagePath: generalSettingModel?.data
                                           .redeemRewards[rewardsIndex].image ??
                                       "",
@@ -82,7 +82,8 @@ class _RedeemRewardScreenState extends State<RedeemRewardScreen> {
                                       CommonWidget.commonText(
                                           text: Strings.redeemCoin),
                                       CommonWidget.commonText(
-                                          text: rewards.coin.toString(),fontWeight: FontWeight.bold),
+                                          text: rewards.coin.toString(),
+                                          fontWeight: FontWeight.bold),
                                     ],
                                   ),
                                   Row(

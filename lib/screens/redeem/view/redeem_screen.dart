@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:unk/common/colors.dart';
 import 'package:unk/common/common_router.dart';
 import 'package:unk/common/common_widget.dart';
 import 'package:unk/common/global.dart';
 import 'package:unk/common/route_list.dart';
+import 'package:unk/screens/redeem/controller/redeem_controller.dart';
 import 'package:unk/widgets/images.dart';
 import 'package:unk/widgets/strings.dart';
 
@@ -16,6 +19,22 @@ class RedeemScreen extends StatefulWidget {
 }
 
 class _RedeemScreenState extends State<RedeemScreen> {
+  late RedeemController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(RedeemController());
+    controller.loadBannerAdMob();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.bannerAdMob?.dispose();
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return CommonWidget.commonScreenUI(
@@ -26,7 +45,7 @@ class _RedeemScreenState extends State<RedeemScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               width: ScreenUtil().screenWidth,
               height: 50.h,
               decoration: BoxDecoration(
@@ -52,30 +71,35 @@ class _RedeemScreenState extends State<RedeemScreen> {
               ),
             ),
             CommonWidget.sizedBox(height: 20),
-            Container(
-              height: 50.h,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  width: 1,
-                  color: AppColor.borderColor,
+            InkWell(
+              onTap: () {
+                CommonRoute.pushNamed(page: RouteList.reward_history_screen);
+              },
+              child: Container(
+                height: 50.h,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    width: 1,
+                    color: AppColor.borderColor,
+                  ),
                 ),
-              ),
-              width: ScreenUtil().screenWidth,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CommonWidget.commonText(
-                    text: Strings.my_rewards,
-                    color: AppColor.primary1Color,
-                  ),
-                  CommonWidget.imageBuilder(
-                    imagePath: Images.next_arrow_svg,
-                    width: 20.w,
-                    height: 20.h,
-                  ),
-                ],
+                width: ScreenUtil().screenWidth,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CommonWidget.commonText(
+                      text: Strings.my_rewards,
+                      color: AppColor.primary1Color,
+                    ),
+                    CommonWidget.imageBuilder(
+                      imagePath: Images.next_arrow_svg,
+                      width: 20.w,
+                      height: 20.h,
+                    ),
+                  ],
+                ),
               ),
             ),
             CommonWidget.sizedBox(height: 20),
@@ -143,6 +167,25 @@ class _RedeemScreenState extends State<RedeemScreen> {
                         ],
                       ),
                     ),
+                  ),
+                );
+              },
+            ),
+            const Spacer(),
+            GetBuilder(
+              init: controller,
+              builder: (_) {
+                return Center(
+                  child: CommonWidget.sizedBox(
+                    child: controller.bannerAdMob != null
+                        ? CommonWidget.sizedBox(
+                            height:
+                                controller.bannerAdMob?.size.height.toDouble(),
+                            width:
+                                controller.bannerAdMob?.size.width.toDouble(),
+                            child: AdWidget(ad: controller.bannerAdMob!),
+                          )
+                        : CommonWidget.sizedBox(isShrink: true),
                   ),
                 );
               },

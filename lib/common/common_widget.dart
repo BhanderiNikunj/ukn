@@ -191,10 +191,12 @@ class CommonWidget {
   }
 
   static Widget loadingBar() {
-    return Center(
-      child: CircularProgressIndicator(
-        color: AppColor.secondery1Color,
-      ),
+    return Container(
+      height: ScreenUtil().screenHeight,
+      width: ScreenUtil().screenWidth,
+      color: AppColor.primary1Color.withOpacity(0.4),
+      alignment: Alignment.center,
+      child: CommonWidget.loadingIos(),
     );
   }
 
@@ -332,8 +334,7 @@ class CommonWidget {
         height: height?.h,
         color: color,
         cacheWidth: cacheWidth,
-        errorBuilder: (context, error, stackTrace) =>
-            warningIcon(color: color),
+        errorBuilder: (context, error, stackTrace) => warningIcon(color: color),
       );
     } else if (imagePath.endsWith('.svg')) {
       return SvgPicture.file(
@@ -496,6 +497,7 @@ class CommonWidget {
     double? height,
   }) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.primary1Color,
       body: Stack(
         children: [

@@ -17,8 +17,12 @@ class SignupController extends GetxController {
 
   bool isShowText = true;
   bool isReShowText = true;
+  bool isLoading = false;
 
   Future<void> userSignUp({required BuildContext context}) async {
+    isLoading = true;
+    update();
+
     LoginDataModel data = LoginDataModel(
       id: 0,
       email: emailIdController.text,
@@ -45,6 +49,8 @@ class SignupController extends GetxController {
     LoginModel apiResponse = await ApiHelper.userSignupData(signupData: data);
 
     if (apiResponse.status) {
+      isLoading = false;
+      update();
       CommonRoute.popAndPushNamed(
         page: RouteList.add_user_data_screen,
         arguments: apiResponse.data,
@@ -55,6 +61,8 @@ class SignupController extends GetxController {
         type: SnackBarType.successData,
       );
     } else {
+      isLoading = false;
+      update();
       CommonWidget.commonSnackBar(
         context: context,
         message: apiResponse.message,

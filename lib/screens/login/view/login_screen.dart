@@ -43,16 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
           init: controller,
           builder: (_) {
             return Container(
-              decoration: BoxDecoration(
-                gradient: RadialGradient(
-                  colors: [
-                    AppColor.primary2Color,
-                    AppColor.primary2Color,
-                    AppColor.primary2Color,
-                    AppColor.primary1Color,
-                  ],
-                ),
-              ),
+              color: AppColor.primary1Color,
               child: Stack(
                 children: [
                   Row(

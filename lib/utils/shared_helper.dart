@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedHelper {
   static const String LOGIN_KEY = "LOGIN_KEY";
   static const String LOGIN_ID_KEY = "LOGIN_ID_KEY";
+  static const String USER_ID_KEY = "USER_ID_KEY";
   static SharedPreferences? sharedPreferences;
 
   static Future<void> setLoginValue({required bool isLogin}) async {
@@ -13,15 +14,6 @@ class SharedHelper {
     } else {
       sharedPreferences = await SharedPreferences.getInstance();
       await sharedPreferences!.setBool(LOGIN_KEY, isLogin);
-    }
-  }
-
-  static Future<void> setLoginData({required int loginId}) async {
-    if (sharedPreferences != null) {
-      await sharedPreferences!.setInt(LOGIN_ID_KEY, loginId);
-    } else {
-      sharedPreferences = await SharedPreferences.getInstance();
-      await sharedPreferences!.setInt(LOGIN_ID_KEY, loginId);
     }
   }
 
@@ -36,6 +28,15 @@ class SharedHelper {
     return isLogin;
   }
 
+  static Future<void> setLoginData({required int loginId}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setInt(LOGIN_ID_KEY, loginId);
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      await sharedPreferences!.setInt(LOGIN_ID_KEY, loginId);
+    }
+  }
+
   static Future<int> getLoginData() async {
     int loginId = 0;
     if (sharedPreferences != null) {
@@ -45,5 +46,24 @@ class SharedHelper {
       loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? 0;
     }
     return loginId;
+  }
+
+  static Future<void> setUserIdata({required int userId}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setInt(USER_ID_KEY, userId);
+    } else {
+      await sharedPreferences!.setInt(USER_ID_KEY, userId);
+    }
+  }
+
+  static Future<int> getUserIdata() async {
+    int userID = 0;
+    if (sharedPreferences != null) {
+      userID = sharedPreferences!.getInt(USER_ID_KEY) ?? -1;
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      userID = sharedPreferences!.getInt(USER_ID_KEY) ?? -1;
+    }
+    return userID;
   }
 }

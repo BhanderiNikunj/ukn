@@ -1,12 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/common/global.dart';
-import 'package:unk/common/route_list.dart';
-import 'package:unk/utils/ads_helper.dart';
-import 'package:unk/utils/shared_helper.dart';
-import 'package:unk/widgets/images.dart';
+import 'package:unk/exports.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

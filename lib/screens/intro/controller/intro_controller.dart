@@ -1,7 +1,4 @@
-import 'package:get/get.dart';
-import 'package:unk/model/intro_model.dart';
-import 'package:unk/widgets/images.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class IntroController extends GetxController {
   List<IntroModel> listOfIntro = [

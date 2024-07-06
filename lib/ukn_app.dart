@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:unk/common/global.dart';
 import 'package:unk/common/route_list.dart';
 import 'package:unk/utils/api_helper.dart';
+import 'package:unk/utils/shared_helper.dart';
 
 class UknApp extends StatefulWidget {
   const UknApp({super.key});
@@ -15,8 +16,16 @@ class UknApp extends StatefulWidget {
 class _UknAppState extends State<UknApp> {
   @override
   void initState() {
-    ApiHelper.getGeneralSettingData();
+    userDataGet();
     super.initState();
+  }
+
+  Future<void> userDataGet() async {
+    ApiHelper.getGeneralSettingData();
+    int userId = await SharedHelper.getUserIdata();
+    if (userId != -1) {
+      ApiHelper.readUserData(id: userId);
+    }
   }
 
   @override

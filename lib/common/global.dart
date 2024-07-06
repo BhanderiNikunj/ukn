@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:unk/common/route_list.dart';
 import 'package:unk/model/general_setting_model.dart';
+import 'package:unk/model/user_data_model.dart';
 import 'package:unk/screens/add_data/view/add_user_data_screen.dart';
 import 'package:unk/screens/chat/view/chat_support_screen.dart';
 import 'package:unk/screens/home/view/home_screen.dart';
@@ -46,3 +47,4 @@ List<GetPage> getPages = [
 ];
 
 GeneralSettingModel? generalSettingModel;
+UserData? userData;

@@ -28,12 +28,18 @@ class Datum {
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        slider:
-            List<SliderData>.from(json["slider"].map((x) => SliderData.fromJson(x))),
-        category: List<Category>.from(
-            json["category"].map((x) => Category.fromJson(x))),
-        categoryData: List<CategoryData>.from(
-            json["category_data"].map((x) => CategoryData.fromJson(x))),
+        slider: json["slider"] != null
+            ? List<SliderData>.from(
+                json["slider"].map((x) => SliderData.fromJson(x)))
+            : [],
+        category: json["category"] != null
+            ? List<Category>.from(
+                json["category"].map((x) => Category.fromJson(x)))
+            : [],
+        categoryData: json["category"] != null
+            ? List<CategoryData>.from(
+                json["category_data"].map((x) => CategoryData.fromJson(x)))
+            : [],
       );
 }
 

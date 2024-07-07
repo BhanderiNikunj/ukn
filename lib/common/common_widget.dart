@@ -495,6 +495,7 @@ class CommonWidget {
     Widget? child,
     Widget? titleWidget,
     double? height,
+    Widget? bottomNavigationBar,
   }) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -537,6 +538,10 @@ class CommonWidget {
               ),
               child: child,
             ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: bottomNavigationBar ?? CommonWidget.sizedBox(),
           ),
         ],
       ),

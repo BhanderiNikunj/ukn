@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/model/login_model.dart';
-import 'package:unk/screens/add_data/controller/add_user_data_controller.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class AddUserDataScreen extends StatefulWidget {
   const AddUserDataScreen({super.key});
@@ -40,16 +33,7 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
           init: controller,
           builder: (_) {
             return Container(
-              decoration: BoxDecoration(
-                gradient: RadialGradient(
-                  colors: [
-                    AppColor.primary2Color,
-                    AppColor.primary2Color,
-                    AppColor.primary2Color,
-                    AppColor.primary1Color,
-                  ],
-                ),
-              ),
+              color: AppColor.primary1Color,
               child: Stack(
                 children: [
                   Row(
@@ -154,7 +138,33 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.r),
-                          borderSide: BorderSide(width: 2.w),
+                          borderSide: BorderSide(
+                              color: AppColor.default1Color, width: 2.w),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                          borderSide:
+                              BorderSide(color: AppColor.red1Color, width: 2.w),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                          borderSide: BorderSide(
+                              color: AppColor.default1Color, width: 2.w),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                          borderSide: BorderSide(
+                              color: AppColor.default1Color, width: 2.w),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                          borderSide: BorderSide(
+                              color: AppColor.default1Color, width: 2.w),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                          borderSide:
+                              BorderSide(color: AppColor.red1Color, width: 2.w),
                         ),
                       ),
                       validator: (value) {
@@ -190,16 +200,10 @@ class _AddUserDataScreenState extends State<AddUserDataScreen> {
                   CommonWidget.sizedBox(height: 38),
                   CommonWidget.commonButton(
                     text: Strings.add_your_data,
-                    onTap: () {
-                      bool? isValid =
-                          controller.formKey.currentState?.validate();
-                      if (isValid ?? false) {
-                        controller.allUserData(
-                          context: context,
-                          loginData: loginDataModel,
-                        );
-                      }
-                    },
+                    onTap: () => controller.allUserData(
+                      context: context,
+                      loginData: loginDataModel,
+                    ),
                   ),
                   CommonWidget.sizedBox(height: 38),
                 ],

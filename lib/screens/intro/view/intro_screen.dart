@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/common/route_list.dart';
-import 'package:unk/model/intro_model.dart';
-import 'package:unk/screens/intro/controller/intro_controller.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});

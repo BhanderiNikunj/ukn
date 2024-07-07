@@ -1,17 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:unk/model/home_model.dart';
-import 'package:unk/utils/ads_helper.dart';
-import 'package:unk/utils/api_helper.dart';
-import 'package:unk/widgets/images.dart';
+import 'package:unk/exports.dart';
 
 class HomeController extends GetxController {
   BannerAd? bannerAdMob;
   BannerAd? bannerAdX;
   HomeModel? homeModel;
   int selectedCategory = 0;
-  List<CategoryDatum> categoryData = [];
+  List<CategoryData> categoryData = [];
   List<String> offerListData = [
     Images.spin_png,
     Images.streak_png,
@@ -82,7 +76,7 @@ class HomeController extends GetxController {
       update();
       return;
     }
-    List<CategoryDatum> data = homeModel?.data.categoryData
+    List<CategoryData> data = homeModel?.data.categoryData
             .where((element) => element.categoryId == category?.id)
             .toList() ??
         [];

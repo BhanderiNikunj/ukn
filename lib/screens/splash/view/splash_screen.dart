@@ -1,12 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/common/global.dart';
-import 'package:unk/common/route_list.dart';
-import 'package:unk/utils/ads_helper.dart';
-import 'package:unk/utils/shared_helper.dart';
-import 'package:unk/widgets/images.dart';
+import 'package:unk/exports.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -42,10 +34,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.primary1Color,
       body: Center(
         child: CommonWidget.imageBuilder(
-          height: ScreenUtil().screenHeight,
-          width: ScreenUtil().screenWidth,
           imagePath:
               generalSettingModel?.data.splashImage ?? Images.splash_iamge,
         ),

@@ -1,21 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import 'package:calendar_date_picker2/calendar_date_picker2.dart'; 
 import 'package:intl/intl.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/common/route_list.dart';
-import 'package:unk/model/common_model.dart';
-import 'package:unk/model/login_model.dart';
-import 'package:unk/model/user_data_model.dart';
-import 'package:unk/utils/api_helper.dart';
-import 'package:unk/utils/shared_helper.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class AddUserDataController extends GetxController {
   TextEditingController emailIdController = TextEditingController();
@@ -49,56 +36,59 @@ class AddUserDataController extends GetxController {
     required BuildContext context,
     required LoginDataModel loginData,
   }) async {
-    String fcmToken = await FirebaseMessaging.instance.getToken() ?? "";
-    UserData userData = UserData(
-      id: 0,
-      loginId: loginData.id,
-      firstName: firstNameController.text,
-      middleName: middleNameController.text,
-      lastName: lastNameController.text,
-      dateOfBirth: birthDateController.text,
-      gender: genderType,
-      contectNumber: mobileController.text,
-      userPoint: 500.toString(),
-      profilePhoto: genderType == "male"
-          ? "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/v1/images/user_image/boy.png"
-          : "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/v1/images/user_image/girl.png",
-      referCode: "",
-      userDeviceToken: fcmToken,
-      emailId: loginData.email,
-    );
-    if (!emailIdController.text.endsWith("@gmail.com")) {
-      CommonWidget.commonSnackBar(
-        context: context,
-        message: Strings.please_enter_valid_email_id,
-        type: SnackBarType.errorData,
+    if (formKey.currentState?.validate() ?? false) {
+      String fcmToken = await FirebaseMessaging.instance.getToken() ?? "";
+      UserData userData = UserData(
+        id: 0,
+        loginId: loginData.id,
+        firstName: firstNameController.text,
+        middleName: middleNameController.text,
+        lastName: lastNameController.text,
+        dateOfBirth: birthDateController.text,
+        gender: genderType,
+        contectNumber: mobileController.text,
+        userPoint: 500,
+        profilePhoto: genderType == "male"
+            ? "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/v1/images/user_image/boy.png"
+            : "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/v1/images/user_image/girl.png",
+        referCode: "",
+        userDeviceToken: fcmToken,
+        emailId: loginData.email,
       );
-      return;
-    } else if (mobileController.text.length != 10) {
-      CommonWidget.commonSnackBar(
-        context: context,
-        message: Strings.please_enter_valid_mobile_number,
-        type: SnackBarType.errorData,
-      );
-      return;
-    }
+      if (!emailIdController.text.endsWith("@gmail.com")) {
+        CommonWidget.commonSnackBar(
+          context: context,
+          message: Strings.please_enter_valid_email_id,
+          type: SnackBarType.errorData,
+        );
+        return;
+      } else if (mobileController.text.length != 10) {
+        CommonWidget.commonSnackBar(
+          context: context,
+          message: Strings.please_enter_valid_mobile_number,
+          type: SnackBarType.errorData,
+        );
+        return;
+      }
 
-    CommonModel model = await ApiHelper.addUserData(userData: userData);
-    if (model.status) {
-      await SharedHelper.setLoginValue(isLogin: true);
-      await SharedHelper.setLoginData(loginId: userData.loginId);
-      CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+      UserModel model = await ApiHelper.addUserData(userData: userData);
+      if (model.status) {
+        await SharedHelper.setLoginValue(isLogin: true);
+        await SharedHelper.setLoginData(loginId: userData.loginId);
+        await SharedHelper.setUserIdata(userId: model.data.id);
+        CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+        CommonWidget.commonSnackBar(
+          context: context,
+          message: model.message,
+          type: SnackBarType.successData,
+        );
+        return;
+      }
       CommonWidget.commonSnackBar(
         context: context,
         message: model.message,
-        type: SnackBarType.successData,
+        type: SnackBarType.errorData,
       );
-      return;
     }
-    CommonWidget.commonSnackBar(
-      context: context,
-      message: model.message,
-      type: SnackBarType.errorData,
-    );
   }
 }

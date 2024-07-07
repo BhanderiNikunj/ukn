@@ -1,14 +1,5 @@
 import 'dart:developer';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:unk/firebase_options.dart';
-import 'package:unk/ukn_app.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:unk/utils/get_access_token.dart';
-import 'package:unk/utils/notification_handler.dart';
+import 'package:unk/exports.dart';
 
 Future<void> main() async {
   await defaultInitData();

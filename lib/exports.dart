@@ -7,8 +7,10 @@ export 'common/route_list.dart';
 export 'widgets/images.dart';
 export 'widgets/strings.dart';
 export 'package:flutter/material.dart';
+export 'package:flutter/services.dart';
 
 // screens
+export 'package:unk/ukn_app.dart';
 export 'package:unk/screens/add_data/view/add_user_data_screen.dart';
 export 'package:unk/screens/chat/view/chat_support_screen.dart';
 export 'package:unk/screens/intro/view/intro_screen.dart';
@@ -29,6 +31,9 @@ export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:file_picker/file_picker.dart';
 export 'package:firebase_storage/firebase_storage.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
+export 'package:firebase_core/firebase_core.dart';
+export 'package:permission_handler/permission_handler.dart';
+export 'package:unk/firebase_options.dart';
 
 // models
 export 'package:unk/model/general_setting_model.dart';

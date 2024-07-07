@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -152,7 +153,9 @@ abstract class HomeWidget extends State<HomeScreen> {
           padding: EdgeInsets.only(right: 10.w),
           child: InkWell(
             onTap: () {
-              print("kunalsahu${controller.offerListData.length}");
+              if (kDebugMode) {
+                print("kunalsahu${controller.offerListData.length}");
+              }
               if(controller.offerListData.length == 3)
               {
                 CommonRoute.pushNamed(

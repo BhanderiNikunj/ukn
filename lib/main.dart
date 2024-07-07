@@ -30,5 +30,5 @@ Future<void> defaultInitData() async {
   await loadMobileNotification();
   MobileAds.instance.initialize();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  log("=========${await GetAccessToken.getAccessToken()}");
+  // log("=========${await GetAccessToken.getAccessToken()}");
 }

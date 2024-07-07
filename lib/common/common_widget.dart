@@ -500,6 +500,7 @@ class CommonWidget {
     Widget? child,
     Widget? titleWidget,
     double? height,
+    Color? color,
   }) {
     return Scaffold(
       backgroundColor: AppColor.primary1Color,

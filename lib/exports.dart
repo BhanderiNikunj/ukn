@@ -54,6 +54,7 @@ export 'screens/login/controller/login_controller.dart';
 export 'screens/signup/controller/signup_controller.dart';
 export 'screens/splash/controller/splash_controller.dart';
 export 'screens/reward_history/controller/reward_history_controller.dart';
+export 'package:unk/screens/redeem/controller/redeem_controller.dart';
 
 // utils
 export 'utils/ads_helper.dart';

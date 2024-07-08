@@ -18,6 +18,7 @@ class _RewardHistoryScreenState extends State<RewardHistoryScreen> {
 
   @override
   void dispose() {
+    controller.disposeData();
     controller.dispose();
     super.dispose();
   }

@@ -15,4 +15,8 @@ class RewardHistoryController extends GetxController {
     }
     return null;
   }
+
+  void disposeData(){
+    // mapOfNativeAd.foreach();
+  }
 }

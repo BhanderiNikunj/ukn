@@ -1,5 +1,4 @@
 import 'package:unk/exports.dart';
-import 'package:unk/screens/redeem/controller/redeem_controller.dart';
 
 class RedeemScreen extends StatefulWidget {
   const RedeemScreen({super.key});

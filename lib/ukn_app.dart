@@ -22,9 +22,9 @@ class _UknAppState extends State<UknApp> {
 
   Future<void> userDataGet() async {
     ApiHelper.getGeneralSettingData();
-    int userId = await SharedHelper.getUserIdata();
+    int userId = await SharedHelper.getLoginData();
     if (userId != -1) {
-      ApiHelper.readUserData(id: userId);
+      ApiHelper.readUserDataWithLoginId(id: userId);
     }
   }
 

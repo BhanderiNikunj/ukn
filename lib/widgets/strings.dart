@@ -59,6 +59,8 @@ class Strings {
   static String ad_not_load = "Ad Not Load";
   static String coin = "Coin";
   static String redeem = "Redeem";
+  static String redeem_data = "Redeem Data";
+  static String redeem_reward = "Redeem Reward";
 }
 
 void loadGujaratiLanguage() {

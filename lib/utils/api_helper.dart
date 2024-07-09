@@ -3,14 +3,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:unk/common/global.dart';
-import 'package:unk/model/general_setting_model.dart';
-import 'package:unk/model/home_model.dart';
-import 'package:unk/model/login_model.dart';
-import 'package:unk/model/user_data_model.dart';
-import 'package:unk/model/user_model.dart';
-import 'package:unk/utils/api_constant.dart';
 import 'package:http/http.dart';
+import 'package:unk/exports.dart';
 
 class ApiHelper {
   static Future<dynamic> commonApiCall({
@@ -125,6 +119,18 @@ class ApiHelper {
       apiPath: 'user_data/read_single_user_data.php',
       apiType: ApiType.POST,
       body: {"user_id": id.toString()},
+    );
+    UserModel userModel = UserModel.fromJson(json);
+    if (userModel.status) {
+      userData = userModel.data;
+    }
+  }
+
+  static Future<void> readUserDataWithLoginId({required int id}) async {
+    var json = await commonApiCall(
+      apiPath: 'user_data/read_user_data_using_login_id.php',
+      apiType: ApiType.POST,
+      body: {"login_id": id.toString()},
     );
     UserModel userModel = UserModel.fromJson(json);
     if (userModel.status) {

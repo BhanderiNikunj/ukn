@@ -11,4 +11,5 @@ class RouteList {
   static const String chat_support_screen = "/chat_support_screen";
   static const String profile_screen = "/profile_screen";
   static const String redeem_screen = "/redeem_screen";
+  static const String redeem_data_screen = "/redeem_data_screen";
 }

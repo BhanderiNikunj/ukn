@@ -1,17 +1,10 @@
+import 'dart:async';
 import 'dart:developer';
 import 'package:unk/exports.dart';
 
 Future<void> main() async {
   await defaultInitData();
-
-  var status = await Permission.notification.request();
-  if (status.isGranted) {
-    runApp(const UknApp());
-  } else if (status.isDenied) {
-    await Permission.notification.request();
-  } else if (status.isPermanentlyDenied) {
-    await openAppSettings();
-  }
+  await mainFunction();
 }
 
 Future<void> defaultInitData() async {
@@ -22,4 +15,15 @@ Future<void> defaultInitData() async {
   MobileAds.instance.initialize();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   log("=========${await GetAccessToken.getAccessToken()}");
+}
+
+Future<void> mainFunction() async {
+  var status = await Permission.notification.request();
+  if (status.isGranted) {
+    runApp(const UknApp());
+  } else if (status.isDenied) {
+    await Permission.notification.request();
+  } else if (status.isPermanentlyDenied) {
+    await openAppSettings();
+  }
 }

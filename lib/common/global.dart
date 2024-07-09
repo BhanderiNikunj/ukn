@@ -1,5 +1,6 @@
 import 'package:unk/exports.dart';
 import 'package:unk/screens/redeem/view/redeem_screen.dart';
+import 'package:unk/screens/redeem_data/view/redeem_data_screen.dart';
 
 List<GetPage> getPages = [
   GetPage(
@@ -41,6 +42,10 @@ List<GetPage> getPages = [
   GetPage(
     name: RouteList.redeem_screen,
     page: () => const RedeemScreen(),
+  ),
+  GetPage(
+    name: RouteList.redeem_data_screen,
+    page: () => const RedeemDataScreen(),
   ),
 ];
 

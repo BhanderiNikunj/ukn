@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:unk/common/global.dart';
-import 'package:unk/common/route_list.dart';
-import 'package:unk/utils/api_helper.dart';
+import 'package:unk/exports.dart';
 
 class UknApp extends StatefulWidget {
   const UknApp({super.key});
@@ -15,8 +10,16 @@ class UknApp extends StatefulWidget {
 class _UknAppState extends State<UknApp> {
   @override
   void initState() {
-    ApiHelper.getGeneralSettingData();
+    userDataGet();
     super.initState();
+  }
+
+  Future<void> userDataGet() async {
+    ApiHelper.getGeneralSettingData();
+    int userId = await SharedHelper.getLoginData();
+    if (userId != -1) {
+      ApiHelper.readUserDataWithLoginId(id: userId);
+    }
   }
 
   @override

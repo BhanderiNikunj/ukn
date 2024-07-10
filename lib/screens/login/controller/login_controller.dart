@@ -1,14 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/common/route_list.dart';
-import 'package:unk/model/login_model.dart';
-import 'package:unk/utils/api_helper.dart';
-import 'package:unk/utils/shared_helper.dart';
+import 'package:unk/exports.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailIdController = TextEditingController();
@@ -45,6 +37,7 @@ class LoginController extends GetxController {
     if (data.status) {
       await SharedHelper.setLoginValue(isLogin: true);
       await SharedHelper.setLoginData(loginId: data.data.id);
+      await ApiHelper.readUserData(id: data.data.id);
       CommonRoute.popAndPushNamed(page: RouteList.home_screen);
       CommonWidget.commonSnackBar(
         context: context,

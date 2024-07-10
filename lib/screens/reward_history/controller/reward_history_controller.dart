@@ -1,7 +1,4 @@
-import 'dart:async';
-import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:unk/utils/ads_helper.dart';
+import 'package:unk/exports.dart';
 
 class RewardHistoryController extends GetxController {
   Map<int, BannerAd> mapOfNativeAd = {};
@@ -17,5 +14,9 @@ class RewardHistoryController extends GetxController {
       return bannerAd;
     }
     return null;
+  }
+
+  void disposeData(){
+    // mapOfNativeAd.foreach();
   }
 }

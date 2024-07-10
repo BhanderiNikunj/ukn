@@ -29,7 +29,7 @@ class UserData {
   final String dateOfBirth;
   final String gender;
   final String contectNumber;
-  final String userPoint;
+  int userPoint;
   final String profilePhoto;
   final String referCode;
   final String userDeviceToken;
@@ -60,7 +60,7 @@ class UserData {
         dateOfBirth: json["date_of_birth"]?.toString() ?? "",
         gender: json["gender"]?.toString() ?? "",
         contectNumber: json["contect_number"]?.toString() ?? "",
-        userPoint: json["user_point"]?.toString() ?? "",
+        userPoint: int.tryParse(json["user_point"]?.toString() ?? "") ?? 0,
         profilePhoto: json["profile_photo"]?.toString() ?? "",
         referCode: json["refer_code"]?.toString() ?? "",
         userDeviceToken: json["user_device_token"]?.toString() ?? "",

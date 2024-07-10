@@ -1,13 +1,6 @@
 import 'dart:io';
 
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/widgets/images.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class CommonWidget {
   static Widget textFormField({
@@ -191,10 +184,12 @@ class CommonWidget {
   }
 
   static Widget loadingBar() {
-    return Center(
-      child: CircularProgressIndicator(
-        color: AppColor.secondery1Color,
-      ),
+    return Container(
+      height: ScreenUtil().screenHeight,
+      width: ScreenUtil().screenWidth,
+      color: AppColor.primary1Color.withOpacity(0.4),
+      alignment: Alignment.center,
+      child: CommonWidget.loadingIos(),
     );
   }
 
@@ -259,9 +254,6 @@ class CommonWidget {
     Radius? bottomRight,
     Radius? topLeft,
     Radius? topRight,
-    EdgeInsets? padding,
-    double? horizontalPadding,
-    double? verticalPadding,
   }) {
     if (imagePath.isEmpty) {
       return Center(child: warningIcon(color: color));
@@ -328,18 +320,14 @@ class CommonWidget {
             color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
       );
     } else if (imagePath.startsWith('assets')) {
-      return Padding(
-        padding: padding ?? EdgeInsets.zero,
-        child: Image.asset(
-          imagePath,
-          fit: fit ?? BoxFit.fitWidth,
-          width: width?.w,
-          height: height?.h,
-          color: color,
-          cacheWidth: cacheWidth,
-          errorBuilder: (context, error, stackTrace) =>
-              warningIcon(color: color),
-        ),
+      return Image.asset(
+        imagePath,
+        fit: fit ?? BoxFit.fitWidth,
+        width: width?.w,
+        height: height?.h,
+        color: color,
+        cacheWidth: cacheWidth,
+        errorBuilder: (context, error, stackTrace) => warningIcon(color: color),
       );
     } else if (imagePath.endsWith('.svg')) {
       return SvgPicture.file(
@@ -501,8 +489,10 @@ class CommonWidget {
     Widget? titleWidget,
     double? height,
     Color? color,
+    Widget? bottomNavigationBar,
   }) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.primary1Color,
       body: Stack(
         children: [
@@ -542,6 +532,10 @@ class CommonWidget {
               ),
               child: child,
             ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: bottomNavigationBar ?? CommonWidget.sizedBox(),
           ),
         ],
       ),

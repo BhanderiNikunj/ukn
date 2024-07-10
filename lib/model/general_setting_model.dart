@@ -45,9 +45,7 @@ class Data {
         admobAppId: json["admob_app_id"]?.toString() ?? "",
         admob: Admob.fromJson(json["admob"]),
         adx: Admob.fromJson(json["adx"]),
-        redeemRewards: json["Redeem Rewards"] != null
-            ? List<RedeemReward>.from(
-                json["Redeem Rewards"].map((e) => RedeemReward.fromJson(e)),
+        redeemRewards: json["Redeem Rewards"] != null ? List<RedeemReward>.from(json["Redeem Rewards"].map((e) => RedeemReward.fromJson(e)),
               )
             : [],
         scratchCoins: json["scratch_coins"] != null

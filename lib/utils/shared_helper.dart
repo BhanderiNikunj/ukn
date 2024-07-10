@@ -5,7 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedHelper {
   static const String LOGIN_KEY = "LOGIN_KEY";
   static const String LOGIN_ID_KEY = "LOGIN_ID_KEY";
-   static const String Scratch_ID_KEY = "Scratch_ID_KEY";
+  static const String Scratch_ID_KEY = "Scratch_ID_KEY";
+  static const String USER_ID_KEY = "USER_ID_KEY";
   static SharedPreferences? sharedPreferences;
 
   static Future<void> setLoginValue({required bool isLogin}) async {
@@ -14,24 +15,6 @@ class SharedHelper {
     } else {
       sharedPreferences = await SharedPreferences.getInstance();
       await sharedPreferences!.setBool(LOGIN_KEY, isLogin);
-    }
-  }
-
-  static Future<void> setLoginData({required int loginId}) async {
-    if (sharedPreferences != null) {
-      await sharedPreferences!.setInt(LOGIN_ID_KEY, loginId);
-    } else {
-      sharedPreferences = await SharedPreferences.getInstance();
-      await sharedPreferences!.setInt(LOGIN_ID_KEY, loginId);
-    }
-  }
-
-   static Future<void> setScratchValue({required int isScratch}) async {
-    if (sharedPreferences != null) {
-      await sharedPreferences!.setInt(Scratch_ID_KEY, isScratch);
-    } else {
-      sharedPreferences = await SharedPreferences.getInstance();
-      await sharedPreferences!.setInt(Scratch_ID_KEY, isScratch);
     }
   }
 
@@ -46,18 +29,36 @@ class SharedHelper {
     return isLogin;
   }
 
+  static Future<void> setLoginData({required int loginId}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setInt(LOGIN_ID_KEY, loginId);
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      await sharedPreferences!.setInt(LOGIN_ID_KEY, loginId);
+    }
+  }
+
   static Future<int> getLoginData() async {
     int loginId = 0;
     if (sharedPreferences != null) {
-      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? 0;
+      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? -1;
     } else {
       sharedPreferences = await SharedPreferences.getInstance();
-      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? 0;
+      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? -1;
     }
     return loginId;
   }
 
-   static Future<int> getScratchValue() async {
+  static Future<void> setScratchValue({required int isScratch}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setInt(Scratch_ID_KEY, isScratch);
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      await sharedPreferences!.setInt(Scratch_ID_KEY, isScratch);
+    }
+  }
+
+  static Future<int> getScratchValue() async {
     int isScratch = 1;
     if (sharedPreferences != null) {
       isScratch = sharedPreferences!.getInt(Scratch_ID_KEY) ?? 1;
@@ -66,5 +67,24 @@ class SharedHelper {
       isScratch = sharedPreferences!.getInt(Scratch_ID_KEY) ?? 1;
     }
     return isScratch;
+  }
+
+  static Future<void> setUserIdata({required int userId}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setInt(USER_ID_KEY, userId);
+    } else {
+      await sharedPreferences!.setInt(USER_ID_KEY, userId);
+    }
+  }
+
+  static Future<int> getUserIdata() async {
+    int userID = 0;
+    if (sharedPreferences != null) {
+      userID = sharedPreferences!.getInt(USER_ID_KEY) ?? -1;
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      userID = sharedPreferences!.getInt(USER_ID_KEY) ?? -1;
+    }
+    return userID;
   }
 }

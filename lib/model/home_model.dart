@@ -17,9 +17,9 @@ class HomeModel {
 }
 
 class Datum {
-  final List<Slider> slider;
+  final List<SliderData> slider;
   final List<Category> category;
-  final List<CategoryDatum> categoryData;
+  final List<CategoryData> categoryData;
 
   Datum({
     required this.slider,
@@ -28,12 +28,18 @@ class Datum {
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        slider:
-            List<Slider>.from(json["slider"].map((x) => Slider.fromJson(x))),
-        category: List<Category>.from(
-            json["category"].map((x) => Category.fromJson(x))),
-        categoryData: List<CategoryDatum>.from(
-            json["category_data"].map((x) => CategoryDatum.fromJson(x))),
+        slider: json["slider"] != null
+            ? List<SliderData>.from(
+                json["slider"].map((x) => SliderData.fromJson(x)))
+            : [],
+        category: json["category"] != null
+            ? List<Category>.from(
+                json["category"].map((x) => Category.fromJson(x)))
+            : [],
+        categoryData: json["category"] != null
+            ? List<CategoryData>.from(
+                json["category_data"].map((x) => CategoryData.fromJson(x)))
+            : [],
       );
 }
 
@@ -55,14 +61,14 @@ class Category {
       );
 }
 
-class CategoryDatum {
+class CategoryData {
   final int id;
   final String name;
   final String imageUrl;
   final String videoUrl;
   final int categoryId;
 
-  CategoryDatum({
+  CategoryData({
     required this.id,
     required this.name,
     required this.imageUrl,
@@ -70,7 +76,7 @@ class CategoryDatum {
     required this.categoryId,
   });
 
-  factory CategoryDatum.fromJson(Map<String, dynamic> json) => CategoryDatum(
+  factory CategoryData.fromJson(Map<String, dynamic> json) => CategoryData(
         id: int.tryParse(json["id"]?.toString() ?? "") ?? 0,
         name: json["name"]?.toString() ?? "",
         imageUrl: json["image_url"]?.toString() ?? "",
@@ -87,18 +93,18 @@ class CategoryDatum {
       };
 }
 
-class Slider {
+class SliderData {
   final String id;
   final String name;
   final String imageUrl;
 
-  Slider({
+  SliderData({
     required this.id,
     required this.name,
     required this.imageUrl,
   });
 
-  factory Slider.fromJson(Map<String, dynamic> json) => Slider(
+  factory SliderData.fromJson(Map<String, dynamic> json) => SliderData(
         id: json["id"]?.toString() ?? "",
         name: json["name"]?.toString() ?? "",
         imageUrl: json["image_url"]?.toString() ?? "",

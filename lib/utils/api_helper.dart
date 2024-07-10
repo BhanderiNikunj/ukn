@@ -3,14 +3,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:unk/common/global.dart';
-import 'package:unk/model/common_model.dart';
-import 'package:unk/model/general_setting_model.dart';
-import 'package:unk/model/home_model.dart';
-import 'package:unk/model/login_model.dart';
-import 'package:unk/model/user_data_model.dart';
-import 'package:unk/utils/api_constant.dart';
 import 'package:http/http.dart';
+import 'package:unk/exports.dart';
 
 class ApiHelper {
   static Future<dynamic> commonApiCall({
@@ -99,7 +93,7 @@ class ApiHelper {
     return LoginModel.fromJson(json);
   }
 
-  static Future<CommonModel> addUserData({required UserData userData}) async {
+  static Future<UserModel> addUserData({required UserData userData}) async {
     var json = await commonApiCall(
       apiPath: 'user_data/add_user_data.php',
       apiType: ApiType.POST,
@@ -111,13 +105,37 @@ class ApiHelper {
         "date_of_birth": userData.lastName,
         "gender": userData.lastName,
         "contect_number": userData.lastName,
-        "user_point": userData.userPoint,
+        "user_point": userData.userPoint.toString(),
         "profile_photo": userData.profilePhoto,
         "user_device_token": userData.userDeviceToken,
         "email_id": userData.emailId,
       },
     );
-    return CommonModel.fromJson(json);
+    return UserModel.fromJson(json);
+  }
+
+  static Future<void> readUserData({required int id}) async {
+    var json = await commonApiCall(
+      apiPath: 'user_data/read_single_user_data.php',
+      apiType: ApiType.POST,
+      body: {"user_id": id.toString()},
+    );
+    UserModel userModel = UserModel.fromJson(json);
+    if (userModel.status) {
+      userData = userModel.data;
+    }
+  }
+
+  static Future<void> readUserDataWithLoginId({required int id}) async {
+    var json = await commonApiCall(
+      apiPath: 'user_data/read_user_data_using_login_id.php',
+      apiType: ApiType.POST,
+      body: {"login_id": id.toString()},
+    );
+    UserModel userModel = UserModel.fromJson(json);
+    if (userModel.status) {
+      userData = userModel.data;
+    }
   }
 
   static Future<HomeModel> getHomeData() async {
@@ -128,15 +146,34 @@ class ApiHelper {
     return HomeModel.fromJson(json);
   }
 
-  static Future<CommonModel> updateScratchPoint(userId,coin) async {
+  static Future<CommonModel> updateScratchPoint(userId, coin) async {
     var json = await commonApiCall(
       apiPath: 'user_data/update_user_point.php',
       apiType: ApiType.POST,
       body: {
-        "user_id":userId,
+        "user_id": userId,
         "coin": coin,
       },
     );
+    return CommonModel.fromJson(json);
+  }
+
+  static Future<CommonModel> addRewardHistory({
+    required String price,
+    required String coin,
+  }) async {
+    var json = await commonApiCall(
+      apiPath: 'reward_history/add_reward_history.php',
+      apiType: ApiType.POST,
+      body: {
+        "name": (userData?.firstName ?? "") + (userData?.lastName ?? ""),
+        "approve": "false",
+        "coin": coin,
+        "price": price,
+        "login_id": (await SharedHelper.getLoginData()).toString(),
+      },
+    );
+    print("===============$json");
     return CommonModel.fromJson(json);
   }
 }

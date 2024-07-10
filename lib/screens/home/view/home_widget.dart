@@ -1,15 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/common/route_list.dart';
-import 'package:unk/screens/home/controller/home_controller.dart';
-import 'package:unk/screens/home/view/home_screen.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 abstract class HomeWidget extends State<HomeScreen> {
   late HomeController controller;
@@ -156,11 +145,10 @@ abstract class HomeWidget extends State<HomeScreen> {
               if (kDebugMode) {
                 print("kunalsahu${controller.offerListData.length}");
               }
-              if(controller.offerListData.length == 3)
-              {
+              if (controller.offerListData.length == 3) {
                 CommonRoute.pushNamed(
-                    page: RouteList.scratche_card_screen,
-                  );
+                  page: RouteList.scratche_card_screen,
+                );
               }
             },
             child: CommonWidget.imageBuilder(

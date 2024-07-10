@@ -1,12 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_widget.dart';
-import 'package:unk/screens/reward_history/controller/reward_history_controller.dart';
-import 'package:unk/widgets/images.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class RewardHistoryScreen extends StatefulWidget {
   const RewardHistoryScreen({super.key});
@@ -26,6 +18,7 @@ class _RewardHistoryScreenState extends State<RewardHistoryScreen> {
 
   @override
   void dispose() {
+    controller.disposeData();
     controller.dispose();
     super.dispose();
   }

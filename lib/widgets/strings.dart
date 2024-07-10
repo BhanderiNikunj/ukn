@@ -42,14 +42,25 @@ class Strings {
   static String reward_history = "Reward History";
   static String skip = "Skip";
   static String intro_title_1 = "Scratch Cards and Win Real Cash Daily";
-  static String intro_title_desc_1 = "You can start from scratch card and complete\nactivities to make money quickly. Earn money on\na daily basic.";
-  static String intro_title_2 = "Get Daily Real money Prizes by spinning\nThe Wheel";
-  static String intro_title_desc_2 = "You can spin and earn daily. You can earn\nmoney daily easily. Start earning today.";
+  static String intro_title_desc_1 =
+      "You can start from scratch card and complete\nactivities to make money quickly. Earn money on\na daily basic.";
+  static String intro_title_2 =
+      "Get Daily Real money Prizes by spinning\nThe Wheel";
+  static String intro_title_desc_2 =
+      "You can spin and earn daily. You can earn\nmoney daily easily. Start earning today.";
   static String next = "Next";
   static String chat_box = "Chat Box";
   static String type_a_message = "Type a message . . .";
   static String category = "Category";
   static String get_more_coins = "Get More coins";
+  static String hello = "Hello,\n";
+  static String my_rewards = "My Rewards";
+  static String redeem_rewards_via = "Redeem Rewards Via";
+  static String ad_not_load = "Ad Not Load";
+  static String coin = "Coin";
+  static String redeem = "Redeem";
+  static String redeem_data = "Redeem Data";
+  static String redeem_reward = "Redeem Reward";
 }
 
 void loadGujaratiLanguage() {

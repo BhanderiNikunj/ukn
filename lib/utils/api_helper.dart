@@ -150,10 +150,7 @@ class ApiHelper {
     var json = await commonApiCall(
       apiPath: 'user_data/update_user_point.php',
       apiType: ApiType.POST,
-      body: {
-        "user_id": userId,
-        "coin": coin,
-      },
+      body: {"user_id": userId, "coin": coin},
     );
     return CommonModel.fromJson(json);
   }
@@ -173,7 +170,6 @@ class ApiHelper {
         "login_id": (await SharedHelper.getLoginData()).toString(),
       },
     );
-    print("===============$json");
     return CommonModel.fromJson(json);
   }
 }

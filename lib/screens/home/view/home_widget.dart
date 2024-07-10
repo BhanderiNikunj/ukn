@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:unk/exports.dart';
 
 abstract class HomeWidget extends State<HomeScreen> {
@@ -147,7 +148,7 @@ abstract class HomeWidget extends State<HomeScreen> {
               }
               if (controller.offerListData.length == 3) {
                 CommonRoute.pushNamed(
-                  page: RouteList.scratche_card_screen,
+                  page: RouteList.scratch_card_screen,
                 );
               }
             },

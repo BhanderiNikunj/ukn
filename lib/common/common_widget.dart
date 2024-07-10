@@ -524,7 +524,7 @@ class CommonWidget {
               width: ScreenUtil().screenWidth,
               height: height ?? ScreenUtil().screenHeight * 0.88,
               decoration: BoxDecoration(
-                color: AppColor.white1Color,
+                color: color ?? AppColor.white1Color,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.r),
                   topRight: Radius.circular(30.r),

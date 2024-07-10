@@ -1,5 +1,5 @@
 import 'package:unk/exports.dart';
-import 'package:unk/screens/scratchecard/view/scratche_card.dart';
+import 'package:unk/screens/scratch_card/view/scratch_card_screen.dart';
 
 List<GetPage> getPages = [
   GetPage(
@@ -35,8 +35,8 @@ List<GetPage> getPages = [
     page: () => const ChatSupportScreen(),
   ),
   GetPage(
-    name: RouteList.scratche_card_screen,
-    page: () => const ScratcheCard(),
+    name: RouteList.scratch_card_screen,
+    page: () => const ScratchCardScreen(),
   ),
   GetPage(
     name: RouteList.profile_screen,

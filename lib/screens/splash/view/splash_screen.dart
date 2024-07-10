@@ -17,14 +17,14 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> loadAdAndNavigateScreen() async {
-    await AdsHelper.loadAppOpenAd(adType: AdType.admob);
+    // await AdsHelper.loadAppOpenAd(adType: AdType.admob);
     bool isLogin = await SharedHelper.getLoginValue();
     await Future.delayed(
       Duration(seconds: splashDuration),
       () {
         if (isLogin) {
           // CommonRoute.popAndPushNamed(page: RouteList.home_screen);
-          CommonRoute.popAndPushNamed(page: RouteList.redeem_screen);
+          CommonRoute.popAndPushNamed(page: RouteList.scratch_card_screen);
         } else {
           CommonRoute.popAndPushNamed(page: RouteList.login_screen);
         }

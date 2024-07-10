@@ -139,4 +139,12 @@ class ApiHelper {
     );
     return HomeModel.fromJson(json);
   }
+
+  static Future<UserDataModel> getAllUserData() async {
+    var json = await commonApiCall(
+      apiPath: 'user_data/read_all_user_data.php',
+      apiType: ApiType.GET,
+    );
+    return UserDataModel.fromJson(json);
+  }
 }

@@ -1,4 +1,6 @@
 import 'package:unk/exports.dart';
+import 'package:unk/screens/adminui/adminuserData/view/adminuserdata.dart';
+import 'package:unk/screens/adminui/view/adminhomescreen.dart';
 
 List<GetPage> getPages = [
   GetPage(
@@ -36,6 +38,14 @@ List<GetPage> getPages = [
   GetPage(
     name: RouteList.profile_screen,
     page: () => const ProfileScreen(),
+  ),
+    GetPage(
+    name: RouteList.admin_user_data_screen,
+    page: () => const AdminUserData(),
+  ),
+  GetPage(
+    name: RouteList.admin_home_scrren_screen,
+    page: () => const AdminHomeScrren(),
   ),
 ];
 

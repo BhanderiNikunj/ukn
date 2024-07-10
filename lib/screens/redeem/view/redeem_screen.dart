@@ -90,6 +90,7 @@ class _RedeemScreenState extends State<RedeemScreen> {
               page: RouteList.redeem_data_screen,
               arguments: index,
             );
+            controller.update();
           },
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),

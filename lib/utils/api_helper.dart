@@ -145,4 +145,23 @@ class ApiHelper {
     );
     return HomeModel.fromJson(json);
   }
+
+  static Future<CommonModel> addRewardHistory({
+    required String price,
+    required String coin,
+  }) async {
+    var json = await commonApiCall(
+      apiPath: 'reward_history/add_reward_history.php',
+      apiType: ApiType.POST,
+      body: {
+        "name": (userData?.firstName ?? "") + (userData?.lastName ?? ""),
+        "approve": "false",
+        "coin": coin,
+        "price": price,
+        "login_id": (await SharedHelper.getLoginData()).toString(),
+      },
+    );
+    print("===============$json");
+    return CommonModel.fromJson(json);
+  }
 }

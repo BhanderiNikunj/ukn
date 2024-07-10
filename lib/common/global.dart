@@ -1,6 +1,7 @@
 import 'package:unk/exports.dart';
-import 'package:unk/screens/adminui/adminuserData/view/adminuserdata.dart';
-import 'package:unk/screens/adminui/view/adminhomescreen.dart';
+import 'package:unk/screens/adminui/view/admin_home_screen.dart';
+
+import '../screens/adminui/adminuserData/view/admin_user_data.dart';
 
 List<GetPage> getPages = [
   GetPage(

@@ -21,6 +21,8 @@ export 'package:unk/screens/signup/view/signup_screen.dart';
 export 'package:unk/screens/splash/view/splash_screen.dart';
 export 'package:unk/screens/home/view/home_screen.dart';
 export 'package:unk/screens/home/view/home_widget.dart';
+export 'package:unk/screens/redeem_data/view/redeem_data_screen.dart';
+export 'package:unk/screens/redeem/view/redeem_screen.dart';
 
 // packages
 export 'package:get/get.dart';
@@ -34,6 +36,8 @@ export 'package:firebase_messaging/firebase_messaging.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:permission_handler/permission_handler.dart';
 export 'package:unk/firebase_options.dart';
+export 'package:flutter_svg/svg.dart';
+export 'package:cached_network_image/cached_network_image.dart';
 
 // models
 export 'package:unk/model/general_setting_model.dart';
@@ -55,6 +59,7 @@ export 'screens/signup/controller/signup_controller.dart';
 export 'screens/splash/controller/splash_controller.dart';
 export 'screens/reward_history/controller/reward_history_controller.dart';
 export 'package:unk/screens/redeem/controller/redeem_controller.dart';
+export 'package:unk/screens/redeem_data/controller/redeem_data_controller.dart';
 
 // utils
 export 'utils/ads_helper.dart';

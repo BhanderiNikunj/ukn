@@ -40,10 +40,10 @@ class SharedHelper {
   static Future<int> getLoginData() async {
     int loginId = 0;
     if (sharedPreferences != null) {
-      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? 0;
+      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? -1;
     } else {
       sharedPreferences = await SharedPreferences.getInstance();
-      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? 0;
+      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? -1;
     }
     return loginId;
   }

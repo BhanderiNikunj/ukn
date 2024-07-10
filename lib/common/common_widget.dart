@@ -1,13 +1,6 @@
 import 'dart:io';
 
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/widgets/images.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class CommonWidget {
   static Widget textFormField({
@@ -495,6 +488,7 @@ class CommonWidget {
     Widget? child,
     Widget? titleWidget,
     double? height,
+    Widget? bottomNavigationBar,
   }) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -537,6 +531,10 @@ class CommonWidget {
               ),
               child: child,
             ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: bottomNavigationBar ?? CommonWidget.sizedBox(),
           ),
         ],
       ),

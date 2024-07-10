@@ -37,6 +37,14 @@ List<GetPage> getPages = [
     name: RouteList.profile_screen,
     page: () => const ProfileScreen(),
   ),
+  GetPage(
+    name: RouteList.redeem_screen,
+    page: () => const RedeemScreen(),
+  ),
+  GetPage(
+    name: RouteList.redeem_data_screen,
+    page: () => const RedeemDataScreen(),
+  ),
 ];
 
 GeneralSettingModel? generalSettingModel;

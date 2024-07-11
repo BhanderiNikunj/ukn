@@ -1,4 +1,5 @@
 import 'package:unk/exports.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 abstract class HomeWidget extends State<HomeScreen> {
   late HomeController controller;
@@ -61,31 +62,41 @@ abstract class HomeWidget extends State<HomeScreen> {
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         var data = controller.categoryData[index];
-        return Container(
-          decoration: BoxDecoration(
-            color: AppColor.secondery6Color,
-            borderRadius: BorderRadius.circular(10.r),
-          ),
-          margin: EdgeInsets.only(bottom: 10.h, right: 10.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CommonWidget.imageBuilder(
-                imagePath: data.imageUrl,
-                borderRadius: 10.r,
-                height: 100.h,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 10.w,
-                  vertical: 5.h,
+        return InkWell(
+          onTap: () async {
+              var url = "${data.videoUrl}";
+            if (await canLaunch(url)) {
+            await launch(url);
+            } else {
+            throw 'Could not launch ${url}';
+            }
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColor.secondery6Color,
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            margin: EdgeInsets.only(bottom: 10.h, right: 10.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CommonWidget.imageBuilder(
+                  imagePath: data.imageUrl,
+                  borderRadius: 10.r,
+                  height: 100.h,
                 ),
-                child: CommonWidget.commonText(
-                  text: data.name,
-                  maxLines: 2,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 5.h,
+                  ),
+                  child: CommonWidget.commonText(
+                    text: data.name,
+                    maxLines: 2,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

@@ -146,7 +146,10 @@ class ApiHelper {
     return HomeModel.fromJson(json);
   }
 
-  static Future<CommonModel> updateScratchPoint(userId, coin) async {
+  static Future<CommonModel> updateScratchPoint({
+    required String userId,
+    required String coin,
+  }) async {
     var json = await commonApiCall(
       apiPath: 'user_data/update_user_point.php',
       apiType: ApiType.POST,

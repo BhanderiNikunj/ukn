@@ -20,4 +20,7 @@ class Images {
   static const String intro_2_svg = "assets/images/intro/spine_while.svg";
   static const String intro_1_svg = "assets/images/intro/scratch_card.svg";
   static const String next_arrow_svg = "assets/images/common/next_arrow.svg";
+
+  // Lottie
+  static const String clim_reward_json = "assets/json/clim_reward.json";
 }

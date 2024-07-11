@@ -7,6 +7,8 @@ class SharedHelper {
   static const String LOGIN_ID_KEY = "LOGIN_ID_KEY";
   static const String Scratch_ID_KEY = "Scratch_ID_KEY";
   static const String USER_ID_KEY = "USER_ID_KEY";
+  static const String SCRATCH_CARD_KEY = "SCRATCH_CARD_KEY";
+
   static SharedPreferences? sharedPreferences;
 
   static Future<void> setLoginValue({required bool isLogin}) async {
@@ -84,6 +86,25 @@ class SharedHelper {
     } else {
       sharedPreferences = await SharedPreferences.getInstance();
       userID = sharedPreferences!.getInt(USER_ID_KEY) ?? -1;
+    }
+    return userID;
+  }
+
+  static Future<void> setYourScratchList({required bool isScratch}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setBool(SCRATCH_CARD_KEY, isScratch);
+    } else {
+      await sharedPreferences!.setBool(USER_ID_KEY, isScratch);
+    }
+  }
+
+  static Future<bool> getYourScratchList() async {
+    bool userID = false;
+    if (sharedPreferences != null) {
+      userID = sharedPreferences!.getBool(SCRATCH_CARD_KEY) ?? false;
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      userID = sharedPreferences!.getBool(SCRATCH_CARD_KEY) ?? false;
     }
     return userID;
   }

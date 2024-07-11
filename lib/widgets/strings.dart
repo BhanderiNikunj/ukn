@@ -62,6 +62,7 @@ class Strings {
   static String redeem_data = "Redeem Data";
   static String redeem_reward = "Redeem Reward";
   static String scratch_and_win = "Scratch And Win";
+  static String clim = "Clim";
 }
 
 void loadGujaratiLanguage() {

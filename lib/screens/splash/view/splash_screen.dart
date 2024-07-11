@@ -23,8 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Duration(seconds: splashDuration),
       () {
         if (isLogin) {
-          // CommonRoute.popAndPushNamed(page: RouteList.home_screen);
-          CommonRoute.popAndPushNamed(page: RouteList.scratch_card_screen);
+          CommonRoute.popAndPushNamed(page: RouteList.home_screen);
         } else {
           CommonRoute.popAndPushNamed(page: RouteList.login_screen);
         }

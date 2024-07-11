@@ -32,6 +32,7 @@ dependencies:
   firebase_storage: ^12.1.0
   carousel_slider: ^4.2.1
   url_launcher: ^6.0.20
+  lottie: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +49,7 @@ flutter:
     - assets/images/intro/
     - assets/images/chat/
     - assets/images/home/
+    - assets/json/
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

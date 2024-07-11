@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:unk/exports.dart';
 
 abstract class HomeWidget extends State<HomeScreen> {
@@ -140,8 +141,20 @@ abstract class HomeWidget extends State<HomeScreen> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.only(right: 10.w),
-          child: CommonWidget.imageBuilder(
-            imagePath: controller.offerListData[index],
+          child: InkWell(
+            onTap: () {
+              if (kDebugMode) {
+                print("kunalsahu${controller.offerListData.length}");
+              }
+              if (controller.offerListData.length == 3) {
+                CommonRoute.pushNamed(
+                  page: RouteList.scratch_card_screen,
+                );
+              }
+            },
+            child: CommonWidget.imageBuilder(
+              imagePath: controller.offerListData[index],
+            ),
           ),
         ),
       ),

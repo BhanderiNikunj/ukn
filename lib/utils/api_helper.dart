@@ -146,6 +146,18 @@ class ApiHelper {
     return HomeModel.fromJson(json);
   }
 
+  static Future<CommonModel> updateScratchPoint({
+    required String userId,
+    required String coin,
+  }) async {
+    var json = await commonApiCall(
+      apiPath: 'user_data/update_user_point.php',
+      apiType: ApiType.POST,
+      body: {"user_id": userId, "coin": coin},
+    );
+    return CommonModel.fromJson(json);
+  }
+
   static Future<CommonModel> addRewardHistory({
     required String price,
     required String coin,
@@ -161,7 +173,6 @@ class ApiHelper {
         "login_id": (await SharedHelper.getLoginData()).toString(),
       },
     );
-    print("===============$json");
     return CommonModel.fromJson(json);
   }
 }

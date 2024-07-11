@@ -25,6 +25,7 @@ class Data {
   final Admob admob;
   final Admob adx;
   final List<RedeemReward> redeemRewards;
+  final List<String> scratchCoins;
 
   Data({
     required this.splashImage,
@@ -34,6 +35,7 @@ class Data {
     required this.admob,
     required this.adx,
     required this.redeemRewards,
+    required this.scratchCoins,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
@@ -45,6 +47,9 @@ class Data {
         adx: Admob.fromJson(json["adx"]),
         redeemRewards: json["Redeem Rewards"] != null ? List<RedeemReward>.from(json["Redeem Rewards"].map((e) => RedeemReward.fromJson(e)),
               )
+            : [],
+        scratchCoins: json["scratch_coins"] != null
+            ? List<String>.from(json["scratch_coins"].map((x) => x))
             : [],
       );
 }

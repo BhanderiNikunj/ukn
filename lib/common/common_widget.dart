@@ -128,6 +128,7 @@ class CommonWidget {
       maxLines: maxLines ?? 1,
       style: style ??
           TextStyle(
+            fontFamily: "Inter",
             color: color ?? AppColor.default1Color,
             fontWeight: fontWeight ?? FontWeight.w500,
             fontSize: fontSize?.sp ?? 16.sp,

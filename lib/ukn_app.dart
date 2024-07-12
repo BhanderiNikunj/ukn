@@ -20,6 +20,12 @@ class _UknAppState extends State<UknApp> {
     if (userId != -1) {
       ApiHelper.readUserDataWithLoginId(id: userId);
     }
+    String dates = await SharedHelper.getTodayDate();
+    if (dates.isNotEmpty) {
+      if (dates.split('/').first != DateTime.now().day.toString()) {
+        await SharedHelper.setYourScratchList(isScratch: false);
+      }
+    }
   }
 
   @override

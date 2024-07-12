@@ -8,6 +8,7 @@ class SharedHelper {
   static const String Scratch_ID_KEY = "Scratch_ID_KEY";
   static const String USER_ID_KEY = "USER_ID_KEY";
   static const String SCRATCH_CARD_KEY = "SCRATCH_CARD_KEY";
+  static const String DATE_KEY = "DATE_KEY";
 
   static SharedPreferences? sharedPreferences;
 
@@ -94,7 +95,7 @@ class SharedHelper {
     if (sharedPreferences != null) {
       await sharedPreferences!.setBool(SCRATCH_CARD_KEY, isScratch);
     } else {
-      await sharedPreferences!.setBool(USER_ID_KEY, isScratch);
+      await sharedPreferences!.setBool(SCRATCH_CARD_KEY, isScratch);
     }
   }
 
@@ -107,5 +108,24 @@ class SharedHelper {
       userID = sharedPreferences!.getBool(SCRATCH_CARD_KEY) ?? false;
     }
     return userID;
+  }
+
+  static Future<void> setTodayDate({required String date}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setString(DATE_KEY, date);
+    } else {
+      await sharedPreferences!.setString(DATE_KEY, date);
+    }
+  }
+
+  static Future<String> getTodayDate() async {
+    String dates = "";
+    if (sharedPreferences != null) {
+      dates = sharedPreferences!.getString(DATE_KEY) ?? "";
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      dates = sharedPreferences!.getString(DATE_KEY) ?? "";
+    }
+    return dates;
   }
 }

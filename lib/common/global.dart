@@ -1,5 +1,7 @@
+import 'dart:io';
+
+import 'package:http/http.dart';
 import 'package:unk/exports.dart';
-import 'package:unk/screens/scratch_card/view/scratch_card_screen.dart';
 
 List<GetPage> getPages = [
   GetPage(
@@ -54,3 +56,23 @@ List<GetPage> getPages = [
 
 GeneralSettingModel? generalSettingModel;
 UserData? userData;
+File? imageFile;
+
+Future<void> downloadImage() async {
+  var tempDir = await getTemporaryDirectory();
+  File file = File("${tempDir.path}/image.jpg");
+  if (await file.exists()) {
+    imageFile = file;
+    return;
+  }
+  if (generalSettingModel != null) {
+    try {
+      Uri uri = Uri.parse(generalSettingModel!.data.splashImage);
+      var response = await get(uri);
+      imageFile = file;
+      imageFile?.writeAsBytes(response.bodyBytes);
+    } catch (error) {
+      debugPrint("==================$error");
+    }
+  }
+}

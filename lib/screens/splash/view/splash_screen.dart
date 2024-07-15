@@ -31,15 +31,18 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.primary1Color,
       body: Center(
-        child: CommonWidget.imageBuilder(
-          imagePath:
-              generalSettingModel?.data.splashImage ?? Images.splash_iamge,
-        ),
+        child: imageFile != null
+            ? CommonWidget.imageBuilder(imagePath: imageFile!.path)
+            : CommonWidget.imageBuilder(
+                imagePath: generalSettingModel?.data.splashImage ??
+                    Images.splash_iamge,
+              ),
       ),
     );
   }

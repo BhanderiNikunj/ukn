@@ -63,6 +63,7 @@ class ApiHelper {
     }
     GeneralSettingModel model = GeneralSettingModel.fromJson(json);
     generalSettingModel = model;
+    await downloadImage();
   }
 
   static Future<LoginModel> userLoginData({

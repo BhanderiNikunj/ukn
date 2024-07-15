@@ -65,11 +65,11 @@ abstract class HomeWidget extends State<HomeScreen> {
         var data = controller.categoryData[index];
         return InkWell(
           onTap: () async {
-              var url = "${data.videoUrl}";
-            if (await canLaunch(url)) {
-            await launch(url);
-            } else {
-            throw 'Could not launch ${url}';
+            Uri url = Uri.parse(data.videoUrl);
+            try {
+              await launchUrl(url);
+            } catch (error) {
+              debugPrint("=================$error");
             }
           },
           child: Container(

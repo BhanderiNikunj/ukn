@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:http/http.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:unk/exports.dart';
-import 'package:unk/screens/scratch_card/view/scratch_card_screen.dart';
 
 List<GetPage> getPages = [
   GetPage(
@@ -74,7 +72,7 @@ Future<void> downloadImage() async {
       imageFile = file;
       imageFile?.writeAsBytes(response.bodyBytes);
     } catch (error) {
-      print("==================$error");
+      debugPrint("==================$error");
     }
   }
 }

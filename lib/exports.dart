@@ -23,6 +23,7 @@ export 'package:unk/screens/home/view/home_screen.dart';
 export 'package:unk/screens/home/view/home_widget.dart';
 export 'package:unk/screens/redeem_data/view/redeem_data_screen.dart';
 export 'package:unk/screens/redeem/view/redeem_screen.dart';
+export 'package:unk/screens/scratch_card/view/scratch_card_screen.dart';
 
 // packages
 export 'package:get/get.dart';
@@ -38,6 +39,7 @@ export 'package:permission_handler/permission_handler.dart';
 export 'package:unk/firebase_options.dart';
 export 'package:flutter_svg/svg.dart';
 export 'package:cached_network_image/cached_network_image.dart';
+export 'package:path_provider/path_provider.dart';
 
 // models
 export 'package:unk/model/general_setting_model.dart';

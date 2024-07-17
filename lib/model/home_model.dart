@@ -18,12 +18,14 @@ class HomeModel {
 
 class Datum {
   final List<SliderData> slider;
+  final List<ExtraOption> extraOption;
   final List<Category> category;
   final List<CategoryData> categoryData;
 
   Datum({
     required this.slider,
     required this.category,
+    required this.extraOption,
     required this.categoryData,
   });
 
@@ -36,10 +38,29 @@ class Datum {
             ? List<Category>.from(
                 json["category"].map((x) => Category.fromJson(x)))
             : [],
+        extraOption: json["extra_option"] != null
+            ? List<ExtraOption>.from(
+                json["extra_option"].map((x) => ExtraOption.fromJson(x)))
+            : [],
         categoryData: json["category"] != null
             ? List<CategoryData>.from(
                 json["category_data"].map((x) => CategoryData.fromJson(x)))
             : [],
+      );
+}
+
+class ExtraOption {
+  final String image;
+  final String routeName;
+
+  ExtraOption({
+    required this.image,
+    required this.routeName,
+  });
+
+  factory ExtraOption.fromJson(Map<String, dynamic> json) => ExtraOption(
+        image: json["image"]?.toString() ?? "",
+        routeName: json["route_name"]?.toString() ?? "",
       );
 }
 

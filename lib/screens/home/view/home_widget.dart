@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:unk/exports.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,7 +28,7 @@ abstract class HomeWidget extends State<HomeScreen> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CommonWidget.sizedBox(height: 15),
+                CommonWidzgget.sizedBox(height: 15),
                 sliderView(),
                 CommonWidget.sizedBox(height: 20),
                 offerView(),
@@ -52,6 +51,12 @@ abstract class HomeWidget extends State<HomeScreen> {
   }
 
   Widget categoryDataList() {
+    if (controller.categoryData.isEmpty) {
+      return Padding(
+        padding: EdgeInsets.symmetric(vertical: 50.h),
+        child: CommonWidget.noDataFound(),
+      );
+    }
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -120,12 +125,7 @@ abstract class HomeWidget extends State<HomeScreen> {
                 color: controller.selectedCategory == index
                     ? AppColor.primary1Color
                     : AppColor.white1Color,
-                border: controller.selectedCategory == index
-                    ? null
-                    : Border.all(
-                        color: AppColor.primary1Color,
-                        width: 1.5.w,
-                      ),
+                border: Border.all(color: AppColor.primary1Color, width: 1.5.w),
                 borderRadius: BorderRadius.circular(50.r),
               ),
               margin: EdgeInsets.only(right: 10.w),
@@ -144,27 +144,25 @@ abstract class HomeWidget extends State<HomeScreen> {
   }
 
   Widget offerView() {
+    var list = controller.homeModel?.data.extraOption;
     return CommonWidget.sizedBox(
       height: 80,
       child: ListView.builder(
-        itemCount: controller.offerListData.length,
+        itemCount: list?.length ?? 0,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.only(right: 10.w),
           child: InkWell(
             onTap: () {
-              if (kDebugMode) {
-                print("kunalsahu${controller.offerListData.length}");
-              }
-              if (controller.offerListData.length == 3) {
+              if (list?[index].routeName.isNotEmpty ?? false) {
                 CommonRoute.pushNamed(
-                  page: RouteList.scratch_card_screen,
+                  page: list?[index].routeName ?? "",
                 );
               }
             },
             child: CommonWidget.imageBuilder(
-              imagePath: controller.offerListData[index],
+              imagePath: list?[index].image ?? "",
             ),
           ),
         ),

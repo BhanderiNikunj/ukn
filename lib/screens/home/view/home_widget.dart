@@ -28,7 +28,7 @@ abstract class HomeWidget extends State<HomeScreen> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CommonWidzgget.sizedBox(height: 15),
+                CommonWidget.sizedBox(height: 15),
                 sliderView(),
                 CommonWidget.sizedBox(height: 20),
                 offerView(),

@@ -8,7 +8,20 @@ abstract class HomeWidget extends State<HomeScreen> {
   void initState() {
     controller = Get.put(HomeController());
     controller.gethomeData();
+    getUserData();
     super.initState();
+  }
+
+  Future<void> getUserData() async {
+    if (userData == null) {
+      int userId = await SharedHelper.getLoginData();
+      if (userId != -1) {
+        await ApiHelper.readUserDataWithLoginId(id: userId);
+      }
+    }
+    if (userData == null) {
+      await getUserData();
+    }
   }
 
   @override

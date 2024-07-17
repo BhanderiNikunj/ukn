@@ -2,9 +2,6 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 import 'package:unk/exports.dart';
-import 'package:unk/screens/admin_home/view/admin_home_screen.dart';
-
-import '../screens/adminui/adminuserData/view/admin_user_data.dart';
 
 List<GetPage> getPages = [
   GetPage(
@@ -62,6 +59,10 @@ List<GetPage> getPages = [
   GetPage(
     name: RouteList.redeem_data_screen,
     page: () => const RedeemDataScreen(),
+  ),
+  GetPage(
+    name: RouteList.terms_and_condition_screen,
+    page: () => const TermsAndConditionScreen(),
   ),
 ];
 

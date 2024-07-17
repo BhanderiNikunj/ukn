@@ -15,4 +15,5 @@ class RouteList {
   static const String scratch_card_screen = "/scratch_card_screen";
   static const String redeem_screen = "/redeem_screen";
   static const String redeem_data_screen = "/redeem_data_screen";
+  static const String terms_and_condition_screen = "/terms_and_condition_screen";
 }

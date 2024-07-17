@@ -63,6 +63,7 @@ class Strings {
   static String redeem_reward = "Redeem Reward";
   static String scratch_and_win = "Scratch And Win";
   static String clim = "Clim";
+  static String terms_and_condition = "Terms & Conditions";
 }
 
 void loadGujaratiLanguage() {

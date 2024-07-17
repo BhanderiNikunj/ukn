@@ -184,4 +184,12 @@ class ApiHelper {
     );
     return CommonModel.fromJson(json);
   }
+
+  static Future<TermsAndConditionModel> readTermsAndConditon() async {
+    var json = await commonApiCall(
+      apiPath: 'terms_and_condition.php',
+      apiType: ApiType.GET,
+    );
+    return TermsAndConditionModel.fromJson(json);
+  }
 }

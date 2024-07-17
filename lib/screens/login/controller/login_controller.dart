@@ -37,13 +37,18 @@ class LoginController extends GetxController {
     if (data.status) {
       await SharedHelper.setLoginValue(isLogin: true);
       await SharedHelper.setLoginData(loginId: data.data.id);
-      await ApiHelper.readUserData(id: data.data.id);
-      CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+      await SharedHelper.setAdminLogin(isAdmin: data.data.isAdmin);
       CommonWidget.commonSnackBar(
         context: context,
         message: data.message,
         type: SnackBarType.successData,
       );
+      if (data.data.isAdmin) {
+        CommonRoute.popAndPushNamed(page: RouteList.admin_home_screen);
+      } else {
+        await ApiHelper.readUserData(id: data.data.id);
+        CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+      }
     } else {
       CommonWidget.commonSnackBar(
         context: context,

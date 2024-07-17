@@ -24,6 +24,9 @@ export 'package:unk/screens/home/view/home_widget.dart';
 export 'package:unk/screens/redeem_data/view/redeem_data_screen.dart';
 export 'package:unk/screens/redeem/view/redeem_screen.dart';
 export 'package:unk/screens/scratch_card/view/scratch_card_screen.dart';
+export 'package:unk/screens/terms_and_condition/view/terms_and_condition_screen.dart';
+export 'package:unk/screens/admin_home/view/admin_home_screen.dart';
+export 'package:unk/screens/adminui/adminuserData/view/admin_user_data.dart';
 
 // packages
 export 'package:get/get.dart';
@@ -50,6 +53,7 @@ export 'package:unk/model/login_model.dart';
 export 'package:unk/model/intro_model.dart';
 export 'package:unk/model/common_model.dart';
 export 'package:unk/model/user_data_model.dart';
+export 'package:unk/model/terms_and_condition_model.dart';
 
 // controllers
 export 'screens/add_data/controller/add_user_data_controller.dart';
@@ -62,6 +66,7 @@ export 'screens/splash/controller/splash_controller.dart';
 export 'screens/reward_history/controller/reward_history_controller.dart';
 export 'package:unk/screens/redeem/controller/redeem_controller.dart';
 export 'package:unk/screens/redeem_data/controller/redeem_data_controller.dart';
+export 'package:unk/screens/terms_and_condition/controller/terms_and_condition_controller.dart';
 
 // utils
 export 'utils/ads_helper.dart';

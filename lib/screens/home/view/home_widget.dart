@@ -8,7 +8,20 @@ abstract class HomeWidget extends State<HomeScreen> {
   void initState() {
     controller = Get.put(HomeController());
     controller.gethomeData();
+    getUserData();
     super.initState();
+  }
+
+  Future<void> getUserData() async {
+    if (userData == null) {
+      int userId = await SharedHelper.getLoginData();
+      if (userId != -1) {
+        await ApiHelper.readUserDataWithLoginId(id: userId);
+      }
+    }
+    if (userData == null) {
+      await getUserData();
+    }
   }
 
   @override
@@ -28,7 +41,7 @@ abstract class HomeWidget extends State<HomeScreen> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CommonWidzgget.sizedBox(height: 15),
+                CommonWidget.sizedBox(height: 15),
                 sliderView(),
                 CommonWidget.sizedBox(height: 20),
                 offerView(),

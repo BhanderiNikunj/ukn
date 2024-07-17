@@ -103,9 +103,9 @@ class ApiHelper {
         "first_name": userData.firstName,
         "middle_name": userData.middleName,
         "last_name": userData.lastName,
-        "date_of_birth": userData.lastName,
-        "gender": userData.lastName,
-        "contect_number": userData.lastName,
+        "date_of_birth": userData.dateOfBirth,
+        "gender": userData.gender,
+        "contect_number": userData.contectNumber,
         "user_point": userData.userPoint.toString(),
         "profile_photo": userData.profilePhoto,
         "user_device_token": userData.userDeviceToken,
@@ -147,6 +147,14 @@ class ApiHelper {
     return HomeModel.fromJson(json);
   }
 
+  static Future<UserDataModel> getAllUserData() async {
+    var json = await commonApiCall(
+      apiPath: 'user_data/read_all_user_data.php',
+      apiType: ApiType.GET,
+    );
+    return UserDataModel.fromJson(json);
+  }
+
   static Future<CommonModel> updateScratchPoint({
     required String userId,
     required String coin,
@@ -175,5 +183,13 @@ class ApiHelper {
       },
     );
     return CommonModel.fromJson(json);
+  }
+
+  static Future<TermsAndConditionModel> readTermsAndConditon() async {
+    var json = await commonApiCall(
+      apiPath: 'terms_and_condition.php',
+      apiType: ApiType.GET,
+    );
+    return TermsAndConditionModel.fromJson(json);
   }
 }

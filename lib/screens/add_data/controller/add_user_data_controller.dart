@@ -38,7 +38,7 @@ class AddUserDataController extends GetxController {
   }) async {
     if (formKey.currentState?.validate() ?? false) {
       String fcmToken = await FirebaseMessaging.instance.getToken() ?? "";
-      UserData userData = UserData(
+      UserData data = UserData(
         id: 0,
         loginId: loginData.id,
         firstName: firstNameController.text,
@@ -71,11 +71,12 @@ class AddUserDataController extends GetxController {
         return;
       }
 
-      UserModel model = await ApiHelper.addUserData(userData: userData);
+      UserModel model = await ApiHelper.addUserData(userData: data);
       if (model.status) {
         await SharedHelper.setLoginValue(isLogin: true);
-        await SharedHelper.setLoginData(loginId: userData.loginId);
+        await SharedHelper.setLoginData(loginId: data.loginId);
         await SharedHelper.setUserIdata(userId: model.data.id);
+        userData = model.data;
         CommonRoute.popAndPushNamed(page: RouteList.home_screen);
         CommonWidget.commonSnackBar(
           context: context,

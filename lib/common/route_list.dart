@@ -9,8 +9,11 @@ class RouteList {
   static const String reward_history_screen = "/reward_history_screen";
   static const String intro_screen = "/intro_screen";
   static const String chat_support_screen = "/chat_support_screen";
-  static const String scratch_card_screen = "/scratch_card_screen";
   static const String profile_screen = "/profile_screen";
+  static const String admin_user_data_screen = "/admin_user_data_screen";
+  static const String admin_home_screen = "/admin_home_screen";
+  static const String scratch_card_screen = "/scratch_card_screen";
   static const String redeem_screen = "/redeem_screen";
   static const String redeem_data_screen = "/redeem_data_screen";
+  static const String terms_and_condition_screen = "/terms_and_condition_screen";
 }

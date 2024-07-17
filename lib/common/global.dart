@@ -45,12 +45,24 @@ List<GetPage> getPages = [
     page: () => const ProfileScreen(),
   ),
   GetPage(
+    name: RouteList.admin_user_data_screen,
+    page: () => const AdminUserData(),
+  ),
+  GetPage(
+    name: RouteList.admin_home_screen,
+    page: () => const AdminHomeScrren(),
+  ),
+  GetPage(
     name: RouteList.redeem_screen,
     page: () => const RedeemScreen(),
   ),
   GetPage(
     name: RouteList.redeem_data_screen,
     page: () => const RedeemDataScreen(),
+  ),
+  GetPage(
+    name: RouteList.terms_and_condition_screen,
+    page: () => const TermsAndConditionScreen(),
   ),
 ];
 

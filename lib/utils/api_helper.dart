@@ -176,4 +176,26 @@ class ApiHelper {
     );
     return CommonModel.fromJson(json);
   }
+
+  static updateUserData({UserData? userData}) async {
+    var json = await commonApiCall(
+      apiPath: 'user_data/update_user_data.php',
+      apiType: ApiType.POST,
+      body: {
+        "user_id": userData?.id.toString() ?? "",
+        "login_id": userData?.loginId.toString() ?? "",
+        "email_id": userData?.emailId ?? "",
+        "first_name": userData?.firstName ?? "",
+        "middle_name": userData?.middleName ?? "",
+        "date_of_birth": userData?.dateOfBirth ?? "",
+        "gender": userData?.gender ?? "",
+        "contect_number": userData?.contectNumber ?? "",
+        "user_point": userData?.userPoint.toString() ?? "",
+        "profile_photo": userData?.profilePhoto.toString() ?? "",
+        "user_device_token": userData?.userDeviceToken.toString() ?? "",
+      },
+    );
+    print("+-++-+-+-+-+-+-+--${json}");
+    return UserModel.fromJson(json);
+  }
 }

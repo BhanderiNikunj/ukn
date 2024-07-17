@@ -20,6 +20,12 @@ class Images {
   static const String intro_2_svg = "assets/images/intro/spine_while.svg";
   static const String intro_1_svg = "assets/images/intro/scratch_card.svg";
   static const String next_arrow_svg = "assets/images/common/next_arrow.svg";
+  static const String person_svg = "assets/images/profile/person.svg";
+  static const String help_svg = "assets/images/profile/help.svg";
+  static const String language_svg = "assets/images/profile/language.svg";
+  static const String redeem_svg = "assets/images/profile/redeem.svg";
+  static const String rewards_svg = "assets/images/profile/rewards.svg";
+  static const String security_svg = "assets/images/profile/security.svg";
 
   // Lottie
   static const String clim_reward_json = "assets/json/clim_reward.json";

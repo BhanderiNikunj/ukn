@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 import 'package:unk/exports.dart';
+import 'package:unk/screens/update_user_data/view/update_user_data_screen.dart';
 
 List<GetPage> getPages = [
   GetPage(
@@ -51,6 +52,10 @@ List<GetPage> getPages = [
   GetPage(
     name: RouteList.redeem_data_screen,
     page: () => const RedeemDataScreen(),
+  ),
+  GetPage(
+    name: RouteList.update_user_data_screen,
+    page: () => const UpdateUserDataScreen(),
   ),
 ];
 

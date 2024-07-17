@@ -63,6 +63,15 @@ class Strings {
   static String redeem_reward = "Redeem Reward";
   static String scratch_and_win = "Scratch And Win";
   static String clim = "Clim";
+  static String profile_screen = "Profile Screen";
+  static String edit_profile = "Edit Profile";
+  static String my_reward = "My Reward";
+  static String redeem_now = "Redeem Now";
+  static String languages = "Languages";
+  static String terms_condition = "Terms & Condition";
+  static String help_center = "Help Center";
+  static String english_en = "English (EN)";
+  static String update_your_data = "Update Your Data";
 }
 
 void loadGujaratiLanguage() {

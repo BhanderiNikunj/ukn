@@ -50,6 +50,7 @@ flutter:
     - assets/images/chat/
     - assets/images/home/
     - assets/json/
+    - assets/images/profile/
 
   fonts: 
     - family: Inter

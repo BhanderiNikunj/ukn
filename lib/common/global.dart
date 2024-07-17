@@ -52,7 +52,7 @@ List<GetPage> getPages = [
     page: () => const AdminUserData(),
   ),
   GetPage(
-    name: RouteList.admin_home_scrren_screen,
+    name: RouteList.admin_home_screen,
     page: () => const AdminHomeScrren(),
   ),
   GetPage(

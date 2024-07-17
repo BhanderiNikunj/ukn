@@ -18,19 +18,23 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> loadAdAndNavigateScreen() async {
     // await AdsHelper.loadAppOpenAd(adType: AdType.admob);
-    bool isLogin = await SharedHelper.getLoginValue();
     await Future.delayed(
       Duration(seconds: splashDuration),
-      () {
+      () async {
+        bool isLogin = await SharedHelper.getLoginValue();
         if (isLogin) {
-          CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+          if (await SharedHelper.getAdminLogin()) {
+            CommonRoute.popAndPushNamed(
+                page: RouteList.admin_home_screen);
+          } else {
+            CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+          }
         } else {
           CommonRoute.popAndPushNamed(page: RouteList.login_screen);
         }
       },
     );
   }
-
 
   @override
   Widget build(BuildContext context) {

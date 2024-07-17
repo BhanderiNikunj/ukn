@@ -9,6 +9,7 @@ class SharedHelper {
   static const String USER_ID_KEY = "USER_ID_KEY";
   static const String SCRATCH_CARD_KEY = "SCRATCH_CARD_KEY";
   static const String DATE_KEY = "DATE_KEY";
+  static const String IS_ADMIN_KEY = "IS_ADMIN_KEY";
 
   static SharedPreferences? sharedPreferences;
 
@@ -127,5 +128,22 @@ class SharedHelper {
       dates = sharedPreferences!.getString(DATE_KEY) ?? "";
     }
     return dates;
+  }
+
+  static Future<void> setAdminLogin({required bool isAdmin}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setBool(IS_ADMIN_KEY, isAdmin);
+    } else {
+      await sharedPreferences!.setBool(IS_ADMIN_KEY, isAdmin);
+    }
+  }
+
+  static Future<bool> getAdminLogin() async {
+    if (sharedPreferences != null) {
+      return sharedPreferences!.getBool(IS_ADMIN_KEY) ?? false;
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      return sharedPreferences!.getBool(IS_ADMIN_KEY) ?? false;
+    }
   }
 }

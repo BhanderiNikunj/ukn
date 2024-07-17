@@ -1,13 +1,6 @@
 import 'dart:io';
 
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:unk/common/colors.dart';
-import 'package:unk/common/common_router.dart';
-import 'package:unk/widgets/images.dart';
-import 'package:unk/widgets/strings.dart';
+import 'package:unk/exports.dart';
 
 class CommonWidget {
   static Widget textFormField({
@@ -135,6 +128,7 @@ class CommonWidget {
       maxLines: maxLines ?? 1,
       style: style ??
           TextStyle(
+            fontFamily: "Inter",
             color: color ?? AppColor.default1Color,
             fontWeight: fontWeight ?? FontWeight.w500,
             fontSize: fontSize?.sp ?? 16.sp,
@@ -495,6 +489,8 @@ class CommonWidget {
     Widget? child,
     Widget? titleWidget,
     double? height,
+    Color? color,
+    Widget? bottomNavigationBar,
   }) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -529,7 +525,7 @@ class CommonWidget {
               width: ScreenUtil().screenWidth,
               height: height ?? ScreenUtil().screenHeight * 0.88,
               decoration: BoxDecoration(
-                color: AppColor.white1Color,
+                color: color ?? AppColor.white1Color,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.r),
                   topRight: Radius.circular(30.r),
@@ -537,6 +533,10 @@ class CommonWidget {
               ),
               child: child,
             ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: bottomNavigationBar ?? CommonWidget.sizedBox(),
           ),
         ],
       ),

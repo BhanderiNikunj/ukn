@@ -5,7 +5,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedHelper {
   static const String LOGIN_KEY = "LOGIN_KEY";
   static const String LOGIN_ID_KEY = "LOGIN_ID_KEY";
+  static const String Scratch_ID_KEY = "Scratch_ID_KEY";
   static const String USER_ID_KEY = "USER_ID_KEY";
+  static const String SCRATCH_CARD_KEY = "SCRATCH_CARD_KEY";
+  static const String DATE_KEY = "DATE_KEY";
+
   static SharedPreferences? sharedPreferences;
 
   static Future<void> setLoginValue({required bool isLogin}) async {
@@ -40,12 +44,32 @@ class SharedHelper {
   static Future<int> getLoginData() async {
     int loginId = 0;
     if (sharedPreferences != null) {
-      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? 0;
+      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? -1;
     } else {
       sharedPreferences = await SharedPreferences.getInstance();
-      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? 0;
+      loginId = sharedPreferences!.getInt(LOGIN_ID_KEY) ?? -1;
     }
     return loginId;
+  }
+
+  static Future<void> setScratchValue({required int isScratch}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setInt(Scratch_ID_KEY, isScratch);
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      await sharedPreferences!.setInt(Scratch_ID_KEY, isScratch);
+    }
+  }
+
+  static Future<int> getScratchValue() async {
+    int isScratch = 1;
+    if (sharedPreferences != null) {
+      isScratch = sharedPreferences!.getInt(Scratch_ID_KEY) ?? 1;
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      isScratch = sharedPreferences!.getInt(Scratch_ID_KEY) ?? 1;
+    }
+    return isScratch;
   }
 
   static Future<void> setUserIdata({required int userId}) async {
@@ -65,5 +89,43 @@ class SharedHelper {
       userID = sharedPreferences!.getInt(USER_ID_KEY) ?? -1;
     }
     return userID;
+  }
+
+  static Future<void> setYourScratchList({required bool isScratch}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setBool(SCRATCH_CARD_KEY, isScratch);
+    } else {
+      await sharedPreferences!.setBool(SCRATCH_CARD_KEY, isScratch);
+    }
+  }
+
+  static Future<bool> getYourScratchList() async {
+    bool userID = false;
+    if (sharedPreferences != null) {
+      userID = sharedPreferences!.getBool(SCRATCH_CARD_KEY) ?? false;
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      userID = sharedPreferences!.getBool(SCRATCH_CARD_KEY) ?? false;
+    }
+    return userID;
+  }
+
+  static Future<void> setTodayDate({required String date}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setString(DATE_KEY, date);
+    } else {
+      await sharedPreferences!.setString(DATE_KEY, date);
+    }
+  }
+
+  static Future<String> getTodayDate() async {
+    String dates = "";
+    if (sharedPreferences != null) {
+      dates = sharedPreferences!.getString(DATE_KEY) ?? "";
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      dates = sharedPreferences!.getString(DATE_KEY) ?? "";
+    }
+    return dates;
   }
 }

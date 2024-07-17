@@ -6,11 +6,6 @@ class HomeController extends GetxController {
   HomeModel? homeModel;
   int selectedCategory = 0;
   List<CategoryData> categoryData = [];
-  List<String> offerListData = [
-    Images.spin_png,
-    Images.streak_png,
-    Images.scratech_png,
-  ];
 
   Future<void> loadBannerAdMob() async {
     try {

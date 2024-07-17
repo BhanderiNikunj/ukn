@@ -3,14 +3,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:unk/common/global.dart';
-import 'package:unk/model/general_setting_model.dart';
-import 'package:unk/model/home_model.dart';
-import 'package:unk/model/login_model.dart';
-import 'package:unk/model/user_data_model.dart';
-import 'package:unk/model/user_model.dart';
-import 'package:unk/utils/api_constant.dart';
 import 'package:http/http.dart';
+import 'package:unk/exports.dart';
 
 class ApiHelper {
   static Future<dynamic> commonApiCall({
@@ -69,6 +63,7 @@ class ApiHelper {
     }
     GeneralSettingModel model = GeneralSettingModel.fromJson(json);
     generalSettingModel = model;
+    await downloadImage();
   }
 
   static Future<LoginModel> userLoginData({
@@ -132,6 +127,18 @@ class ApiHelper {
     }
   }
 
+  static Future<void> readUserDataWithLoginId({required int id}) async {
+    var json = await commonApiCall(
+      apiPath: 'user_data/read_user_data_using_login_id.php',
+      apiType: ApiType.POST,
+      body: {"login_id": id.toString()},
+    );
+    UserModel userModel = UserModel.fromJson(json);
+    if (userModel.status) {
+      userData = userModel.data;
+    }
+  }
+
   static Future<HomeModel> getHomeData() async {
     var json = await commonApiCall(
       apiPath: 'home/home_data_get.php',
@@ -146,5 +153,35 @@ class ApiHelper {
       apiType: ApiType.GET,
     );
     return UserDataModel.fromJson(json);
+  }
+
+  static Future<CommonModel> updateScratchPoint({
+    required String userId,
+    required String coin,
+  }) async {
+    var json = await commonApiCall(
+      apiPath: 'user_data/update_user_point.php',
+      apiType: ApiType.POST,
+      body: {"user_id": userId, "coin": coin},
+    );
+    return CommonModel.fromJson(json);
+  }
+
+  static Future<CommonModel> addRewardHistory({
+    required String price,
+    required String coin,
+  }) async {
+    var json = await commonApiCall(
+      apiPath: 'reward_history/add_reward_history.php',
+      apiType: ApiType.POST,
+      body: {
+        "name": (userData?.firstName ?? "") + (userData?.lastName ?? ""),
+        "approve": "false",
+        "coin": coin,
+        "price": price,
+        "login_id": (await SharedHelper.getLoginData()).toString(),
+      },
+    );
+    return CommonModel.fromJson(json);
   }
 }

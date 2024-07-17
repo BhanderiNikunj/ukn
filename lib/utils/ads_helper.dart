@@ -127,38 +127,36 @@ class AdsHelper {
   }
 
   static Future<void> loadAppOpenAd({required AdType adType}) async {
-    if (generalSettingModel?.data.isAdShow ?? false) {
-      if (adType == AdType.admob) {
-        await AppOpenAd.load(
-          adUnitId: generalSettingModel?.data.admob.rewardedAd ??
-              "ca-app-pub-3940256099942544/9257395921",
-          request: const AdRequest(),
-          adLoadCallback: AppOpenAdLoadCallback(
-            onAdLoaded: (ad) async {
-              debugPrint("========App Open Ad Load Success");
-              await ad.show();
-            },
-            onAdFailedToLoad: (error) {
-              debugPrint("=============$error");
-            },
-          ),
-        );
-      } else if (adType == AdType.adx) {
-        await AppOpenAd.load(
-          adUnitId: generalSettingModel?.data.adx.rewardedAd ??
-              "/6499/example/app-open",
-          request: const AdRequest(),
-          adLoadCallback: AppOpenAdLoadCallback(
-            onAdLoaded: (ad) async {
-              debugPrint("========App Open Ad Load Success");
-              await ad.show();
-            },
-            onAdFailedToLoad: (error) {
-              debugPrint("=============$error");
-            },
-          ),
-        );
-      }
+    if (adType == AdType.admob) {
+      await AppOpenAd.load(
+        adUnitId: generalSettingModel?.data.admob.rewardedAd ??
+            "ca-app-pub-3940256099942544/9257395921",
+        request: const AdRequest(),
+        adLoadCallback: AppOpenAdLoadCallback(
+          onAdLoaded: (ad) async {
+            debugPrint("========App Open Ad Load Success");
+            await ad.show();
+          },
+          onAdFailedToLoad: (error) {
+            debugPrint("=============$error");
+          },
+        ),
+      );
+    } else if (adType == AdType.adx) {
+      await AppOpenAd.load(
+        adUnitId: generalSettingModel?.data.adx.rewardedAd ??
+            "/6499/example/app-open",
+        request: const AdRequest(),
+        adLoadCallback: AppOpenAdLoadCallback(
+          onAdLoaded: (ad) async {
+            debugPrint("========App Open Ad Load Success");
+            await ad.show();
+          },
+          onAdFailedToLoad: (error) {
+            debugPrint("=============$error");
+          },
+        ),
+      );
     }
   }
 

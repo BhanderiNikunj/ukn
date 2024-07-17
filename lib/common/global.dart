@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:http/http.dart';
 import 'package:unk/exports.dart';
 import 'package:unk/screens/adminui/view/admin_home_screen.dart';
 
@@ -37,10 +40,14 @@ List<GetPage> getPages = [
     page: () => const ChatSupportScreen(),
   ),
   GetPage(
+    name: RouteList.scratch_card_screen,
+    page: () => const ScratchCardScreen(),
+  ),
+  GetPage(
     name: RouteList.profile_screen,
     page: () => const ProfileScreen(),
   ),
-    GetPage(
+  GetPage(
     name: RouteList.admin_user_data_screen,
     page: () => const AdminUserData(),
   ),
@@ -48,7 +55,35 @@ List<GetPage> getPages = [
     name: RouteList.admin_home_scrren_screen,
     page: () => const AdminHomeScrren(),
   ),
+  GetPage(
+    name: RouteList.redeem_screen,
+    page: () => const RedeemScreen(),
+  ),
+  GetPage(
+    name: RouteList.redeem_data_screen,
+    page: () => const RedeemDataScreen(),
+  ),
 ];
 
 GeneralSettingModel? generalSettingModel;
 UserData? userData;
+File? imageFile;
+
+Future<void> downloadImage() async {
+  var tempDir = await getTemporaryDirectory();
+  File file = File("${tempDir.path}/image.jpg");
+  if (await file.exists()) {
+    imageFile = file;
+    return;
+  }
+  if (generalSettingModel != null) {
+    try {
+      Uri uri = Uri.parse(generalSettingModel!.data.splashImage);
+      var response = await get(uri);
+      imageFile = file;
+      imageFile?.writeAsBytes(response.bodyBytes);
+    } catch (error) {
+      debugPrint("==================$error");
+    }
+  }
+}

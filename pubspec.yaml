@@ -32,6 +32,7 @@ dependencies:
   firebase_storage: ^12.1.0
   carousel_slider: ^4.2.1
   url_launcher: ^6.0.20
+  lottie: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -48,13 +49,18 @@ flutter:
     - assets/images/intro/
     - assets/images/chat/
     - assets/images/home/
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+    - assets/json/
+
+  fonts: 
+    - family: Inter
+      fonts:
+        - asset: assets/font/inter_regular.ttf
+          weight: 500
+        - asset: assets/font/inter_medium.ttf
+          weight: 600
+        - asset: assets/font/inter_bold.ttf
+          weight: 700
+        - asset: assets/font/inter_semibold.ttf
+          weight: 800
+        - asset: assets/font/inter_extra_bold.ttf
+          weight: 900

@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:unk/common/global.dart';
-import 'package:unk/common/route_list.dart';
-import 'package:unk/utils/api_helper.dart';
-import 'package:unk/utils/shared_helper.dart';
+import 'package:unk/exports.dart';
 
 class UknApp extends StatefulWidget {
   const UknApp({super.key});
@@ -22,9 +16,15 @@ class _UknAppState extends State<UknApp> {
 
   Future<void> userDataGet() async {
     ApiHelper.getGeneralSettingData();
-    int userId = await SharedHelper.getUserIdata();
+    int userId = await SharedHelper.getLoginData();
     if (userId != -1) {
-      ApiHelper.readUserData(id: userId);
+      ApiHelper.readUserDataWithLoginId(id: userId);
+    }
+    String dates = await SharedHelper.getTodayDate();
+    if (dates.isNotEmpty) {
+      if (dates.split('/').first != DateTime.now().day.toString()) {
+        await SharedHelper.setYourScratchList(isScratch: false);
+      }
     }
   }
 

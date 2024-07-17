@@ -29,7 +29,7 @@ class UserData {
   final String dateOfBirth;
   final String gender;
   final String contectNumber;
-  final int userPoint;
+  int userPoint;
   final String profilePhoto;
   final String referCode;
   final String userDeviceToken;

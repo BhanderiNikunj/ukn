@@ -37,6 +37,7 @@ class LoginController extends GetxController {
     if (data.status) {
       await SharedHelper.setLoginValue(isLogin: true);
       await SharedHelper.setLoginData(loginId: data.data.id);
+      await ApiHelper.readUserData(id: data.data.id);
       CommonRoute.popAndPushNamed(page: RouteList.home_screen);
       CommonWidget.commonSnackBar(
         context: context,

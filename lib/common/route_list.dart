@@ -12,4 +12,7 @@ class RouteList {
   static const String profile_screen = "/profile_screen";
   static const String admin_user_data_screen = "/admin_user_data_screen";
   static const String admin_home_scrren_screen = "/admin_home_scrren_screen";
+  static const String scratch_card_screen = "/scratch_card_screen";
+  static const String redeem_screen = "/redeem_screen";
+  static const String redeem_data_screen = "/redeem_data_screen";
 }

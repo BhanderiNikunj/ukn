@@ -15,7 +15,8 @@ class _HomeScreenState extends HomeWidget {
       titleWidget: Row(
         children: [
           CommonWidget.commonText(
-            text: '${Strings.hello}${userData?.firstName} ${userData?.middleName}',
+            text:
+                '${Strings.hello}${userData?.firstName} ${userData?.lastName}',
             maxLines: 2,
             color: AppColor.white1Color,
           ),

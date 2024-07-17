@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> loadAdAndNavigateScreen() async {
-    await AdsHelper.loadAppOpenAd(adType: AdType.admob);
+    // await AdsHelper.loadAppOpenAd(adType: AdType.admob);
     bool isLogin = await SharedHelper.getLoginValue();
     await Future.delayed(
       Duration(seconds: splashDuration),
@@ -31,15 +31,18 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.primary1Color,
       body: Center(
-        child: CommonWidget.imageBuilder(
-          imagePath:
-              generalSettingModel?.data.splashImage ?? Images.splash_iamge,
-        ),
+        child: imageFile != null
+            ? CommonWidget.imageBuilder(imagePath: imageFile!.path)
+            : CommonWidget.imageBuilder(
+                imagePath: generalSettingModel?.data.splashImage ??
+                    Images.splash_iamge,
+              ),
       ),
     );
   }

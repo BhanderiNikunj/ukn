@@ -1,4 +1,5 @@
 import 'package:unk/exports.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 abstract class HomeWidget extends State<HomeScreen> {
   late HomeController controller;
@@ -27,7 +28,7 @@ abstract class HomeWidget extends State<HomeScreen> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CommonWidget.sizedBox(height: 15),
+                CommonWidzgget.sizedBox(height: 15),
                 sliderView(),
                 CommonWidget.sizedBox(height: 20),
                 offerView(),
@@ -50,6 +51,12 @@ abstract class HomeWidget extends State<HomeScreen> {
   }
 
   Widget categoryDataList() {
+    if (controller.categoryData.isEmpty) {
+      return Padding(
+        padding: EdgeInsets.symmetric(vertical: 50.h),
+        child: CommonWidget.noDataFound(),
+      );
+    }
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -61,31 +68,41 @@ abstract class HomeWidget extends State<HomeScreen> {
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         var data = controller.categoryData[index];
-        return Container(
-          decoration: BoxDecoration(
-            color: AppColor.secondery6Color,
-            borderRadius: BorderRadius.circular(10.r),
-          ),
-          margin: EdgeInsets.only(bottom: 10.h, right: 10.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CommonWidget.imageBuilder(
-                imagePath: data.imageUrl,
-                borderRadius: 10.r,
-                height: 100.h,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 10.w,
-                  vertical: 5.h,
+        return InkWell(
+          onTap: () async {
+            Uri url = Uri.parse(data.videoUrl);
+            try {
+              await launchUrl(url);
+            } catch (error) {
+              debugPrint("=================$error");
+            }
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColor.secondery6Color,
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            margin: EdgeInsets.only(bottom: 10.h, right: 10.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CommonWidget.imageBuilder(
+                  imagePath: data.imageUrl,
+                  borderRadius: 10.r,
+                  height: 100.h,
                 ),
-                child: CommonWidget.commonText(
-                  text: data.name,
-                  maxLines: 2,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 5.h,
+                  ),
+                  child: CommonWidget.commonText(
+                    text: data.name,
+                    maxLines: 2,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
@@ -108,12 +125,7 @@ abstract class HomeWidget extends State<HomeScreen> {
                 color: controller.selectedCategory == index
                     ? AppColor.primary1Color
                     : AppColor.white1Color,
-                border: controller.selectedCategory == index
-                    ? null
-                    : Border.all(
-                        color: AppColor.primary1Color,
-                        width: 1.5.w,
-                      ),
+                border: Border.all(color: AppColor.primary1Color, width: 1.5.w),
                 borderRadius: BorderRadius.circular(50.r),
               ),
               margin: EdgeInsets.only(right: 10.w),
@@ -132,16 +144,26 @@ abstract class HomeWidget extends State<HomeScreen> {
   }
 
   Widget offerView() {
+    var list = controller.homeModel?.data.extraOption;
     return CommonWidget.sizedBox(
       height: 80,
       child: ListView.builder(
-        itemCount: controller.offerListData.length,
+        itemCount: list?.length ?? 0,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.only(right: 10.w),
-          child: CommonWidget.imageBuilder(
-            imagePath: controller.offerListData[index],
+          child: InkWell(
+            onTap: () {
+              if (list?[index].routeName.isNotEmpty ?? false) {
+                CommonRoute.pushNamed(
+                  page: list?[index].routeName ?? "",
+                );
+              }
+            },
+            child: CommonWidget.imageBuilder(
+              imagePath: list?[index].image ?? "",
+            ),
           ),
         ),
       ),

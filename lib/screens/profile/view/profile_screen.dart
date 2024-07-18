@@ -45,19 +45,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   imagePath: Images.rewards_svg,
                 ),
                 buttonView(
-                  onTap: () {
-                    CommonRoute.pushNamed(
+                  onTap: () async {
+                    await CommonRoute.pushNamed(
                       page: RouteList.redeem_screen,
                     );
+                    setState(() {});
                   },
                   title: Strings.redeem_now,
                   imagePath: Images.redeem_svg,
                 ),
                 buttonView(
-                  onTap: () {
-                    CommonRoute.pushNamed(
+                  onTap: () async {
+                    await CommonRoute.pushNamed(
                       page: RouteList.language_screen,
                     );
+                    setState(() {});
                   },
                   title: Strings.languages,
                   imagePath: Images.language_svg,
@@ -90,10 +92,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             decoration: BoxDecoration(
               color: AppColor.white1Color,
               shape: BoxShape.circle,
-              border: Border.all(
-                width: 3,
-                color: AppColor.primary1Color,
-              ),
+              border: Border.all(width: 3, color: AppColor.primary1Color),
             ),
             alignment: Alignment.center,
             child: CommonWidget.imageBuilder(

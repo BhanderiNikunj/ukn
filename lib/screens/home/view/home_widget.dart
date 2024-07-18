@@ -31,6 +31,9 @@ abstract class HomeWidget extends State<HomeScreen> {
   }
 
   Widget screenView() {
+    if (controller.isLoading) {
+      return CommonWidget.loadingIos();
+    }
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Padding(

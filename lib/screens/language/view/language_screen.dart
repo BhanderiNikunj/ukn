@@ -29,13 +29,15 @@ class _LanguageScreenState extends State<LanguageScreen> {
     return CommonWidget.commonScreenUI(
       title: Strings.select_language,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 50),
         child: Column(
           children: [
             GridView.builder(
               shrinkWrap: true,
               itemCount: controller.languageList.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisSpacing: 40,
+
                 crossAxisCount: 2,
               ),
               itemBuilder: (context, index) {
@@ -44,7 +46,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     Container(
                       height: 100.h,
                       width: 180.w,
-                      margin: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: AppColor.white1Color,
@@ -60,10 +61,24 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CommonWidget.imageBuilder(
-                            imagePath: controller.languageList[index].image,
-                            width: 40,
-                            height: 40,
+                          Container(
+                            height: 35,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color:
+                                      AppColor.primary1Color.withOpacity(0.3),
+                                  blurRadius: 3.0,
+                                  offset: const Offset(0, 2),
+                                  spreadRadius: 0.3,
+                                ),
+                              ],
+                            ),
+                            child: CommonWidget.imageBuilder(
+                              imagePath: controller.languageList[index].image,
+                            ),
                           ),
                           CommonWidget.sizedBox(height: 5),
                           Row(
@@ -76,7 +91,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                               ),
                               CommonWidget.commonText(
                                 text: controller.languageList[index].shortCode,
-                                fontWeight: FontWeight.bold,
+                                color: AppColor.default3Color,
                               ),
                             ],
                           ),
@@ -90,7 +105,9 @@ class _LanguageScreenState extends State<LanguageScreen> {
             const Spacer(),
             CommonWidget.commonButton(
               text: Strings.continue_button,
-              onTap: () {},
+              onTap: () {
+                CommonRoute.pop();
+              },
             ),
           ],
         ),

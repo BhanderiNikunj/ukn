@@ -29,16 +29,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onTap: () {
                     setState(() {});
                     CommonRoute.pushNamed(
-                        page: RouteList.update_user_data_screen);
-                  },
-                  title: Strings.edit_profile,
-                  imagePath: Images.person_svg,
-                ),
-                buttonView(
-                  onTap: () {
-                    setState(() {});
-                    CommonRoute.pushNamed(
-                        page: RouteList.update_user_data_screen);
+                      page: RouteList.update_user_data_screen,
+                    );
                   },
                   title: Strings.edit_profile,
                   imagePath: Images.person_svg,
@@ -46,21 +38,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 buttonView(
                   onTap: () {
                     CommonRoute.pushNamed(
-                        page: RouteList.reward_history_screen);
+                      page: RouteList.reward_history_screen,
+                    );
                   },
                   title: Strings.my_rewards,
                   imagePath: Images.rewards_svg,
                 ),
                 buttonView(
                   onTap: () {
-                    CommonRoute.pushNamed(page: RouteList.redeem_screen);
+                    CommonRoute.pushNamed(
+                      page: RouteList.redeem_screen,
+                    );
                   },
                   title: Strings.redeem_now,
                   imagePath: Images.redeem_svg,
                 ),
                 buttonView(
                   onTap: () {
-                    CommonRoute.pushNamed(page: RouteList.language_screen);
+                    CommonRoute.pushNamed(
+                      page: RouteList.language_screen,
+                    );
                   },
                   title: Strings.languages,
                   imagePath: Images.language_svg,
@@ -73,7 +70,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 buttonView(
                   onTap: () {
-                    CommonRoute.pushNamed(page: RouteList.help_center);
+                    CommonRoute.pushNamed(
+                      page: RouteList.help_center,
+                    );
                   },
                   title: Strings.help_center,
                   imagePath: Images.help_svg,

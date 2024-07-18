@@ -1,4 +1,5 @@
 import 'package:unk/exports.dart';
+import 'package:unk/screens/language/model/language_model.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -8,12 +9,12 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   @override
   void initState() {
+    userData;
     super.initState();
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -27,7 +28,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 buttonView(
                   onTap: () {
-                    CommonRoute.pushNamed(page: RouteList.update_user_data_screen);
+                    CommonRoute.pushNamed(
+                        page: RouteList.update_user_data_screen);
                   },
                   title: Strings.edit_profile,
                   imagePath: Images.person_svg,
@@ -48,18 +50,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   imagePath: Images.redeem_svg,
                 ),
                 buttonView(
-                  onTap: () {},
+                  onTap: () {
+                    CommonRoute.pushNamed(page: RouteList.language_screen);
+                  },
                   title: Strings.languages,
                   imagePath: Images.language_svg,
                   choiceLanguage: Strings.english_en,
                 ),
                 buttonView(
-                  onTap: () {},
+                  onTap: () {
+                    CommonRoute.pushNamed(page: RouteList.terms_and_condition);
+                  },
                   title: Strings.terms_condition,
                   imagePath: Images.security_svg,
                 ),
                 buttonView(
-                  onTap: () {},
+                  onTap: () {
+                    CommonRoute.pushNamed(page: RouteList.help_center);
+                  },
                   title: Strings.help_center,
                   imagePath: Images.help_svg,
                 ),
@@ -82,7 +90,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             child: CommonWidget.imageBuilder(
-              imagePath: Images.person_svg,
+              imagePath: userData?.profilePhoto ?? "",
+              // fit: BoxFit.contain,
             ),
           ),
         ),
@@ -107,10 +116,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-                color: AppColor.primary1Color.withOpacity(0.5),
-                blurRadius: 5.0,
-                offset: const Offset(0, 0),
-                spreadRadius: 0.5),
+              color: AppColor.primary1Color.withOpacity(0.5),
+              blurRadius: 5.0,
+              offset: const Offset(0, 0),
+              spreadRadius: 0.5,
+            ),
           ],
         ),
         child: Padding(

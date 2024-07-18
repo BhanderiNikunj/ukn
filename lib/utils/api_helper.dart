@@ -187,6 +187,7 @@ class ApiHelper {
         "email_id": userData?.emailId ?? "",
         "first_name": userData?.firstName ?? "",
         "middle_name": userData?.middleName ?? "",
+        "last_name": userData?.lastName ?? "",
         "date_of_birth": userData?.dateOfBirth ?? "",
         "gender": userData?.gender ?? "",
         "contect_number": userData?.contectNumber ?? "",

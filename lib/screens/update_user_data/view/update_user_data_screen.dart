@@ -15,7 +15,7 @@ class _UpdateUserDataScreenState extends State<UpdateUserDataScreen> {
   @override
   void initState() {
     controller = Get.put(UpdateUserDataController());
-    controller.changeUserData();
+    controller.changeUserData(context: context);
     userData;
     controller.updateFirstNameController.text = userData?.firstName ?? "";
     controller.updateMiddleNameController.text = userData?.middleName ?? "";
@@ -24,7 +24,6 @@ class _UpdateUserDataScreenState extends State<UpdateUserDataScreen> {
     controller.updateMobileController.text = userData?.contectNumber ?? "";
     controller.updateBirthDateController.text = userData?.dateOfBirth ?? "";
     controller.updateGenderType = userData?.gender ?? "";
-    print("====================${controller.updateGenderType}");
     super.initState();
   }
 
@@ -209,9 +208,9 @@ class _UpdateUserDataScreenState extends State<UpdateUserDataScreen> {
                   CommonWidget.commonButton(
                     text: Strings.update_your_data,
                     onTap: () {
-                      controller.changeUserData();
-                      print(
-                          "====================++++++++++");
+                      controller.changeUserData(
+                        context: context,
+                      );
                     },
                   ),
                   CommonWidget.sizedBox(height: 38),

@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 import 'package:unk/exports.dart';
+import 'package:unk/screens/help_center/view/help_center_screen.dart';
+import 'package:unk/screens/language/view/language_screen.dart';
+import 'package:unk/screens/terms_condition/view/terms_condition_screen.dart';
 import 'package:unk/screens/update_user_data/view/update_user_data_screen.dart';
 
 List<GetPage> getPages = [
@@ -56,6 +59,18 @@ List<GetPage> getPages = [
   GetPage(
     name: RouteList.update_user_data_screen,
     page: () => const UpdateUserDataScreen(),
+  ),
+  GetPage(
+    name: RouteList.language_screen,
+    page: () => const LanguageScreen(),
+  ),
+  GetPage(
+    name: RouteList.help_center,
+    page: () => const HelpCenterScreen(),
+  ),
+  GetPage(
+    name: RouteList.terms_and_condition,
+    page: () => const TermsConditionScreen(),
   ),
 ];
 

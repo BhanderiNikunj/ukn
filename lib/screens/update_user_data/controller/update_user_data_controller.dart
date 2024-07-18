@@ -32,9 +32,62 @@ class UpdateUserDataController extends GetxController {
     }
   }
 
-  void changeUserData(){
-    ApiHelper.updateUserData(
-      //userData: userData?.firstName = updateFirstNameController.text,
-    );
+  Future<void> changeUserData({
+    required BuildContext context,
+  }) async {
+    if (formKey.currentState?.validate() ?? false) {
+      String fcmToken = await FirebaseMessaging.instance.getToken() ?? "";
+      UserData data = UserData(
+        id: userData?.id ?? 0,
+        loginId: userData?.loginId ?? 0,
+        firstName: updateFirstNameController.text,
+        middleName: updateMiddleNameController.text,
+        lastName: updateLastNameController.text,
+        dateOfBirth: updateBirthDateController.text,
+        gender: updateGenderType,
+        contectNumber: updateMobileController.text,
+        userPoint: userData?.userPoint ?? 0,
+        profilePhoto: updateGenderType == "male"
+            ? "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/v1/images/user_image/boy.png"
+            : "https://homeincomeexpanseapi.000webhostapp.com/ukn_api/v1/images/user_image/girl.png",
+        referCode: "",
+        userDeviceToken: fcmToken,
+        emailId: userData?.emailId ?? "",
+      );
+      if (!updateEmailIdController.text.endsWith("@gmail.com")) {
+        CommonWidget.commonSnackBar(
+          context: context,
+          message: Strings.please_enter_valid_email_id,
+          type: SnackBarType.errorData,
+        );
+        return;
+      } else if (updateMobileController.text.length != 10) {
+        CommonWidget.commonSnackBar(
+          context: context,
+          message: Strings.please_enter_valid_mobile_number,
+          type: SnackBarType.errorData,
+        );
+        return;
+      }
+
+      UserModel model = await ApiHelper.updateUserData(userData: data);
+      if (model.status) {
+        await SharedHelper.setLoginValue(isLogin: true);
+        await SharedHelper.setLoginData(loginId: model.data.id);
+        await SharedHelper.setUserIdata(userId: model.data.id);
+        CommonRoute.pop();
+        CommonWidget.commonSnackBar(
+          context: context,
+          message: model.message,
+          type: SnackBarType.successData,
+        );
+        return;
+      }
+      CommonWidget.commonSnackBar(
+        context: context,
+        message: model.message,
+        type: SnackBarType.errorData,
+      );
+    }
   }
 }

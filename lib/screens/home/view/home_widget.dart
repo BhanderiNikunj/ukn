@@ -34,9 +34,12 @@ abstract class HomeWidget extends State<HomeScreen> {
                 CommonWidget.sizedBox(height: 20),
                 offerView(),
                 CommonWidget.sizedBox(height: 20),
-                ElevatedButton(onPressed: () {
-                  CommonRoute.pushNamed(page: RouteList.profile_screen);
-                }, child: Text("Profile"),),
+                ElevatedButton(
+                  onPressed: () {
+                    CommonRoute.pushNamed(page: RouteList.profile_screen);
+                  },
+                  child: Text("Profile"),
+                ),
                 CommonWidget.commonText(
                   text: Strings.get_more_coins,
                   fontWeight: FontWeight.w900,
@@ -59,7 +62,7 @@ abstract class HomeWidget extends State<HomeScreen> {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 0,
-        childAspectRatio: 0.95,
+        childAspectRatio: 0.93,
       ),
       shrinkWrap: true,
       itemCount: controller.categoryData.length,

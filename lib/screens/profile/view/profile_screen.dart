@@ -1,5 +1,4 @@
 import 'package:unk/exports.dart';
-import 'package:unk/screens/language/model/language_model.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -22,6 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 buttonView(
                   onTap: () {
+                    setState(() {});
                     CommonRoute.pushNamed(
                         page: RouteList.update_user_data_screen);
                   },
@@ -81,9 +81,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: AppColor.primary1Color,
               ),
             ),
+            alignment:  Alignment.center,
             child: CommonWidget.imageBuilder(
               imagePath: userData?.profilePhoto ?? "",
-              // fit: BoxFit.contain,
+              height: 80,
             ),
           ),
         ),

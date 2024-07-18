@@ -48,7 +48,6 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
                   await launchUrl(launchUri);
                 } else {
                   // Handle the case where the URL cannot be launched.
-                  print('Could not launch $launchUri');
                 }
               },
               imagePath: Images.customer_support_svg,

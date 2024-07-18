@@ -34,12 +34,6 @@ abstract class HomeWidget extends State<HomeScreen> {
                 CommonWidget.sizedBox(height: 20),
                 offerView(),
                 CommonWidget.sizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    CommonRoute.pushNamed(page: RouteList.profile_screen);
-                  },
-                  child: Text("Profile"),
-                ),
                 CommonWidget.commonText(
                   text: Strings.get_more_coins,
                   fontWeight: FontWeight.w900,

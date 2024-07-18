@@ -196,7 +196,6 @@ class ApiHelper {
         "user_device_token": userData.userDeviceToken.toString(),
       },
     );
-    print("+-++-+-+-+-+-+-+--${json}");
     return UserModel.fromJson(json);
   }
 }

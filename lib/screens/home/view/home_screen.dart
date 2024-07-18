@@ -21,18 +21,23 @@ class _HomeScreenState extends HomeWidget {
             color: AppColor.white1Color,
           ),
           const Spacer(),
-          Container(
-            height: 40.h,
-            width: 40.h,
-            decoration: BoxDecoration(
-              color: AppColor.white1Color,
-              shape: BoxShape.circle,
-            ),
-            alignment: Alignment.center,
-            child: CommonWidget.commonText(
-              text: userData?.firstName.substring(0, 1) ?? "",
-              fontWeight: FontWeight.w900,
-              fontSize: 18,
+          InkWell(
+            onTap: () {
+              CommonRoute.pushNamed(page: RouteList.profile_screen);
+            },
+            child: Container(
+              height: 40.h,
+              width: 40.h,
+              decoration: BoxDecoration(
+                color: AppColor.white1Color,
+                shape: BoxShape.circle,
+              ),
+              alignment: Alignment.center,
+              child: CommonWidget.commonText(
+                text: userData?.firstName.substring(0, 1) ?? "",
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+              ),
             ),
           ),
           CommonWidget.sizedBox(width: 10),

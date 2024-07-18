@@ -74,7 +74,7 @@ abstract class HomeWidget extends State<HomeScreen> {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 0,
-        childAspectRatio: 0.95,
+        childAspectRatio: 0.93,
       ),
       shrinkWrap: true,
       itemCount: controller.categoryData.length,

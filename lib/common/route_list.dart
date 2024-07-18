@@ -16,4 +16,7 @@ class RouteList {
   static const String redeem_screen = "/redeem_screen";
   static const String redeem_data_screen = "/redeem_data_screen";
   static const String terms_and_condition_screen = "/terms_and_condition_screen";
+  static const String update_user_data_screen = "/update_user_data_screen";
+  static const String language_screen = "/language_screen";
+  static const String help_center = "/help_center";
 }

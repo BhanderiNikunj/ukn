@@ -58,9 +58,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   choiceLanguage: Strings.english_en,
                 ),
                 buttonView(
-                  onTap: () {
-                    CommonRoute.pushNamed(page: RouteList.terms_and_condition);
-                  },
+                  onTap: () {},
                   title: Strings.terms_condition,
                   imagePath: Images.security_svg,
                 ),

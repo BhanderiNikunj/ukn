@@ -4,7 +4,6 @@ import 'package:http/http.dart';
 import 'package:unk/exports.dart';
 import 'package:unk/screens/help_center/view/help_center_screen.dart';
 import 'package:unk/screens/language/view/language_screen.dart';
-import 'package:unk/screens/terms_condition/view/terms_condition_screen.dart';
 import 'package:unk/screens/update_user_data/view/update_user_data_screen.dart';
 
 List<GetPage> getPages = [

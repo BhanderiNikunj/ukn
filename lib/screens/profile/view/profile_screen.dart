@@ -69,7 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         Positioned(
           left: 140,
-          top: 70,
+          top: 80,
           child: Container(
             height: 112.h,
             width: 112.w,
@@ -81,10 +81,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: AppColor.primary1Color,
               ),
             ),
-            alignment:  Alignment.center,
+            alignment: Alignment.center,
             child: CommonWidget.imageBuilder(
               imagePath: userData?.profilePhoto ?? "",
               height: 80,
+              // fit: BoxFit.contain,
             ),
           ),
         ),

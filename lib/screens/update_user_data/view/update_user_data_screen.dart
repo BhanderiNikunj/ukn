@@ -15,7 +15,6 @@ class _UpdateUserDataScreenState extends State<UpdateUserDataScreen> {
   @override
   void initState() {
     controller = Get.put(UpdateUserDataController());
-    controller.changeUserData(context: context);
     controller.updateFirstNameController.text = userData?.firstName ?? "";
     controller.updateMiddleNameController.text = userData?.middleName ?? "";
     controller.updateLastNameController.text = userData?.lastName ?? "";

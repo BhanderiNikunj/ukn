@@ -16,7 +16,6 @@ class _UpdateUserDataScreenState extends State<UpdateUserDataScreen> {
   void initState() {
     controller = Get.put(UpdateUserDataController());
     controller.changeUserData(context: context);
-    userData;
     controller.updateFirstNameController.text = userData?.firstName ?? "";
     controller.updateMiddleNameController.text = userData?.middleName ?? "";
     controller.updateLastNameController.text = userData?.lastName ?? "";

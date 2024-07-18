@@ -66,7 +66,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   choiceLanguage: Strings.english_en,
                 ),
                 buttonView(
-                  onTap: () {},
+                  onTap: () async => await CommonRoute.pushNamed(
+                    page: RouteList.terms_and_condition_screen,
+                  ),
                   title: Strings.terms_condition,
                   imagePath: Images.security_svg,
                 ),

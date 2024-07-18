@@ -13,7 +13,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Stack(
       children: [
         CommonWidget.commonScreenUI(
-          height: 650.h,
+          height: ScreenUtil().screenHeight * 0.8,
           title: Strings.profile_screen,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 110, 16, 20),
@@ -69,7 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         Positioned(
           left: 140,
-          top: 80,
+          top: 70,
           child: Container(
             height: 112.h,
             width: 112.w,

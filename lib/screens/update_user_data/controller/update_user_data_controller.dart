@@ -1,7 +1,6 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:intl/intl.dart';
-
-import '../../../exports.dart';
+import 'package:unk/exports.dart';
 
 class UpdateUserDataController extends GetxController {
   TextEditingController updateEmailIdController = TextEditingController();

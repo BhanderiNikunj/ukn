@@ -36,7 +36,8 @@ class _LanguageScreenState extends State<LanguageScreen> {
               shrinkWrap: true,
               itemCount: controller.languageList.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
+                crossAxisCount: 2,
+              ),
               itemBuilder: (context, index) {
                 return Column(
                   children: [

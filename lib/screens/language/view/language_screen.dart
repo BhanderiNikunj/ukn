@@ -1,6 +1,5 @@
+import 'package:unk/exports.dart';
 import 'package:unk/screens/language/controller/language_controller.dart';
-
-import '../../../exports.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});

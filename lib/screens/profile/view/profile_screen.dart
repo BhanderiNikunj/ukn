@@ -26,11 +26,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 CommonWidget.sizedBox(height: 30),
                 buttonView(
-                  onTap: () {
-                    setState(() {});
-                    CommonRoute.pushNamed(
+                  onTap: () async {
+                    await CommonRoute.pushNamed(
                       page: RouteList.update_user_data_screen,
                     );
+                    setState(() {});
                   },
                   title: Strings.edit_profile,
                   imagePath: Images.person_svg,

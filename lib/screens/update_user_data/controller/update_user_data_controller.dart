@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:intl/intl.dart';
 import 'package:unk/exports.dart';
@@ -30,7 +32,7 @@ class UpdateUserDataController extends GetxController {
     }
   }
 
-  Future<void> changeUserData({
+  Future<void> updateUserData({
     required BuildContext context,
   }) async {
     if (formKey.currentState?.validate() ?? false) {
@@ -73,6 +75,7 @@ class UpdateUserDataController extends GetxController {
         await SharedHelper.setLoginValue(isLogin: true);
         await SharedHelper.setLoginData(loginId: model.data.id);
         await SharedHelper.setUserIdata(userId: model.data.id);
+        userData = model.data;
         CommonRoute.pop();
         CommonWidget.commonSnackBar(
           context: context,

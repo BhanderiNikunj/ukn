@@ -204,11 +204,9 @@ class _UpdateUserDataScreenState extends State<UpdateUserDataScreen> {
                   CommonWidget.sizedBox(height: 38),
                   CommonWidget.commonButton(
                     text: Strings.update_your_data,
-                    onTap: () {
-                      controller.changeUserData(
-                        context: context,
-                      );
-                    },
+                    onTap: () => controller.updateUserData(
+                      context: context,
+                    ),
                   ),
                   CommonWidget.sizedBox(height: 38),
                 ],

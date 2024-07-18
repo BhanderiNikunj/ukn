@@ -177,7 +177,7 @@ class ApiHelper {
     return CommonModel.fromJson(json);
   }
 
-  static updateUserData({required UserData userData}) async {
+  static Future<UserModel> updateUserData({required UserData userData}) async {
     var json = await commonApiCall(
       apiPath: 'user_data/update_user_data.php',
       apiType: ApiType.POST,

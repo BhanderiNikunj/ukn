@@ -68,10 +68,6 @@ List<GetPage> getPages = [
     name: RouteList.help_center,
     page: () => const HelpCenterScreen(),
   ),
-  GetPage(
-    name: RouteList.terms_and_condition,
-    page: () => const TermsConditionScreen(),
-  ),
 ];
 
 GeneralSettingModel? generalSettingModel;

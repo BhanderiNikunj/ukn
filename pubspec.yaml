@@ -51,6 +51,7 @@ flutter:
     - assets/images/home/
     - assets/json/
     - assets/images/admin/
+    - assets/images/profile/
 
   fonts: 
     - family: Inter

@@ -64,6 +64,23 @@ class Strings {
   static String scratch_and_win = "Scratch And Win";
   static String clim = "Clim";
   static String terms_and_condition = "Terms & Conditions";
+  static String profile_screen = "Profile Screen";
+  static String edit_profile = "Edit Profile";
+  static String my_reward = "My Reward";
+  static String redeem_now = "Redeem Now";
+  static String languages = "Languages";
+  static String terms_condition = "Terms & Condition";
+  static String help_center = "Help Center";
+  static String english_en = "English (EN)";
+  static String update_your_data = "Update Your Data";
+  static String select_language = "Select Language";
+  static String support = "Support";
+  static String live_contact_support = "Live Contact Support";
+  static String sent_us_an_email = "Sent us an E-mail";
+  static String chat_with_us = "Chat With Us";
+  static String hello_how_can_we = "Hello, How Can We";
+  static String help_you = "Help You ?";
+  static String continue_button = "Continue";
 }
 
 void loadGujaratiLanguage() {

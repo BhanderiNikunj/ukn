@@ -16,9 +16,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
           height: ScreenUtil().screenHeight * 0.8,
           title: Strings.profile_screen,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 110, 16, 20),
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 80),
             child: Column(
               children: [
+                CommonWidget.commonText(
+                  text: "${userData?.firstName} ${userData?.lastName}",
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+                CommonWidget.sizedBox(height: 30),
+                buttonView(
+                  onTap: () {
+                    setState(() {});
+                    CommonRoute.pushNamed(
+                        page: RouteList.update_user_data_screen);
+                  },
+                  title: Strings.edit_profile,
+                  imagePath: Images.person_svg,
+                ),
                 buttonView(
                   onTap: () {
                     setState(() {});
@@ -85,7 +100,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: CommonWidget.imageBuilder(
               imagePath: userData?.profilePhoto ?? "",
               height: 80,
-              // fit: BoxFit.contain,
             ),
           ),
         ),

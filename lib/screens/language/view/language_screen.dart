@@ -37,7 +37,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
               itemCount: controller.languageList.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisSpacing: 40,
-
                 crossAxisCount: 2,
               ),
               itemBuilder: (context, index) {
@@ -80,7 +79,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                               imagePath: controller.languageList[index].image,
                             ),
                           ),
-                          CommonWidget.sizedBox(height: 5),
+                          CommonWidget.sizedBox(height: 10),
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [

@@ -6,6 +6,7 @@ class HomeController extends GetxController {
   HomeModel? homeModel;
   int selectedCategory = 0;
   List<CategoryData> categoryData = [];
+  bool isLoading = false;
 
   Future<void> loadBannerAdMob() async {
     try {
@@ -58,8 +59,11 @@ class HomeController extends GetxController {
   }
 
   Future<void> gethomeData() async {
+    isLoading = true;
+    update();
     homeModel = await ApiHelper.getHomeData();
     categoryData.addAll(homeModel?.data.categoryData ?? []);
+    isLoading = false;
     update();
   }
 

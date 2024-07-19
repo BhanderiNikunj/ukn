@@ -103,3 +103,14 @@ Future<void> downloadImage() async {
     }
   }
 }
+
+List<BoxShadow> get commonShadow {
+  return [
+    BoxShadow(
+      blurRadius: 5,
+      spreadRadius: 0,
+      color: AppColor.primary6Color,
+      offset: Offset(0.w, 0.h),
+    ),
+  ];
+}

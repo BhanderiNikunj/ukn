@@ -28,10 +28,10 @@ class Images {
   static const String redeem_svg = "assets/images/profile/redeem.svg";
   static const String rewards_svg = "assets/images/profile/rewards.svg";
   static const String security_svg = "assets/images/profile/security.svg";
-  static const String flag_india_svg = "assets/images/profile/flag_india.svg";
-  static const String flag_us_svg = "assets/images/profile/flag_us.svg";
   static const String customer_support_svg = "assets/images/profile/customer_support.svg";
   static const String person_support_svg = "assets/images/profile/person_support.svg";
+  static const String flag_united_states_svg = "assets/images/profile/flag_united_states.svg";
+  static const String india_flag_svg = "assets/images/profile/india_flag.svg";
 
   // Lottie
   static const String clim_reward_json = "assets/json/clim_reward.json";

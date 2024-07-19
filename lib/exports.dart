@@ -6,6 +6,9 @@ export 'common/global.dart';
 export 'common/route_list.dart';
 export 'widgets/images.dart';
 export 'widgets/strings.dart';
+export 'widgets/gujarati_language.dart';
+export 'widgets/english_language.dart';
+export 'widgets/hindi_language.dart';
 export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
 

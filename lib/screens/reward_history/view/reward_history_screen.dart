@@ -69,14 +69,7 @@ class _RewardHistoryScreenState extends State<RewardHistoryScreen> {
             decoration: BoxDecoration(
               color: AppColor.white1Color,
               borderRadius: BorderRadius.circular(10.r),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 5,
-                  spreadRadius: 0,
-                  color: AppColor.primary6Color,
-                  offset: Offset(0.w, 0.h),
-                ),
-              ],
+              boxShadow: commonShadow,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,

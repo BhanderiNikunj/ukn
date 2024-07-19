@@ -29,75 +29,72 @@ class _LanguageScreenState extends State<LanguageScreen> {
     return CommonWidget.commonScreenUI(
       title: Strings.select_language,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 50),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         child: Column(
           children: [
             GridView.builder(
               shrinkWrap: true,
               itemCount: controller.languageList.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisSpacing: 40,
+                crossAxisSpacing: 20,
                 crossAxisCount: 2,
+                mainAxisExtent: 130,
               ),
               itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Container(
-                      height: 100.h,
-                      width: 180.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: AppColor.white1Color,
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColor.primary1Color.withOpacity(0.5),
-                            blurRadius: 5.0,
-                            offset: const Offset(0, 0),
-                            spreadRadius: 0.5,
-                          ),
-                        ],
+                var model = controller.languageList[index];
+                return Container(
+                  height: 100.h,
+                  width: 180.w,
+                  margin: EdgeInsets.symmetric(vertical: 10.h),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: AppColor.white1Color,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColor.primary1Color.withOpacity(0.5),
+                        blurRadius: 5.0,
+                        offset: const Offset(0, 0),
+                        spreadRadius: 0.5,
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 35,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColor.primary1Color.withOpacity(0.3),
+                              blurRadius: 3.0,
+                              offset: const Offset(0, 2),
+                              spreadRadius: 0.3,
+                            ),
+                          ],
+                        ),
+                        child: CommonWidget.imageBuilder(
+                          imagePath: model.image,
+                        ),
+                      ),
+                      CommonWidget.sizedBox(height: 10),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Container(
-                            height: 35,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color:
-                                      AppColor.primary1Color.withOpacity(0.3),
-                                  blurRadius: 3.0,
-                                  offset: const Offset(0, 2),
-                                  spreadRadius: 0.3,
-                                ),
-                              ],
-                            ),
-                            child: CommonWidget.imageBuilder(
-                              imagePath: controller.languageList[index].image,
-                            ),
+                          CommonWidget.commonText(
+                            text: model.languageName,
+                            fontWeight: FontWeight.bold,
                           ),
-                          CommonWidget.sizedBox(height: 10),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              CommonWidget.commonText(
-                                text:
-                                    controller.languageList[index].languageName,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              CommonWidget.commonText(
-                                text: controller.languageList[index].shortCode,
-                                color: AppColor.default3Color,
-                              ),
-                            ],
+                          CommonWidget.commonText(
+                            text: " (${model.shortCode})",
+                            color: AppColor.default3Color,
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               },
             ),

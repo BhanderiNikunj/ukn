@@ -81,6 +81,9 @@ class Strings {
   static String hello_how_can_we = "Hello, How Can We";
   static String help_you = "Help You ?";
   static String continue_button = "Continue";
+  static String english = "English";
+  static String hindi = "हिंदी";
+  static String gujarati = "ગુજરાતી";
 }
 
 void loadGujaratiLanguage() {

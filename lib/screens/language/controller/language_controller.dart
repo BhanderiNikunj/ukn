@@ -1,27 +1,25 @@
-import 'package:get/get.dart';
+import 'package:unk/exports.dart';
 import 'package:unk/screens/language/model/language_model.dart';
-
-import '../../../widgets/images.dart';
 
 class LanguageController extends GetxController {
   List<LanguageModel> languageList = [
     LanguageModel(
       id: 1,
-      languageName: "Gujarati ",
-      image: Images.india_flag_svg,
-      shortCode: "(IN)",
+      languageName: Strings.english,
+      image: Images.flag_united_states_svg,
+      shortCode: "en",
     ),
     LanguageModel(
       id: 2,
-      languageName: "Hindi ",
+      languageName: Strings.gujarati,
       image: Images.india_flag_svg,
-      shortCode: "(IN)",
+      shortCode: "gu",
     ),
     LanguageModel(
-      id: 3,
-      languageName: "English ",
-      image: Images.flag_united_states_svg,
-      shortCode: "(EN)",
+      id: 2,
+      languageName: Strings.hindi,
+      image: Images.india_flag_svg,
+      shortCode: "hi"
     ),
   ];
 }

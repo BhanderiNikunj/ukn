@@ -10,6 +10,7 @@ class SharedHelper {
   static const String SCRATCH_CARD_KEY = "SCRATCH_CARD_KEY";
   static const String DATE_KEY = "DATE_KEY";
   static const String IS_ADMIN_KEY = "IS_ADMIN_KEY";
+  static const String USER_LANGUAGE_KEY = "USER_LANGUAGE_KEY";
 
   static SharedPreferences? sharedPreferences;
 
@@ -144,6 +145,23 @@ class SharedHelper {
     } else {
       sharedPreferences = await SharedPreferences.getInstance();
       return sharedPreferences!.getBool(IS_ADMIN_KEY) ?? false;
+    }
+  }
+
+  static Future<void> setUserLanguage({required String languageCode}) async {
+    if (sharedPreferences != null) {
+      await sharedPreferences!.setString(USER_LANGUAGE_KEY, languageCode);
+    } else {
+      await sharedPreferences!.setString(USER_LANGUAGE_KEY, languageCode);
+    }
+  }
+
+  static Future<String> getUserLanguage() async {
+    if (sharedPreferences != null) {
+      return sharedPreferences!.getString(USER_LANGUAGE_KEY) ?? "en";
+    } else {
+      sharedPreferences = await SharedPreferences.getInstance();
+      return sharedPreferences!.getString(USER_LANGUAGE_KEY) ?? "en";
     }
   }
 }

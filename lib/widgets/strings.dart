@@ -71,7 +71,6 @@ class Strings {
   static String languages = "Languages";
   static String terms_condition = "Terms & Condition";
   static String help_center = "Help Center";
-  static String english_en = "English (EN)";
   static String update_your_data = "Update Your Data";
   static String select_language = "Select Language";
   static String support = "Support";
@@ -85,89 +84,3 @@ class Strings {
   static String hindi = "हिंदी";
   static String gujarati = "ગુજરાતી";
 }
-
-void loadGujaratiLanguage() {
-  Strings.enter_data = "ડેટા દાખલ કરો";
-  Strings.sorry_no_data_found = "માફ કરશો, કોઈ ડેટા મળ્યો નથી";
-  Strings.yes = "હા";
-  Strings.no = "ના";
-  Strings.login = "લોગિન";
-  Strings.signup = "સાઇનઅપ";
-  Strings.enter_email_id = "ઇમેઇલ આઈડી દાખલ કરો";
-  Strings.ex_email_id = "user@gmail.com";
-  Strings.enter_password = "પાસવર્ડ દાખલ કરો";
-  Strings.hint_password = "* * * * * * * *";
-  Strings.enter_re_password = "પાસવર્ડ ફરીથી દાખલ કરો";
-  Strings.dont_have_an_account = "એકાઉન્ટ નથી? ";
-  Strings.register_now = "હવે નોંધણી કરો";
-  Strings.already_have_an_account = "આગળથી એકાઉન્ટ છે? ";
-  Strings.login_now = "હવે લોગિન કરો";
-  Strings.please_enter_email = "કૃપા કરીને ઇમેઇલ દાખલ કરો";
-  Strings.please_enter_password = "કૃપા કરીને પાસવર્ડ દાખલ કરો";
-  Strings.add_your_data = "તમારો ડેટા ઉમેરો";
-  Strings.enter_first_name = "પ્રથમ નામ દાખલ કરો";
-  Strings.enter_last_name = "અંતિમ નામ દાખલ કરો";
-  Strings.enter_middle_name = "મધ્ય નામ દાખલ કરો";
-  Strings.enter_email = "ઇમેઇલ આઈડી દાખલ કરો";
-  Strings.ex_username = "Ex. username";
-  Strings.ex_surname = "Ex. surname";
-  Strings.ex_middle_name = "Ex. middle name";
-  Strings.enter_mobile_number = "મોબાઇલ નંબર દાખલ કરો";
-  Strings.hint_mobileNo = "Ex. 98989 89898";
-  Strings.please_enter_first_name = "કૃપા કરીને પ્રથમ નામ દાખલ કરો";
-  Strings.please_enter_last_name = "કૃપા કરીને અંતિમ નામ દાખલ કરો";
-  Strings.please_enter_middle_name = "કૃપા કરીને મધ્ય નામ દાખલ કરો";
-  Strings.select_date_of_birht = "જન્મ તારીખ પસંદ કરો";
-  Strings.select_gender = "લિંગ પસંદ કરો";
-  Strings.please_select_gender = "કૃપા કરીને લિંગ પસંદ કરો";
-  Strings.hint_of_birth = "Ex. 28/01/1998";
-  Strings.please_select_date_of_birth = "કૃપા કરીને જન્મ તારીખ પસંદ કરો";
-  Strings.please_enter_valid_email_id = "માન્ય ઇમેઇલ આઈડી દાખલ કરો";
-  Strings.please_enter_valid_mobile_number = "માન્ય મોબાઇલ નંબર દાખલ કરો";
-  Strings.required_textfeild = " *";
-  Strings.reward_history = "ઈનામનો ઈતિહાસ";
-}
-
-void loadHindiLanguage() {
-  Strings.enter_data = "डेटा दर्ज करें";
-  Strings.sorry_no_data_found = "माफ़ करें, कोई डेटा नहीं मिला";
-  Strings.yes = "हाँ";
-  Strings.no = "नहीं";
-  Strings.login = "लॉगिन";
-  Strings.signup = "साइनअप";
-  Strings.enter_email_id = "ईमेल आईडी दर्ज करें";
-  Strings.ex_email_id = "user@gmail.com";
-  Strings.enter_password = "पासवर्ड दर्ज करें";
-  Strings.hint_password = "* * * * * * * *";
-  Strings.enter_re_password = "पासवर्ड फिर से दर्ज करें";
-  Strings.dont_have_an_account = "क्या आपके पास खाता नहीं है? ";
-  Strings.register_now = "अभी पंजीकरण करें";
-  Strings.already_have_an_account = "क्या आपके पास खाता है? ";
-  Strings.login_now = "अभी लॉगिन करें";
-  Strings.please_enter_email = "कृपया ईमेल दर्ज करें";
-  Strings.please_enter_password = "कृपया पासवर्ड दर्ज करें";
-  Strings.add_your_data = "अपना डेटा जोड़ें";
-  Strings.enter_first_name = "प्रथम नाम दर्ज करें";
-  Strings.enter_last_name = "अंतिम नाम दर्ज करें";
-  Strings.enter_middle_name = "मध्य नाम दर्ज करें";
-  Strings.enter_email = "ईमेल आईडी दर्ज करें";
-  Strings.ex_username = "Ex. username";
-  Strings.ex_surname = "Ex. surname";
-  Strings.ex_middle_name = "Ex. middle name";
-  Strings.enter_mobile_number = "मोबाइल नंबर दर्ज करें";
-  Strings.hint_mobileNo = "Ex. 98989 89898";
-  Strings.please_enter_first_name = "कृपया प्रथम नाम दर्ज करें";
-  Strings.please_enter_last_name = "कृपया अंतिम नाम दर्ज करें";
-  Strings.please_enter_middle_name = "कृपया मध्य नाम दर्ज करें";
-  Strings.select_date_of_birht = "जन्म तिथि चुनें";
-  Strings.select_gender = "लिंग चुनें";
-  Strings.please_select_gender = "कृपया लिंग चुनें";
-  Strings.hint_of_birth = "Ex. 28/01/1998";
-  Strings.please_select_date_of_birth = "कृपया जन्म तिथि चुनें";
-  Strings.please_enter_valid_email_id = "मान्य ईमेल आईडी दर्ज करें";
-  Strings.please_enter_valid_mobile_number = "मान्य मोबाइल नंबर दर्ज करें";
-  Strings.required_textfeild = " *";
-  Strings.reward_history = "इनाम का इतिहास";
-}
-
-void loadEnglishLanguage() {}

@@ -24,8 +24,8 @@ class _SplashScreenState extends State<SplashScreen> {
         bool isLogin = await SharedHelper.getLoginValue();
         if (isLogin) {
           if (await SharedHelper.getAdminLogin()) {
-            CommonRoute.popAndPushNamed(
-                page: RouteList.admin_home_screen);
+            // TODO: change to admin_home_screen
+            CommonRoute.popAndPushNamed(page: RouteList.home_screen);
           } else {
             CommonRoute.popAndPushNamed(page: RouteList.home_screen);
           }

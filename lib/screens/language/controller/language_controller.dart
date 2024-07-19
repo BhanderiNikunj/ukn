@@ -2,6 +2,8 @@ import 'package:unk/exports.dart';
 import 'package:unk/screens/language/model/language_model.dart';
 
 class LanguageController extends GetxController {
+  String languageCode = "en";
+
   List<LanguageModel> languageList = [
     LanguageModel(
       id: 1,
@@ -19,7 +21,24 @@ class LanguageController extends GetxController {
       id: 2,
       languageName: Strings.hindi,
       image: Images.india_flag_svg,
-      shortCode: "hi"
+      shortCode: "hi",
     ),
   ];
+
+  void changeLanguage({required String code}) {
+    languageCode = code;
+    update();
+  }
+
+  void changeAllLanguage() {
+    SharedHelper.setUserLanguage(languageCode: languageCode);
+    if (languageCode == "en") {
+      loadEnglishLanguage();
+    } else if (languageCode == "gu") {
+      loadGujaratiLanguage();
+    } else if (languageCode == "hi") {
+      loadHindiLanguage();
+    }
+    update();
+  }
 }

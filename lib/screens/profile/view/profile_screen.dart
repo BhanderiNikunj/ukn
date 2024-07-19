@@ -63,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   title: Strings.languages,
                   imagePath: Images.language_svg,
-                  choiceLanguage: Strings.english_en,
+                  choiceLanguage: "english_en",
                 ),
                 buttonView(
                   onTap: () async => await CommonRoute.pushNamed(

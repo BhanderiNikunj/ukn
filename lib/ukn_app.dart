@@ -26,6 +26,14 @@ class _UknAppState extends State<UknApp> {
         await SharedHelper.setYourScratchList(isScratch: false);
       }
     }
+    String languageCode = await SharedHelper.getUserLanguage();
+    if (languageCode == "en") {
+      loadEnglishLanguage();
+    } else if (languageCode == "gu") {
+      loadGujaratiLanguage();
+    } else if (languageCode == "hi") {
+      loadHindiLanguage();
+    }
   }
 
   @override
@@ -34,7 +42,7 @@ class _UknAppState extends State<UknApp> {
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
         child: GetMaterialApp(
-          initialRoute: RouteList.home_screen,
+          initialRoute: RouteList.initial,
           getPages: getPages,
         ),
       ),

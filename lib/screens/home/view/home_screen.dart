@@ -25,11 +25,10 @@ class _HomeScreenState extends HomeWidget {
               ),
               const Spacer(),
               InkWell(
-                onTap: () async async {
-                  await await CommonRoute.pushNamed(page: RouteList.profile_screen);
+                onTap: () async {
+                  await CommonRoute.pushNamed(page: RouteList.profile_screen);
                   controller.update();
-                  setState(() {});
-            },
+                },
                 child: Container(
                   height: 40.h,
                   width: 40.h,

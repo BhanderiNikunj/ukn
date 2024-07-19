@@ -10,41 +10,46 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends HomeWidget {
   @override
   Widget build(BuildContext context) {
-    return CommonWidget.commonScreenUI(
-      height: ScreenUtil().screenHeight * 0.85,
-      titleWidget: Row(
-        children: [
-          CommonWidget.commonText(
-            text:
-                '${Strings.hello}${userData?.firstName} ${userData?.lastName}',
-            maxLines: 2,
-            color: AppColor.white1Color,
-          ),
-          const Spacer(),
-          InkWell(
-            onTap: () async {
-              await CommonRoute.pushNamed(page: RouteList.profile_screen);
-              setState(() {});
-            },
-            child: Container(
-              height: 40.h,
-              width: 40.h,
-              decoration: BoxDecoration(
+    return GetBuilder(
+      init: controller,
+      builder: (_) {
+        return CommonWidget.commonScreenUI(
+          height: ScreenUtil().screenHeight * 0.85,
+          titleWidget: Row(
+            children: [
+              CommonWidget.commonText(
+                text:
+                    '${Strings.hello}${userData?.firstName} ${userData?.lastName}',
+                maxLines: 2,
                 color: AppColor.white1Color,
-                shape: BoxShape.circle,
               ),
-              alignment: Alignment.center,
-              child: CommonWidget.commonText(
-                text: userData?.firstName.substring(0, 1) ?? "",
-                fontWeight: FontWeight.w900,
-                fontSize: 18,
+              const Spacer(),
+              InkWell(
+                onTap: () async {
+                  await CommonRoute.pushNamed(page: RouteList.profile_screen);
+                  controller.update();
+                },
+                child: Container(
+                  height: 40.h,
+                  width: 40.h,
+                  decoration: BoxDecoration(
+                    color: AppColor.white1Color,
+                    shape: BoxShape.circle,
+                  ),
+                  alignment: Alignment.center,
+                  child: CommonWidget.commonText(
+                    text: userData?.firstName.substring(0, 1) ?? "",
+                    fontWeight: FontWeight.w900,
+                    fontSize: 18,
+                  ),
+                ),
               ),
-            ),
+              CommonWidget.sizedBox(width: 10),
+            ],
           ),
-          CommonWidget.sizedBox(width: 10),
-        ],
-      ),
-      child: screenView(),
+          child: screenView(),
+        );
+      },
     );
   }
 }

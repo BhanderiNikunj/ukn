@@ -119,6 +119,7 @@ class _UpdateUserDataScreenState extends State<UpdateUserDataScreen> {
                   CommonWidget.sizedBox(height: 10),
                   textFeildView(
                     controller: controller.updateMobileController,
+                    maxLength: 10,
                     title: Strings.enter_mobile_number,
                     hint: Strings.hint_mobileNo,
                     keyboardType: TextInputType.number,
@@ -222,6 +223,7 @@ class _UpdateUserDataScreenState extends State<UpdateUserDataScreen> {
     TextEditingController? controller,
     required String title,
     String? hint,
+    int? maxLength,
     String? errorMessage,
     bool readOnly = false,
     void Function()? onTap,
@@ -255,6 +257,7 @@ class _UpdateUserDataScreenState extends State<UpdateUserDataScreen> {
               obscureText: isShowText,
               keyboardType: keyboardType,
               controller: controller,
+              maxLength: maxLength,
               hintColor: AppColor.primary1Color,
               textColor: AppColor.primary1Color,
               borderColor: AppColor.primary1Color,

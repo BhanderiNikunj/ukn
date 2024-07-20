@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:label="UKN - earning app"
+        android:label="UKN - Earning App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

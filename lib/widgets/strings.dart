@@ -83,4 +83,7 @@ class Strings {
   static String english = "English";
   static String hindi = "हिंदी";
   static String gujarati = "ગુજરાતી";
+  static String logout = "Logout";
+  static String are_you_sure = "Are you sure?";
+  static String you_will_be_returned_to_the_login_screen = "You will be returned to the login\nscreen.";
 }

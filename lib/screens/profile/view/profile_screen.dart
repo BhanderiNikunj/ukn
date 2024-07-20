@@ -81,6 +81,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   title: Strings.help_center,
                   imagePath: Images.help_svg,
                 ),
+                buttonView(
+                  onTap: () {
+                    CommonWidget.commonDialog(
+                      context: context,
+                      onTap: () {
+                        CommonRoute.popAndPushNamed(
+                          page: RouteList.login_screen,
+                        );
+                      },
+                      titleText: Strings.are_you_sure,
+                      fontWeight: FontWeight.bold,
+                      subTitleText:
+                          Strings.you_will_be_returned_to_the_login_screen,
+                    );
+                  },
+                  title: Strings.logout,
+                  imagePath: Images.logout_svg,
+                ),
               ],
             ),
           ),

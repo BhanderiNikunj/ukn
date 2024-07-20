@@ -32,6 +32,7 @@ class Images {
   static const String person_support_svg = "assets/images/profile/person_support.svg";
   static const String flag_united_states_svg = "assets/images/profile/flag_united_states.svg";
   static const String india_flag_svg = "assets/images/profile/india_flag.svg";
+  static const String logout_svg = "assets/images/profile/logout.svg";
 
   // Lottie
   static const String clim_reward_json = "assets/json/clim_reward.json";

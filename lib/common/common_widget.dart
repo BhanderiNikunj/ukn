@@ -403,6 +403,7 @@ class CommonWidget {
     required void Function() onTap,
     required String titleText,
     required String subTitleText,
+    FontWeight? fontWeight,
   }) {
     return showDialog(
       context: context,
@@ -412,7 +413,7 @@ class CommonWidget {
           backgroundColor: AppColor.white1Color,
           titlePadding: EdgeInsets.zero,
           insetPadding: EdgeInsets.symmetric(
-            horizontal: 16.w,
+            horizontal: 30.w,
           ),
           surfaceTintColor: AppColor.white1Color,
           title: Container(
@@ -421,6 +422,7 @@ class CommonWidget {
             width: ScreenUtil().screenWidth,
             child: commonText(
               text: titleText,
+              fontWeight: fontWeight,
               textAlign: TextAlign.center,
             ),
           ),
@@ -435,26 +437,26 @@ class CommonWidget {
                   textAlign: TextAlign.center,
                 ),
                 sizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    sizedBox(width: 10),
-                    Expanded(
-                      child: commonButton(
-                        height: 50.h,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      commonButton(
+                        height: 35.h,
+                        width: 75.w,
                         text: Strings.no,
                         onTap: () => CommonRoute.pop(),
                       ),
-                    ),
-                    sizedBox(width: 10),
-                    Expanded(
-                      child: commonButton(
-                        height: 50.h,
+                      sizedBox(width: 20),
+                      commonButton(
+                        height: 35.h,
+                        width: 75.w,
                         text: Strings.yes,
                         onTap: onTap,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

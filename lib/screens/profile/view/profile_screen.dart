@@ -20,7 +20,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     loadBannerAd();
+    loadLanguage();
     super.initState();
+  }
+
+  String languageCode = "";
+
+  Future<void> loadLanguage() async {
+    languageCode = await SharedHelper.getUserLanguage();
+    setState(() {});
   }
 
   @override
@@ -76,11 +84,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     await CommonRoute.pushNamed(
                       page: RouteList.language_screen,
                     );
-                    setState(() {});
+                    await loadLanguage();
                   },
                   title: Strings.languages,
                   imagePath: Images.language_svg,
-                  choiceLanguage: "english_en",
+                  choiceLanguage: languageCode == "en"
+                      ? "${Strings.english} (EN)"
+                      : languageCode == "gu"
+                          ? "${Strings.gujarati} (GU)"
+                          : languageCode == "hi"
+                              ? "${Strings.hindi} (HI)"
+                              : "",
                 ),
                 buttonView(
                   onTap: () async => await CommonRoute.pushNamed(

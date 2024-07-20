@@ -40,5 +40,6 @@ class LanguageController extends GetxController {
       loadHindiLanguage();
     }
     update();
+    CommonRoute.pop();
   }
 }

@@ -9,6 +9,9 @@ abstract class HomeWidget extends State<HomeScreen> {
     controller = Get.put(HomeController());
     controller.gethomeData();
     getUserData();
+    if (userData == null) {
+      CommonRoute.popAndPushNamed(page: RouteList.login_screen);
+    }
     controller.loadBannerAdMob();
     super.initState();
   }

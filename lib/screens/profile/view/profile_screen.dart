@@ -59,9 +59,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   imagePath: Images.person_svg,
                 ),
                 buttonView(
-                  onTap: () {
-                    AdsHelper.loadInterstitialAd(adType: AdType.admob);
-                    CommonRoute.pushNamed(
+                  onTap: () async {
+                    await AdsHelper.loadInterstitialAd(adType: AdType.admob);
+                    await CommonRoute.pushNamed(
                       page: RouteList.reward_history_screen,
                     );
                   },

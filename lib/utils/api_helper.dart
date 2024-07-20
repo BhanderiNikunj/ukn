@@ -122,9 +122,7 @@ class ApiHelper {
       body: {"user_id": id.toString()},
     );
     UserModel userModel = UserModel.fromJson(json);
-    if (userModel.status) {
-      userData = userModel.data;
-    }
+    userData = userModel.data;
   }
 
   static Future<void> readUserDataWithLoginId({required int id}) async {

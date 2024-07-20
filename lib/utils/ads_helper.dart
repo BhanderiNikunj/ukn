@@ -49,14 +49,14 @@ class AdsHelper {
   static Future<void> loadInterstitialAd({required AdType adType}) async {
     if (generalSettingModel?.data.isAdShow ?? false) {
       if (adType == AdType.admob) {
-        InterstitialAd.load(
+        await InterstitialAd.load(
           adUnitId: generalSettingModel?.data.admob.interstitialAd ??
               "ca-app-pub-3940256099942544/1033173712",
           request: const AdRequest(),
           adLoadCallback: InterstitialAdLoadCallback(
-            onAdLoaded: (ad) {
+            onAdLoaded: (ad) async {
               debugPrint("========Interstitial Ad Load Success");
-              ad.show();
+              await ad.show();
             },
             onAdFailedToLoad: (error) {
               debugPrint("=============$error");
@@ -64,14 +64,14 @@ class AdsHelper {
           ),
         );
       } else if (adType == AdType.adx) {
-        InterstitialAd.load(
+        await InterstitialAd.load(
           adUnitId: generalSettingModel?.data.adx.interstitialAd ??
               "/6499/example/interstitial",
           request: const AdRequest(),
           adLoadCallback: InterstitialAdLoadCallback(
-            onAdLoaded: (ad) {
+            onAdLoaded: (ad) async {
               debugPrint("========Interstitial Ad Load Success");
-              ad.show();
+              await ad.show();
             },
             onAdFailedToLoad: (error) {
               debugPrint("=============$error");

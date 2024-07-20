@@ -37,6 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 buttonView(
                   onTap: () {
+                    AdsHelper.loadInterstitialAd(adType: AdType.admob);
                     CommonRoute.pushNamed(
                       page: RouteList.reward_history_screen,
                     );
@@ -46,6 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 buttonView(
                   onTap: () async {
+                    AdsHelper.loadInterstitialAd(adType: AdType.admob);
                     await CommonRoute.pushNamed(
                       page: RouteList.redeem_screen,
                     );

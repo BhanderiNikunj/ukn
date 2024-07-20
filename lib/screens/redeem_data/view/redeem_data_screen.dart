@@ -24,7 +24,7 @@ class _RedeemDataScreenState extends State<RedeemDataScreen> {
   Future<void> loadBannerAd() async {
     bannerAd = await AdsHelper.loadBannerAd(
       adType: AdType.admob,
-      size: AdSize.banner,
+      size: AdSize.largeBanner,
     );
     controller.update();
   }
@@ -46,7 +46,7 @@ class _RedeemDataScreenState extends State<RedeemDataScreen> {
 
   Widget adsView() {
     return Container(
-      height: 50.h,
+      height: 100.h,
       width: ScreenUtil().screenWidth,
       alignment: Alignment.center,
       child: bannerAd != null

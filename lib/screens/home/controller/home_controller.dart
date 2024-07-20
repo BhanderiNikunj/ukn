@@ -10,7 +10,10 @@ class HomeController extends GetxController {
 
   Future<void> loadBannerAdMob() async {
     try {
-      bannerAdMob = await AdsHelper.loadBannerAd(adType: AdType.admob);
+      bannerAdMob = await AdsHelper.loadBannerAd(
+        adType: AdType.admob,
+        size: AdSize.banner,
+      );
       update();
     } catch (e) {
       debugPrint("==========$e");

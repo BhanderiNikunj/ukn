@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends HomeWidget {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
+    return GetBuilder<HomeController>(
       init: controller,
       builder: (_) {
         return CommonWidget.commonScreenUI(
@@ -48,6 +48,7 @@ class _HomeScreenState extends HomeWidget {
             ],
           ),
           child: screenView(),
+          bottomNavigationBar: adsView(),
         );
       },
     );

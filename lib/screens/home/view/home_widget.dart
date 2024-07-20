@@ -9,6 +9,7 @@ abstract class HomeWidget extends State<HomeScreen> {
     controller = Get.put(HomeController());
     controller.gethomeData();
     getUserData();
+    controller.loadBannerAdMob();
     super.initState();
   }
 
@@ -28,6 +29,17 @@ abstract class HomeWidget extends State<HomeScreen> {
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+
+  Widget adsView() {
+    return Container(
+      height: 50.h,
+      width: ScreenUtil().screenWidth,
+      alignment: Alignment.center,
+      child: controller.bannerAdMob != null
+          ? AdWidget(ad: controller.bannerAdMob!)
+          : CommonWidget.commonText(text: Strings.ad_not_load),
+    );
   }
 
   Widget screenView() {

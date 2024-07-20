@@ -3,6 +3,8 @@
 import 'package:unk/exports.dart';
 
 class RedeemDataController extends GetxController {
+  BannerAd? bannerAd;
+
   Future<void> addRewardHistory({
     required String price,
     required String coin,
@@ -28,5 +30,13 @@ class RedeemDataController extends GetxController {
         type: SnackBarType.errorData,
       );
     }
+  }
+
+  Future<void> loadBannerAd() async {
+    bannerAd = await AdsHelper.loadBannerAd(
+      adType: AdType.admob,
+      size: AdSize.largeBanner,
+    );
+    update();
   }
 }

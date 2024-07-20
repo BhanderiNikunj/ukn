@@ -8,6 +8,21 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  BannerAd? bannerAd;
+
+  Future<void> loadBannerAd() async {
+    bannerAd = await AdsHelper.loadBannerAd(
+      adType: AdType.admob,
+      size: AdSize.banner,
+    );
+  }
+
+  @override
+  void initState() {
+    loadBannerAd();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -86,6 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
           ),
+          bottomNavigationBar: adsView(),
         ),
         Positioned(
           left: 140,
@@ -106,6 +122,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget adsView() {
+    return Container(
+      height: 50.h,
+      width: ScreenUtil().screenWidth,
+      alignment: Alignment.center,
+      child: bannerAd != null
+          ? AdWidget(ad: bannerAd!)
+          : CommonWidget.commonText(text: Strings.ad_not_load),
     );
   }
 

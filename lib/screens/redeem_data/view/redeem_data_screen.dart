@@ -11,22 +11,13 @@ class _RedeemDataScreenState extends State<RedeemDataScreen> {
   int rIndex = Get.arguments;
   RedeemReward? rewards;
   late RedeemDataController controller;
-  BannerAd? bannerAd;
 
   @override
   void initState() {
     controller = Get.put(RedeemDataController());
     rewards = generalSettingModel?.data.redeemRewards[rIndex];
-    loadBannerAd();
+    controller.loadBannerAd();
     super.initState();
-  }
-
-  Future<void> loadBannerAd() async {
-    bannerAd = await AdsHelper.loadBannerAd(
-      adType: AdType.admob,
-      size: AdSize.largeBanner,
-    );
-    controller.update();
   }
 
   @override
@@ -49,8 +40,8 @@ class _RedeemDataScreenState extends State<RedeemDataScreen> {
       height: 100.h,
       width: ScreenUtil().screenWidth,
       alignment: Alignment.center,
-      child: bannerAd != null
-          ? AdWidget(ad: bannerAd!)
+      child: controller.bannerAd != null
+          ? AdWidget(ad: controller.bannerAd!)
           : CommonWidget.commonText(text: Strings.ad_not_load),
     );
   }

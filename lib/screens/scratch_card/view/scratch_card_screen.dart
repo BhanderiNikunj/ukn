@@ -65,7 +65,6 @@ class _ScratchCardScreenState extends State<ScratchCardScreen> {
                           if (value == 100) {
                             isAnimation = true;
                             controller.update();
-
                             await Future.delayed(
                               const Duration(seconds: 3),
                               () async {
@@ -105,6 +104,21 @@ class _ScratchCardScreenState extends State<ScratchCardScreen> {
                     buttonColor: AppColor.secondery1Color,
                     onTap: () async {
                       SharedHelper.setYourScratchList(isScratch: true);
+                      userData = UserData(
+                        id: userData?.id ?? 0,
+                        loginId: userData?.loginId ?? 0,
+                        firstName: userData?.firstName ?? "",
+                        middleName: userData?.middleName ?? "",
+                        lastName: userData?.lastName ?? "",
+                        dateOfBirth: userData?.dateOfBirth ?? "",
+                        gender: userData?.gender ?? "",
+                        contectNumber: userData?.contectNumber ?? "",
+                        userPoint: (userData?.userPoint ?? 0) + int.parse(controller.coin),
+                        profilePhoto: userData?.profilePhoto ?? "",
+                        referCode: userData?.referCode ?? "",
+                        userDeviceToken: userData?.userDeviceToken ?? "",
+                        emailId: userData?.emailId ?? "",
+                      );
                       await controller.updateUserPoint(context: context);
                       isCall = false;
                       getScratch();

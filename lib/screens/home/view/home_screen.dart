@@ -39,7 +39,9 @@ class _HomeScreenState extends HomeWidget {
                   alignment: Alignment.center,
                   child: CommonWidget.commonText(
                     text: userData != null
-                        ? userData!.firstName.substring(0, 1).toUpperCase()
+                        ? userData!.firstName.isNotEmpty
+                            ? userData!.firstName.substring(0, 1).toUpperCase()
+                            : ""
                         : "",
                     fontWeight: FontWeight.w900,
                     fontSize: 18,

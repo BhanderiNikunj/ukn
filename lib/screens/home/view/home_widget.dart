@@ -9,8 +9,16 @@ abstract class HomeWidget extends State<HomeScreen> {
     controller = Get.put(HomeController());
     controller.gethomeData();
     getUserData();
-    if (userData == null) {
-      CommonRoute.popAndPushNamed(page: RouteList.login_screen);
+    // if (userData == null) {
+    //   print("================");
+    // }
+    if (userData?.id == 0) {
+      Future.delayed(
+        const Duration(seconds: 1),
+        () => CommonRoute.popAndPushNamed(page: RouteList.login_screen),
+      );
+
+      return;
     }
     controller.loadBannerAdMob();
     super.initState();
@@ -185,11 +193,12 @@ abstract class HomeWidget extends State<HomeScreen> {
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.only(right: 10.w),
           child: InkWell(
-            onTap: () {
+            onTap: () async {
               if (list?[index].routeName.isNotEmpty ?? false) {
-                CommonRoute.pushNamed(
+                await CommonRoute.pushNamed(
                   page: list?[index].routeName ?? "",
                 );
+                controller.update();
               }
             },
             child: CommonWidget.imageBuilder(

@@ -77,7 +77,7 @@ class AddUserDataController extends GetxController {
         await SharedHelper.setLoginData(loginId: data.loginId);
         await SharedHelper.setUserIdata(userId: model.data.id);
         userData = model.data;
-        CommonRoute.popAndPushNamed(page: RouteList.home_screen);
+        await CommonRoute.popAndPushNamed(page: RouteList.home_screen);
         CommonWidget.commonSnackBar(
           context: context,
           message: model.message,

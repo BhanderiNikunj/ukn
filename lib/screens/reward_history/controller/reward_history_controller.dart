@@ -16,7 +16,9 @@ class RewardHistoryController extends GetxController {
     return null;
   }
 
-  void disposeData(){
-    // mapOfNativeAd.foreach();
+  Future<void> disposeData() async {
+    for (var ads in mapOfNativeAd.entries) {
+      await ads.value.dispose();
+    }
   }
 }

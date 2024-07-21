@@ -47,6 +47,13 @@ class LoginController extends GetxController {
         CommonRoute.popAndPushNamed(page: RouteList.admin_home_screen);
       } else {
         await ApiHelper.readUserData(id: data.data.id);
+        if (userData?.id == 0) {
+          CommonRoute.popAndPushNamed(
+            page: RouteList.add_user_data_screen,
+            arguments: data.data,
+          );
+          return;
+        }
         CommonRoute.popAndPushNamed(page: RouteList.home_screen);
       }
     } else {

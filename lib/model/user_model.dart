@@ -1,4 +1,4 @@
-import 'package:unk/model/user_data_model.dart';
+import 'package:flutter_ukn_earning_app/model/user_data_model.dart';
 
 class UserModel {
   final bool status;

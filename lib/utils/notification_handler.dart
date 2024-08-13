@@ -1,12 +1,8 @@
-import 'dart:io';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:http/http.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:unk/firebase_options.dart';
+import 'package:flutter_ukn_earning_app/firebase_options.dart';
 
 Future<void> loadMobileNotification() async {
   await LocalNotificationService.initialize();
@@ -50,12 +46,12 @@ class LocalNotificationService {
   static Future<void> display(RemoteMessage message) async {
     try {
       final id = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-      Uint8List imageByte = await loadImage(image: message.data["image"]);
+      // Uint8List imageByte = await loadImage(image: message.data["image"]);
       NotificationDetails notificationDetails = NotificationDetails(
         android: AndroidNotificationDetails(
           message.notification?.android?.sound ?? "Channel Id",
           message.notification?.android?.sound ?? "Main Channel",
-          largeIcon: ByteArrayAndroidBitmap(imageByte),
+          // largeIcon: ByteArrayAndroidBitmap(imageByte),
           groupKey: message.senderId,
           importance: Importance.max,
           icon: "@mipmap/ic_launcher",
@@ -76,17 +72,17 @@ class LocalNotificationService {
     }
   }
 
-  static Future<Uint8List> loadImage({required String image}) async {
-    var dir = await getTemporaryDirectory();
-    File imageFile = File('${dir.path}/${image.split('/').last}');
-    if (await imageFile.exists()) {
-      return await imageFile.readAsBytes();
-    }
-    var res = await get(Uri.parse(image));
-    imageFile.create(recursive: true);
-    imageFile.writeAsBytes(res.bodyBytes);
-    return await imageFile.readAsBytes();
-  }
+  // static Future<Uint8List> loadImage({required String image}) async {
+  //   var dir = await getTemporaryDirectory();
+  //   File imageFile = File('${dir.path}/${image.split('/').last}');
+  //   if (await imageFile.exists()) {
+  //     return await imageFile.readAsBytes();
+  //   }
+  //   var res = await get(Uri.parse(image));
+  //   imageFile.create(recursive: true);
+  //   imageFile.writeAsBytes(res.bodyBytes);
+  //   return await imageFile.readAsBytes();
+  // }
 }
 
 @pragma("vm:entry-point")

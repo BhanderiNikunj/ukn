@@ -1,5 +1,5 @@
-import 'package:unk/exports.dart';
-import 'package:unk/screens/language/model/language_model.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
+import 'package:flutter_ukn_earning_app/screens/language/model/language_model.dart';
 
 class LanguageController extends GetxController {
   String languageCode = "en";

@@ -1,4 +1,4 @@
-import 'package:unk/widgets/strings.dart';
+import 'package:flutter_ukn_earning_app/widgets/strings.dart';
 
 void loadHindiLanguage() {
   Strings.enter_data = "डेटा दर्ज करें";

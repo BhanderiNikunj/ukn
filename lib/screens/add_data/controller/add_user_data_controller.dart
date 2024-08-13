@@ -1,8 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:calendar_date_picker2/calendar_date_picker2.dart'; 
+import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:intl/intl.dart';
-import 'package:unk/exports.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
 
 class AddUserDataController extends GetxController {
   TextEditingController emailIdController = TextEditingController();

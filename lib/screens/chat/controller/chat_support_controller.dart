@@ -1,5 +1,7 @@
 import 'dart:io';
-import 'package:unk/exports.dart';
+
+import 'package:flutter_ukn_earning_app/exports.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ChatSupportController extends GetxController {
   int userId = 0;
@@ -45,26 +47,22 @@ class ChatSupportController extends GetxController {
   FirebaseStorage firebaseStorage = FirebaseStorage.instance;
 
   Future<void> pickFile() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      allowedExtensions: ['jpg', 'png'],
-      type: FileType.custom,
-    );
-    if (result?.files.isNotEmpty ?? false) {
-      if (result!.files.first.path != null) {
-        isLoading = true;
-        update();
-        await firebaseStorage
-            .ref('$userId')
-            .child(result.files.first.xFile.path.split('/').last)
-            .putFile(File(result.files.first.xFile.path));
-        String imagePath = await firebaseStorage
-            .ref('$userId')
-            .child(result.files.first.xFile.path.split('/').last)
-            .getDownloadURL();
-        sendChatMessage(message: imagePath);
-        isLoading = false;
-        update();
-      }
+    ImagePicker picker = ImagePicker();
+    XFile? file = await picker.pickImage(source: ImageSource.gallery);
+    if (file != null) {
+      isLoading = true;
+      update();
+      await firebaseStorage
+          .ref('$userId')
+          .child(file.path.split('/').last)
+          .putFile(File(file.path));
+      String imagePath = await firebaseStorage
+          .ref('$userId')
+          .child(file.path.split('/').last)
+          .getDownloadURL();
+      sendChatMessage(message: imagePath);
+      isLoading = false;
+      update();
     }
   }
 }

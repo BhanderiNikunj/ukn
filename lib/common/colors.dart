@@ -1,4 +1,4 @@
-import 'package:unk/exports.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
 
 class AppColor {
   static Color primary1Color = const Color(0xff070335);

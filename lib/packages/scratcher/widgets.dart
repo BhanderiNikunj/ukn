@@ -5,9 +5,8 @@ import 'dart:math';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:unk/packages/scratcher/painter.dart';
-import 'package:unk/packages/scratcher/utils.dart';
-
+import 'package:flutter_ukn_earning_app/packages/scratcher/painter.dart';
+import 'package:flutter_ukn_earning_app/packages/scratcher/utils.dart';
 
 const _progressReportStep = 0.1;
 

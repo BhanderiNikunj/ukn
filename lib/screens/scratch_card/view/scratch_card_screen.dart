@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:lottie/lottie.dart';
-import 'package:unk/exports.dart';
-import 'package:unk/packages/scratcher/widgets.dart';
-import 'package:unk/screens/scratch_card/controller/scratch_card_controller.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
+import 'package:flutter_ukn_earning_app/packages/scratcher/widgets.dart';
+import 'package:flutter_ukn_earning_app/screens/scratch_card/controller/scratch_card_controller.dart';
 
 class ScratchCardScreen extends StatefulWidget {
   const ScratchCardScreen({super.key});

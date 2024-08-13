@@ -1,4 +1,4 @@
-import 'package:unk/exports.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
 
 class IntroController extends GetxController {
   List<IntroModel> listOfIntro = [

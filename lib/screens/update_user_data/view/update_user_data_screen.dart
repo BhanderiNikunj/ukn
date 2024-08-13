@@ -1,5 +1,5 @@
-import 'package:unk/exports.dart';
-import 'package:unk/screens/update_user_data/controller/update_user_data_controller.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
+import 'package:flutter_ukn_earning_app/screens/update_user_data/controller/update_user_data_controller.dart';
 
 class UpdateUserDataScreen extends StatefulWidget {
   const UpdateUserDataScreen({super.key});

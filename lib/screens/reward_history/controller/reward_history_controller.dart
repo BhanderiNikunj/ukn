@@ -1,4 +1,4 @@
-import 'package:unk/exports.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
 
 class RewardHistoryController extends GetxController {
   Map<int, BannerAd> mapOfNativeAd = {};
@@ -16,7 +16,7 @@ class RewardHistoryController extends GetxController {
     return null;
   }
 
-  void disposeData(){
+  void disposeData() {
     // mapOfNativeAd.foreach();
   }
 }

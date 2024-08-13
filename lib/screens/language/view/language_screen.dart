@@ -1,5 +1,5 @@
-import 'package:unk/exports.dart';
-import 'package:unk/screens/language/controller/language_controller.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
+import 'package:flutter_ukn_earning_app/screens/language/controller/language_controller.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -33,79 +33,81 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-      init: controller,
-      builder: (_) {
-        return CommonWidget.commonScreenUI(
-          title: Strings.select_language,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-            child: Column(
-              children: [
-                GridView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.languageList.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisSpacing: 20,
-                    crossAxisCount: 2,
-                    mainAxisExtent: 130,
+        init: controller,
+        builder: (_) {
+          return CommonWidget.commonScreenUI(
+            title: Strings.select_language,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+              child: Column(
+                children: [
+                  GridView.builder(
+                    shrinkWrap: true,
+                    itemCount: controller.languageList.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 20,
+                      crossAxisCount: 2,
+                      mainAxisExtent: 130,
+                    ),
+                    itemBuilder: (context, index) {
+                      var model = controller.languageList[index];
+                      bool isCuttent =
+                          controller.languageCode == model.shortCode;
+                      return InkWell(
+                        onTap: () =>
+                            controller.changeLanguage(code: model.shortCode),
+                        child: Container(
+                          height: 100.h,
+                          width: 180.w,
+                          margin: EdgeInsets.symmetric(vertical: 10.h),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: AppColor.white1Color,
+                            boxShadow: commonShadow,
+                            border: isCuttent
+                                ? Border.all(
+                                    color: AppColor.primary1Color,
+                                    width: 2,
+                                  )
+                                : null,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CommonWidget.imageBuilder(
+                                imagePath: model.image,
+                                height: 50,
+                              ),
+                              CommonWidget.sizedBox(height: 10),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  CommonWidget.commonText(
+                                    text: model.languageName,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  CommonWidget.commonText(
+                                    text: " (${model.shortCode})",
+                                    color: AppColor.default3Color,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                  itemBuilder: (context, index) {
-                    var model = controller.languageList[index];
-                    bool isCuttent = controller.languageCode == model.shortCode;
-                    return InkWell(
-                      onTap: () => controller.changeLanguage(code: model.shortCode),
-                      child: Container(
-                        height: 100.h,
-                        width: 180.w,
-                        margin: EdgeInsets.symmetric(vertical: 10.h),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColor.white1Color,
-                          boxShadow: commonShadow,
-                          border: isCuttent
-                              ? Border.all(
-                                  color: AppColor.primary1Color,
-                                  width: 2,
-                                )
-                              : null,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CommonWidget.imageBuilder(
-                              imagePath: model.image,
-                              height: 50,
-                            ),
-                            CommonWidget.sizedBox(height: 10),
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                CommonWidget.commonText(
-                                  text: model.languageName,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                CommonWidget.commonText(
-                                  text: " (${model.shortCode})",
-                                  color: AppColor.default3Color,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                const Spacer(),
-                CommonWidget.commonButton(
-                  text: Strings.continue_button,
-                  onTap: () => controller.changeAllLanguage(),
-                ),
-              ],
+                  const Spacer(),
+                  CommonWidget.commonButton(
+                    text: Strings.continue_button,
+                    onTap: () => controller.changeAllLanguage(),
+                  ),
+                ],
+              ),
             ),
-          ),
-        );
-      }
-    );
+          );
+        });
   }
 }

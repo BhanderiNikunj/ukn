@@ -1,10 +1,9 @@
 import 'dart:io';
 
-import 'package:http/http.dart';
-import 'package:unk/exports.dart';
-import 'package:unk/screens/help_center/view/help_center_screen.dart';
-import 'package:unk/screens/language/view/language_screen.dart';
-import 'package:unk/screens/update_user_data/view/update_user_data_screen.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
+import 'package:flutter_ukn_earning_app/screens/help_center/view/help_center_screen.dart';
+import 'package:flutter_ukn_earning_app/screens/language/view/language_screen.dart';
+import 'package:flutter_ukn_earning_app/screens/update_user_data/view/update_user_data_screen.dart';
 
 List<GetPage> getPages = [
   GetPage(
@@ -86,22 +85,22 @@ UserData? userData;
 File? imageFile;
 
 Future<void> downloadImage() async {
-  var tempDir = await getTemporaryDirectory();
-  File file = File("${tempDir.path}/image.jpg");
-  if (await file.exists()) {
-    imageFile = file;
-    return;
-  }
-  if (generalSettingModel != null) {
-    try {
-      Uri uri = Uri.parse(generalSettingModel!.data.splashImage);
-      var response = await get(uri);
-      imageFile = file;
-      imageFile?.writeAsBytes(response.bodyBytes);
-    } catch (error) {
-      debugPrint("==================$error");
-    }
-  }
+  // var tempDir = await getTemporaryDirectory();
+  // File file = File("${tempDir.path}/image.jpg");
+  // if (await file.exists()) {
+  //   imageFile = file;
+  //   return;
+  // }
+  // if (generalSettingModel != null) {
+  //   try {
+  //     Uri uri = Uri.parse(generalSettingModel!.data.splashImage);
+  //     var response = await get(uri);
+  //     imageFile = file;
+  //     imageFile?.writeAsBytes(response.bodyBytes);
+  //   } catch (error) {
+  //     debugPrint("==================$error");
+  //   }
+  // }
 }
 
 List<BoxShadow> get commonShadow {

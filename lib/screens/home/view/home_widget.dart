@@ -1,4 +1,4 @@
-import 'package:unk/exports.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 abstract class HomeWidget extends State<HomeScreen> {

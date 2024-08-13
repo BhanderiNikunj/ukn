@@ -1,5 +1,5 @@
-import 'package:unk/exports.dart';
-import 'package:unk/screens/adminui/controller/admin_user_all_data.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
+import 'package:flutter_ukn_earning_app/screens/adminui/controller/admin_user_all_data.dart';
 
 class AdminUserData extends StatefulWidget {
   const AdminUserData({super.key});
@@ -130,7 +130,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                               text: "ID :- ",
                                               fontWeight: FontWeight.bold),
                                           CommonWidget.commonText(
-                                              text: "${allUSerDataController.userList[index].id}",
+                                              text:
+                                                  "${allUSerDataController.userList[index].id}",
                                               fontWeight: FontWeight.w400),
                                         ],
                                       ),
@@ -164,7 +165,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                               text: "Login ID :- ",
                                               fontWeight: FontWeight.bold),
                                           CommonWidget.commonText(
-                                              text: "${allUSerDataController.userList[index].loginId}",
+                                              text:
+                                                  "${allUSerDataController.userList[index].loginId}",
                                               fontWeight: FontWeight.w400),
                                         ],
                                       ),
@@ -181,7 +183,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                     bottomRight: Radius.circular(12),
                                   ),
                                   image: DecorationImage(
-                                      image: CachedNetworkImageProvider( "https://t4.ftcdn.net/jpg/04/93/66/85/360_F_493668569_jnWjXervcMN9X9Ucib2N2B4lbZspeAFX.jpg"),
+                                      image: CachedNetworkImageProvider(
+                                          "https://t4.ftcdn.net/jpg/04/93/66/85/360_F_493668569_jnWjXervcMN9X9Ucib2N2B4lbZspeAFX.jpg"),
                                       fit: BoxFit.cover),
                                   border: Border(
                                     top: BorderSide(color: Colors.black),
@@ -224,7 +227,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                               fontWeight: FontWeight.bold),
                                           Expanded(
                                             child: CommonWidget.commonText(
-                                                text: "${allUSerDataController.userList[index].firstName} ${allUSerDataController.userList[index].middleName} ${allUSerDataController.userList[index].lastName}",
+                                                text:
+                                                    "${allUSerDataController.userList[index].firstName} ${allUSerDataController.userList[index].middleName} ${allUSerDataController.userList[index].lastName}",
                                                 fontWeight: FontWeight.w400),
                                           ),
                                         ],
@@ -246,7 +250,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                               fontWeight: FontWeight.bold),
                                           Expanded(
                                             child: CommonWidget.commonText(
-                                                text: "${allUSerDataController.userList[index].emailId}",
+                                                text:
+                                                    "${allUSerDataController.userList[index].emailId}",
                                                 fontWeight: FontWeight.w400),
                                           ),
                                         ],
@@ -268,7 +273,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                               fontWeight: FontWeight.bold),
                                           Expanded(
                                             child: CommonWidget.commonText(
-                                                text: "${allUSerDataController.userList[index].userPoint}",
+                                                text:
+                                                    "${allUSerDataController.userList[index].userPoint}",
                                                 fontWeight: FontWeight.w400),
                                           ),
                                         ],
@@ -293,7 +299,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 13),
                                               CommonWidget.commonText(
-                                                  text: "${allUSerDataController.userList[index].contectNumber}",
+                                                  text:
+                                                      "${allUSerDataController.userList[index].contectNumber}",
                                                   fontWeight: FontWeight.w400,
                                                   fontSize: 13),
                                             ],
@@ -307,7 +314,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                             padding: const EdgeInsets.all(8),
                                             decoration: BoxDecoration(
                                               border: Border.all(
-                                                  color: AppColor.primary1Color),
+                                                  color:
+                                                      AppColor.primary1Color),
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               color: Colors.white,
@@ -319,7 +327,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 13),
                                                 CommonWidget.commonText(
-                                                    text: "${allUSerDataController.userList[index].referCode}",
+                                                    text:
+                                                        "${allUSerDataController.userList[index].referCode}",
                                                     maxLines: 5,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 11),
@@ -348,7 +357,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 13),
                                               CommonWidget.commonText(
-                                                  text: "${allUSerDataController.userList[index].dateOfBirth}",
+                                                  text:
+                                                      "${allUSerDataController.userList[index].dateOfBirth}",
                                                   fontWeight: FontWeight.w400,
                                                   fontSize: 13),
                                             ],
@@ -372,7 +382,8 @@ class _AdminUserDataState extends State<AdminUserData> {
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 13),
                                               CommonWidget.commonText(
-                                                  text: "${allUSerDataController.userList[index].gender}",
+                                                  text:
+                                                      "${allUSerDataController.userList[index].gender}",
                                                   fontWeight: FontWeight.w400,
                                                   fontSize: 13),
                                             ],
@@ -383,7 +394,9 @@ class _AdminUserDataState extends State<AdminUserData> {
                                   ],
                                 ),
                               ),
-                              CommonWidget.sizedBox(height: 10,),
+                              CommonWidget.sizedBox(
+                                height: 10,
+                              ),
                             ],
                           );
                         },

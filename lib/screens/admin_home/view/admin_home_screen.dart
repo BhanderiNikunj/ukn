@@ -1,5 +1,5 @@
-import 'package:unk/exports.dart';
-import 'package:unk/screens/admin_home/controller/admin_home_controller.dart';
+import 'package:flutter_ukn_earning_app/exports.dart';
+import 'package:flutter_ukn_earning_app/screens/admin_home/controller/admin_home_controller.dart';
 
 class AdminHomeScrren extends StatefulWidget {
   const AdminHomeScrren({super.key});
